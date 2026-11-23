@@ -3,15 +3,17 @@
 # why it matters, then runs it and shows the evidence. It starts the equipment and both listening clients itself
 # (and, on Windows, the live view in its own console window), and always shuts everything down cleanly.
 # Serves N1 (arbiter in action), N2 (self-describing model) and N3 (checker verdict on the demo run itself).
-"""python -m harness.demo [--auto] [--no-live-window]"""
+"""python -m harness.demo [--auto] [--no-live-window] [--web [--web-port 8080] [--no-browser]]"""
 
 from __future__ import annotations
 
 import argparse
 import os
+import socket
 import subprocess
 import sys
 import time
+import webbrowser
 from typing import Any, Optional
 
 from equipment import config
@@ -50,19 +52,42 @@ def start_live_window(run: Run) -> Optional[subprocess.Popen]:
     return None
 
 
-def demo(live_window: bool) -> int:
+def start_web(run: Run, port: int, open_browser: bool) -> subprocess.Popen:
+    """Start the read-only web dashboard on this demo's run folder (it waits until the folder exists)."""
+    proc = subprocess.Popen([PY, "-m", "harness.web_view", "--run-dir", str(run.dir), "--port", str(port)],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+    url = f"http://localhost:{port}/"
+    wait_for(lambda: _port_open(port), 15, what="web dashboard")
+    if open_browser:
+        webbrowser.open(url)
+    show(f"web dashboard: {url}")
+    return proc
+
+
+def _port_open(port: int) -> bool:
+    with socket.socket() as s:
+        s.settimeout(0.3)
+        return s.connect_ex(("127.0.0.1", port)) == 0
+
+
+def demo(live_window: bool, web: bool = False, web_port: int = 8080, open_browser: bool = True) -> int:
     """The narrated sequence."""
     if busy_ports():
         print(f"ports {busy_ports()} are in use: stop the running equipment/clients first", file=sys.stderr)
         return 1
+    if web and _port_open(web_port):
+        print(f"port {web_port} is in use (another web_view?): stop it or pass --web-port", file=sys.stderr)
+        return 1
     run = Run("DEMO", "Narrated panel demo (harness/demo.py)")
     live: Optional[subprocess.Popen] = None
     try:
+        if web:  # started before the equipment so the page shows the run from its first record
+            live = start_web(run, web_port, open_browser)
         say("0. Start", "One simulated chamber, ONE core, two doors: SECS/GEM on port 5000 and OPC UA on port 4840. "
                         "A scripted GEM host and an OPC UA client both connect and log everything they receive.")
         run.start()
         show(f"run id {run.run_id}: equipment, GEM host and OPC UA client are up; logs in runs/{run.run_id}/")
-        if live_window:
+        if live_window and not web:
             live = start_live_window(run)
             show("live view: GEM host sees | Core (truth) | OPC UA client sees")
 
@@ -171,6 +196,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap = argparse.ArgumentParser(description="Narrated panel demo")
     ap.add_argument("--auto", action="store_true", help="do not wait for Enter between steps")
     ap.add_argument("--no-live-window", action="store_true", help="do not open the live view window")
+    ap.add_argument("--web", action="store_true", help="show the web dashboard instead of the terminal live view")
+    ap.add_argument("--web-port", type=int, default=8080)
+    ap.add_argument("--no-browser", action="store_true", help="--web: do not open a browser tab")
     args = ap.parse_args(argv)
     AUTO = args.auto
     try:
@@ -179,7 +207,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         pass
     if os.name == "nt":
         os.system("")  # enable ANSI escape codes in the Windows console
-    return demo(live_window=not args.no_live_window)
+    return demo(live_window=not args.no_live_window, web=args.web, web_port=args.web_port,
+                open_browser=not args.no_browser)
 
 
 if __name__ == "__main__":

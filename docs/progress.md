@@ -192,3 +192,38 @@ work), README (5-line summary, install, demo, scenarios, results table).
 **Problems:** in `--auto` mode the GEM host is killed less than 500 ms after the last state changes, so I4 judged
 fewer changes for GEM (5) than for UA (8). This is correct behaviour (I4 does not judge a client that could not have
 converged before it was killed). With a presenter pressing Enter the gap is seconds.
+
+## Web dashboard (after CP7)
+
+**Built:** `harness/web_view.py` (data layer `RunState`, `LiveSource` that follows the newest run or a given folder,
+`ReplaySource` with `--speed`/`--loop`, SSE hub, HTTP server on 127.0.0.1), `harness/web_view.html` (one self-contained
+page: header badges, SVG architecture with pulses and GEM-link flash, three columns with disagreement highlighting,
+canvas temperature chart with limit + alarm shading, arbiter feed, per-seq event timeline with latency /
+dropped markers, live invariants + counters, Results tab with a small markdown renderer, footer "Simulated chamber,
+loopback, single laptop"). `tests/test_web_view.py` (3 tests). `demo.py --web [--web-port] [--no-browser]`. `live_view.py`
+refactored to share `seed_core`/`values_agree`/`APPLIERS` with the dashboard.
+
+**Verified:**
+- `pytest`: 98 passed. `test_page_counters_equal_checker_exactly` feeds `runs/sample_S3` record by record (as replay
+  does) and requires the rows (invariant, side, status, detail), counters, overall and latency to equal `checker.py` run on
+  the files.
+- Replay `--replay runs/sample_S3 --speed 1`: SSE stream carried 153 arbiter decisions, 167 timeline events, 333 receipt
+  marks, 332 pulses and invariant updates; final invariants PASS with the checker's counters. The page has no external URL.
+  `/api/results` serves all 8 result files. Checked visually in a browser: header, diagram, columns, chart, feed,
+  timeline, invariants, Results tab.
+- Live: the dashboard ran in follow-newest mode while `python -m harness.scenarios S2 --out .pytest_tmp/webcheck` ran. It
+  switched to the new run by itself (2 snapshots), streamed link up → REMOTE → START → alarm on → STOP → alarm off →
+  link down, and its final invariants (from `/api/state`) were identical to `checker.check_run` on that run (statuses and
+  detail strings).
+- `python -m harness.demo --auto --web --no-browser`: dashboard started before the equipment. The stream showed the GEM
+  link dropping when the host was killed and coming back 10 s later. Demo overall PASS. Afterwards ports
+  5000/4840/5100/5101/8080 were free and no python process was left.
+
+**Problems:**
+1. A finished replay kept publishing a delta every 200 ms and re-running the checker every second, because the source
+   handed over `scenario.json` on every poll after the end. It now hands it over once.
+2. The first live check seemed to show an SSE stream that stopped after the first snapshot. Cause: my verification probe
+   set a 1 s socket timeout, and a timeout inside a buffered `readline()` breaks the reader. The probe was rewritten
+   (reader thread, no timeout); the server was fine.
+3. While cleaning up after a test I tried to kill every `python.exe`. The command was blocked as too broad. I then
+   stopped only the dashboard by the PID that owned port 8080.

@@ -27,7 +27,7 @@ python -m pytest -q
 
 Linux/macOS: `python3.12 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`.
 Do **not** install `secsgem-driver`: it is an unrelated package that also imports as `secsgem`.
-Expected: `95 passed`.
+Expected: `98 passed`.
 
 ## Run the narrated panel demo
 
@@ -40,6 +40,21 @@ the live view (GEM host sees | Core | OPC UA client sees) in a second window. St
 GEM START → overtemp alarm on both (same seq) → simultaneous START (one wins) → LOCAL → GEM rejected → GEM host
 killed for 10 s and reconnected → checker verdict on the demo run. Everything is shut down at the end, also on
 Ctrl+C. `--auto` runs it without pauses, and `--no-live-window` skips the second window.
+
+## Web dashboard (read-only, works offline)
+
+```powershell
+python -m harness.web_view                              # live: follows the newest run in runs/
+python -m harness.web_view --run-dir runs/<id>          # live: one specific run
+python -m harness.web_view --replay runs/sample_S3 --speed 5 --loop   # replay a finished run (no equipment needed)
+python -m harness.demo --web                            # narrated demo with the dashboard instead of the terminal view
+```
+
+Open http://localhost:8080 (`--port` to change). The page shows the architecture with message pulses (green accepted, red
+rejected, amber alarm) and the GEM link state. It also has the three columns GEM | core | UA (disagreements in red), the
+temperature chart with the limit and alarm periods, the arbiter decision feed, a per-seq event timeline (receive latency
+or `dropped_no_link`), live invariants computed by `harness/checker.py`, and a Results tab. It only tails the run's
+JSONL logs. It never connects to the equipment or its ports. Python standard library only, no CDN.
 
 ## Run the scenarios
 
@@ -97,5 +112,5 @@ through it.
 ## Repository layout
 
 `equipment/` (core, arbiter, dispatcher, audit, sensors, both doors, console, main), `clients/` (GEM host, OPC UA
-client), `harness/` (checker, scenarios, live view, demo), `tests/` (95 tests), `results/`, `docs/`.
+client), `harness/` (checker, scenarios, live view, web dashboard, demo), `tests/` (98 tests), `results/`, `docs/`.
 Limitations and future work: `docs/limitations.md`.

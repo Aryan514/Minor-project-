@@ -167,6 +167,31 @@ def apply_ua(side: Side, r: dict[str, Any]) -> None:
             side.set("Last rejection", _rejection(p.get(str(config.DVID_ORIGIN)), p.get(str(config.DVID_REJECT_REASON))))
 
 
+def seed_core(side: Side) -> None:
+    """The core starts from config.py values; the audit only records CHANGES, so seed the truth column."""
+    side.set("ControlState", config.INITIAL_CONTROL_STATE.name)
+    side.set("ProcessingState", config.INITIAL_PROCESSING_STATE.name)
+    side.set("Authority", "OPERATOR")
+    side.set("TempHighLimit", config.equipment_constant(config.ECID_TEMP_HIGH_LIMIT).default)
+    side.set("Alarm 5001", "clear")
+    side.set("GEM link", "NOT_COMMUNICATING")
+
+
+def values_agree(row: str, a: Any, core: Any) -> bool:
+    """Does a client's value agree with the core's? (shared by the terminal and the web view)"""
+    if a is None or core is None or row in ("Events received", "Last event seq"):
+        return True  # event counters legitimately differ (clients join later) - the checker judges those
+    if isinstance(a, (int, float)) and isinstance(core, (int, float)):
+        # GEM learns the temperature only from the 1 Hz CEID 1007 (heater: up to 0.8 degC/s), so a
+        # 1-second-old GEM value is normal, not a disagreement. The checker judges exact values per seq.
+        tol = 1.0 if row == "Temperature" else config.FLOAT_TOLERANCE
+        return abs(float(a) - float(core)) <= tol
+    return str(a) == str(core)
+
+
+APPLIERS = {"gem": apply_gem, "core": apply_core, "ua": apply_ua}
+
+
 class LiveView:
     """Holds the three tails and renders the table."""
 
@@ -178,15 +203,8 @@ class LiveView:
             "ua": JsonlTail(run_dir / config.UA_CLIENT_LOG_FILE),
         }
         self.sides = {"gem": Side(), "core": Side(), "ua": Side()}
-        # The core starts from config.py values; the audit only records CHANGES, so seed the truth column.
-        core = self.sides["core"]
-        core.set("ControlState", config.INITIAL_CONTROL_STATE.name)
-        core.set("ProcessingState", config.INITIAL_PROCESSING_STATE.name)
-        core.set("Authority", "OPERATOR")
-        core.set("TempHighLimit", config.equipment_constant(config.ECID_TEMP_HIGH_LIMIT).default)
-        core.set("Alarm 5001", "clear")
-        core.set("GEM link", "NOT_COMMUNICATING")
-        self._appliers = {"gem": apply_gem, "core": apply_core, "ua": apply_ua}
+        seed_core(self.sides["core"])
+        self._appliers = APPLIERS
 
     def poll(self) -> None:
         """Read whatever is new in the three files."""
@@ -206,14 +224,7 @@ class LiveView:
         return str(value)
 
     def _same(self, row: str, a: Any, core: Any) -> bool:
-        if a is None or core is None or row in ("Events received", "Last event seq"):
-            return True  # event counters legitimately differ (clients join later) – the checker judges those
-        if isinstance(a, (int, float)) and isinstance(core, (int, float)):
-            # GEM learns the temperature only from the 1 Hz CEID 1007 (heater: up to 0.8 degC/s), so a
-            # 1-second-old GEM value is normal, not a disagreement. The checker judges exact values per seq.
-            tol = 1.0 if row == "Temperature" else config.FLOAT_TOLERANCE
-            return abs(float(a) - float(core)) <= tol
-        return str(a) == str(core)
+        return values_agree(row, a, core)
 
     def table(self) -> Table:
         """Render the current state."""

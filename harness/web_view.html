@@ -1,0 +1,377 @@
+<!doctype html>
+<!-- harness/web_view.html: the dashboard page served by harness/web_view.py. Self-contained (inline CSS/JS, no CDN)
+     so it works offline. It only DISPLAYS what the server derives from the run's logs (read-only). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamber1Tool dual-interface dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --line: #30363d; --text: #e6edf3; --dim: #8b949e;
+    --green: #3fb950; --red: #f85149; --amber: #d29922; --blue: #58a6ff; --cyan: #39c5cf; --violet: #bc8cff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font: 18px/1.35 "Segoe UI", system-ui, sans-serif; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 12px 18px;
+           background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  header h1 { font-size: 24px; margin: 0 12px 0 0; }
+  .badge { padding: 4px 12px; border-radius: 6px; font-weight: 600; background: #21262d; border: 1px solid var(--line);
+           white-space: nowrap; }
+  .badge small { color: var(--dim); font-weight: 400; margin-right: 6px; }
+  .b-green { border-color: var(--green); color: var(--green); } .b-red { border-color: var(--red); color: var(--red); }
+  .b-amber { border-color: var(--amber); color: var(--amber); } .b-blue { border-color: var(--blue); color: var(--blue); }
+  .b-violet { border-color: var(--violet); color: var(--violet); }
+  .tabs { margin-left: auto; display: flex; gap: 6px; }
+  .tabs button { font: inherit; padding: 6px 16px; background: #21262d; color: var(--text); border: 1px solid var(--line);
+                 border-radius: 6px; cursor: pointer; }
+  .tabs button.on { background: var(--blue); color: #0d1117; border-color: var(--blue); font-weight: 700; }
+  main { padding: 14px 18px 60px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .full { grid-column: 1 / -1; }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+  section h2 { font-size: 20px; margin: 0 0 8px; color: var(--blue); }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 5px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--dim); font-weight: 600; font-size: 16px; }
+  td.c { text-align: center; }
+  .cols td { font-size: 21px; } .cols td.k { color: var(--dim); font-size: 17px; }
+  .cols td.core { color: var(--cyan); font-weight: 600; }
+  .cols td.bad { background: rgba(248, 81, 73, .25); color: #ffb3ad; font-weight: 700; outline: 2px solid var(--red); }
+  .scroll { max-height: 380px; overflow-y: auto; }
+  .feed td, .tl td { font-size: 16px; }
+  tr.rej td { color: #ffb3ad; background: rgba(248, 81, 73, .12); }
+  .ok { color: var(--green); font-weight: 700; } .no { color: var(--red); font-weight: 700; }
+  .pend { color: var(--dim); } .amber { color: var(--amber); } .mono { font-family: Consolas, monospace; }
+  .st { display: inline-block; min-width: 64px; text-align: center; border-radius: 5px; padding: 1px 8px; font-weight: 700; }
+  .st-PASS { background: rgba(63, 185, 80, .2); color: var(--green); } .st-FAIL { background: rgba(248, 81, 73, .3); color: var(--red); }
+  .st-NA { background: #21262d; color: var(--dim); }
+  svg text { fill: var(--text); font-size: 17px; font-family: inherit; }
+  svg .node rect { fill: #21262d; stroke: var(--line); stroke-width: 2; }
+  svg .node.core rect { stroke: var(--blue); stroke-width: 3; }
+  svg .seg { stroke: #484f58; stroke-width: 4; }
+  svg .seg.down { stroke: var(--red); stroke-dasharray: 10 8; }
+  svg .seg.up { stroke: var(--green); }
+  .flash { animation: flash .35s 6 alternate; }
+  @keyframes flash { from { opacity: 1; } to { opacity: .15; } }
+  canvas { width: 100%; height: 320px; display: block; }
+  .legend { color: var(--dim); font-size: 15px; margin-top: 4px; }
+  .legend span { margin-right: 16px; }
+  .counters td { font-size: 17px; }
+  .caveat { color: var(--dim); font-size: 14px; margin-top: 8px; }
+  footer { position: fixed; bottom: 0; left: 0; right: 0; padding: 6px 18px; font-size: 14px; color: var(--dim);
+           background: var(--panel); border-top: 1px solid var(--line); display: flex; justify-content: space-between; }
+  #results { display: none; }
+  .rlist button { font: inherit; font-size: 16px; margin: 0 6px 6px 0; padding: 4px 12px; background: #21262d;
+                  color: var(--text); border: 1px solid var(--line); border-radius: 6px; cursor: pointer; }
+  .rlist button.on { border-color: var(--blue); color: var(--blue); }
+  .md { font-size: 17px; } .md h1 { font-size: 26px; } .md h2 { font-size: 21px; color: var(--blue); }
+  .md table { margin: 8px 0; } .md td, .md th { font-size: 15px; }
+  .md blockquote { border-left: 4px solid var(--amber); margin: 8px 0; padding: 4px 12px; color: var(--dim); }
+  .md code { background: #21262d; padding: 1px 5px; border-radius: 4px; font-size: 15px; }
+  .md strong { color: #fff; } .md a { color: var(--blue); cursor: pointer; }
+  .md td strong:only-child { padding: 1px 6px; border-radius: 4px; }
+  @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Chamber1Tool</h1>
+  <span class="badge b-violet" id="mode">connecting…</span>
+  <span class="badge"><small>run</small><span id="runid">—</span></span>
+  <span class="badge"><small>scenario</small><span id="scen">—</span></span>
+  <span class="badge" id="b-cs"><small>control</small><span>—</span></span>
+  <span class="badge" id="b-ps"><small>processing</small><span>—</span></span>
+  <span class="badge" id="b-auth"><small>authority</small><span>—</span></span>
+  <span class="badge" id="b-link"><small>GEM link</small><span>—</span></span>
+  <div class="tabs"><button id="t-live" class="on">Live</button><button id="t-res">Results</button></div>
+</header>
+
+<main id="live">
+  <div class="grid">
+    <section class="full">
+      <h2>Architecture: one core, two doors (pulses = messages: green accepted · red rejected · amber alarm)</h2>
+      <svg id="arch" viewBox="0 0 1000 230" width="100%" height="230">
+        <line class="seg" id="seg-gem-link" x1="135" y1="150" x2="225" y2="150"/>
+        <line class="seg" x1="335" y1="150" x2="415" y2="150"/>
+        <line class="seg" x1="585" y1="150" x2="665" y2="150"/>
+        <line class="seg" id="seg-ua-link" x1="775" y1="150" x2="865" y2="150"/>
+        <line class="seg" x1="500" y1="62" x2="500" y2="110"/>
+        <g class="node" id="n-host"><rect x="15" y="115" width="120" height="70" rx="10"/><text x="75" y="145" text-anchor="middle">GEM host</text><text x="75" y="170" text-anchor="middle" style="font-size:14px;fill:#8b949e">HSMS :5000</text></g>
+        <g class="node" id="n-gemdoor"><rect x="225" y="115" width="110" height="70" rx="10"/><text x="280" y="145" text-anchor="middle">GEM door</text><text x="280" y="170" text-anchor="middle" style="font-size:14px;fill:#8b949e">secsgem</text></g>
+        <g class="node core" id="n-core"><rect x="415" y="110" width="170" height="80" rx="12"/><text x="500" y="143" text-anchor="middle" style="font-weight:700">CORE</text><text x="500" y="170" text-anchor="middle" style="font-size:15px;fill:#58a6ff">+ ARBITER</text></g>
+        <g class="node" id="n-uadoor"><rect x="665" y="115" width="110" height="70" rx="10"/><text x="720" y="145" text-anchor="middle">UA door</text><text x="720" y="170" text-anchor="middle" style="font-size:14px;fill:#8b949e">asyncua</text></g>
+        <g class="node" id="n-ua"><rect x="865" y="115" width="120" height="70" rx="10"/><text x="925" y="145" text-anchor="middle">UA client</text><text x="925" y="170" text-anchor="middle" style="font-size:14px;fill:#8b949e">OPC UA :4840</text></g>
+        <g class="node" id="n-op"><rect x="425" y="12" width="150" height="50" rx="10"/><text x="500" y="44" text-anchor="middle">Operator</text></g>
+        <text id="drop-gem" x="180" y="215" text-anchor="middle" style="fill:#f85149;font-weight:700;display:none">✕ dropped_no_link</text>
+        <text id="drop-ua" x="820" y="215" text-anchor="middle" style="fill:#f85149;font-weight:700;display:none">✕ dropped_no_link</text>
+        <g id="pulses"></g>
+      </svg>
+    </section>
+
+    <section>
+      <h2>What each side sees (red = disagrees with the core)</h2>
+      <table class="cols"><thead><tr><th></th><th class="c">GEM host sees</th><th class="c">Core (truth)</th><th class="c">OPC UA client sees</th></tr></thead>
+        <tbody id="cols"></tbody></table>
+    </section>
+
+    <section>
+      <h2>Core temperature</h2>
+      <canvas id="chart" width="900" height="320"></canvas>
+      <div class="legend"><span style="color:#39c5cf">━ temperature (core)</span><span style="color:#f85149">┅ TempHighLimit</span><span style="color:#d29922">▇ alarm 5001 active</span></div>
+    </section>
+
+    <section>
+      <h2>Arbiter decisions</h2>
+      <div class="scroll"><table class="feed"><thead><tr><th>time</th><th>seq</th><th>origin</th><th>action</th><th>decision</th><th>reason</th></tr></thead>
+        <tbody id="feed"></tbody></table></div>
+    </section>
+
+    <section>
+      <h2>Event timeline (per core seq: who received it)</h2>
+      <div class="scroll"><table class="tl"><thead><tr><th>seq</th><th>core</th><th>event</th><th class="c">GEM received</th><th class="c">UA received</th></tr></thead>
+        <tbody id="tl"></tbody></table></div>
+    </section>
+
+    <section class="full">
+      <h2>Live invariants (harness/checker.py on the logs so far) <span class="st" id="overall">—</span></h2>
+      <div class="grid">
+        <div><table><thead><tr><th>Invariant</th><th>Side</th><th class="c">Result</th><th>Detail</th></tr></thead><tbody id="inv"></tbody></table></div>
+        <div><table class="counters"><thead><tr><th>Counter</th><th class="c">GEM</th><th class="c">UA</th></tr></thead><tbody id="cnt"></tbody></table>
+          <div class="caveat" id="lat"></div>
+          <div class="caveat">Live: only events older than 2 s are judged (younger ones may still be in flight). A finished run is judged on its scenario window, exactly like <code>python -m harness.checker</code>. Latency includes the UA client's 50 ms publishing interval; GEM sees temperature only via the 1 Hz CEID 1007, so it is not a protocol speed comparison.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<main id="results">
+  <section><h2>Results</h2><div class="rlist" id="rlist"></div><div class="md" id="md">loading…</div></section>
+</main>
+
+<footer><span>Simulated chamber, loopback, single laptop · read-only view of the run logs</span><span id="clock"></span></footer>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const tfmt = (ns) => { if (!ns) return "—"; const d = new Date(ns / 1e6);
+  return d.toLocaleTimeString([], {hour12: false}) + "." + String(d.getMilliseconds()).padStart(3, "0"); };
+const fmt = (v) => v === null || v === undefined ? "—" : (typeof v === "number" && !Number.isInteger(v) ? v.toFixed(2) : String(v));
+
+/* ---------------- state kept by the page ---------------- */
+let S = {temps: [], limits: [], alarms: [], limit0: 40, now: 0};
+const MAX_FEED = 120, MAX_TL = 150;
+
+/* ---------------- header ---------------- */
+function badge(id, value, cls) { const b = $(id); b.className = "badge " + (cls || ""); b.lastElementChild.textContent = value ?? "—"; }
+let lastLink = null;
+function renderHeader(h, speed) {
+  $("runid").textContent = h.run_id || "waiting for a run…";
+  $("scen").textContent = h.scenario ? h.scenario + (h.finished ? " (finished)" : "") : "—";
+  $("mode").textContent = h.mode === "replay" ? `REPLAY ×${speed ?? ""}` : "LIVE";
+  badge("b-cs", h.control_state, h.control_state === "ONLINE_REMOTE" ? "b-blue" : h.control_state === "EQUIPMENT_OFFLINE" ? "b-amber" : "b-green");
+  badge("b-ps", h.processing_state, h.processing_state === "EXECUTING" ? "b-amber" : "");
+  badge("b-auth", h.authority, "b-violet");
+  badge("b-link", h.link, h.link === "COMMUNICATING" ? "b-green" : "b-red");
+  setLink(h.link);
+  S.now = h.now_ns || S.now;
+}
+function setLink(v) {
+  const seg = $("seg-gem-link");
+  seg.classList.toggle("up", v === "COMMUNICATING"); seg.classList.toggle("down", v !== "COMMUNICATING");
+  if (lastLink === "COMMUNICATING" && v !== "COMMUNICATING") { flash(seg); flash($("b-link")); }
+  lastLink = v;
+}
+function flash(el) { el.classList.remove("flash"); void el.getBoundingClientRect(); el.classList.add("flash"); }
+
+/* ---------------- three columns ---------------- */
+function renderColumns(c) {
+  $("cols").innerHTML = c.rows.map((r) => {
+    const g = c.agree.gem[r] ? "" : " bad", u = c.agree.ua[r] ? "" : " bad";
+    return `<tr><td class="k">${esc(r)}</td><td class="c${g}">${esc(fmt(c.gem[r]))}</td>` +
+           `<td class="c core">${esc(fmt(c.core[r]))}</td><td class="c${u}">${esc(fmt(c.ua[r]))}</td></tr>`;
+  }).join("");
+}
+
+/* ---------------- architecture pulses ---------------- */
+const P = {host: [75, 150], gemdoor: [280, 150], core: [500, 150], uadoor: [720, 150], ua: [925, 150], op: [500, 37]};
+const COL = {green: "#3fb950", red: "#f85149", amber: "#d29922"};
+let livePulses = 0;
+function pulse(names, color) {
+  if (livePulses > 40 || document.hidden) return;
+  const pts = names.map((n) => P[n]);
+  const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  c.setAttribute("r", 9); c.setAttribute("fill", COL[color] || color); $("pulses").appendChild(c); livePulses++;
+  const dur = 650, t0 = performance.now();
+  const step = (t) => {
+    const f = Math.min(1, (t - t0) / dur), seg = f * (pts.length - 1), i = Math.min(Math.floor(seg), pts.length - 2), k = seg - i;
+    c.setAttribute("cx", pts[i][0] + (pts[i + 1][0] - pts[i][0]) * k); c.setAttribute("cy", pts[i][1] + (pts[i + 1][1] - pts[i][1]) * k);
+    if (f < 1) requestAnimationFrame(step); else { c.remove(); livePulses--; }
+  };
+  requestAnimationFrame(step);
+}
+function dropFlash(side) {
+  const seg = $(side === "GEM" ? "seg-gem-link" : "seg-ua-link"), lbl = $(side === "GEM" ? "drop-gem" : "drop-ua");
+  const old = seg.getAttribute("style"); seg.setAttribute("style", "stroke:#f85149"); flash(seg);
+  lbl.style.display = ""; clearTimeout(lbl._t);
+  lbl._t = setTimeout(() => { lbl.style.display = "none"; seg.setAttribute("style", old || ""); }, 1500);
+}
+
+/* ---------------- arbiter feed ---------------- */
+function feedRow(r) {
+  const tr = document.createElement("tr"); if (!r.accepted) tr.className = "rej";
+  tr.innerHTML = `<td class="mono">${tfmt(r.ts)}</td><td>${r.seq}</td><td>${esc(r.origin)}</td><td>${esc(r.action)}</td>` +
+                 `<td class="${r.accepted ? "ok" : "no"}">${r.accepted ? "ACCEPTED" : "REJECTED"}</td><td>${esc(r.reason)}</td>`;
+  const tb = $("feed"); tb.insertBefore(tr, tb.firstChild); while (tb.children.length > MAX_FEED) tb.lastChild.remove();
+}
+
+/* ---------------- event timeline ---------------- */
+const tlRows = new Map();
+function cell(m) {
+  if (!m) return `<span class="pend">…</span>`;
+  if (m.drop) return `<span class="no">✕ ${esc(m.drop)}</span>`;
+  return `<span class="ok">✓</span> ${m.lat === null || m.lat === undefined ? "" : m.lat.toFixed(1) + " ms"}`;
+}
+function tlRow(r) {
+  if (tlRows.has(r.seq)) return;
+  const tr = document.createElement("tr");
+  const cls = r.color === "red" ? "no" : r.color === "amber" ? "amber" : "";
+  tr.innerHTML = `<td>${r.seq}</td><td class="mono">${tfmt(r.ts)}</td><td class="${cls}">${esc(r.name)}</td>` +
+                 `<td class="c" data-side="GEM">${cell(r.GEM)}</td><td class="c" data-side="UA">${cell(r.UA)}</td>`;
+  const tb = $("tl"); tb.insertBefore(tr, tb.firstChild); tlRows.set(r.seq, tr);
+  while (tb.children.length > MAX_TL) { const last = tb.lastChild; tlRows.delete(+last.firstChild.textContent); last.remove(); }
+}
+function tlMark(m) { const tr = tlRows.get(m.seq); if (tr) tr.querySelector(`[data-side="${m.side}"]`).innerHTML = cell(m); }
+
+/* ---------------- temperature chart ---------------- */
+function drawChart() {
+  const cv = $("chart"), ctx = cv.getContext("2d");
+  const W = cv.width = cv.clientWidth * devicePixelRatio, H = cv.height = 320 * devicePixelRatio;
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  const w = W / devicePixelRatio, h = H / devicePixelRatio, L = 48, R = 10, T = 10, B = 28;
+  ctx.clearRect(0, 0, w, h);
+  const end = Math.max(S.now, S.temps.length ? S.temps[S.temps.length - 1][0] : 0), span = 120e9, start = end - span;
+  const pts = S.temps.filter((p) => p[0] >= start);
+  const limitAt = (ts) => { let v = S.limit0; for (const l of S.limits) { if (l[0] <= ts) v = l[1]; else break; } return v; };
+  let lo = 20, hi = 50; for (const p of pts) { lo = Math.min(lo, p[1] - 1); hi = Math.max(hi, p[1] + 2); }
+  hi = Math.max(hi, limitAt(end) + 3);
+  const x = (ts) => L + (ts - start) / span * (w - L - R), y = (v) => T + (hi - v) / (hi - lo) * (h - T - B);
+  ctx.fillStyle = "rgba(210,153,34,.22)";
+  for (const a of S.alarms) { const a0 = Math.max(a[0], start), a1 = a[1] ?? end; if (a1 > start) ctx.fillRect(x(a0), T, x(a1) - x(a0), h - T - B); }
+  ctx.strokeStyle = "#30363d"; ctx.fillStyle = "#8b949e"; ctx.font = "14px Segoe UI, sans-serif"; ctx.lineWidth = 1;
+  for (let v = Math.ceil(lo / 5) * 5; v <= hi; v += 5) { ctx.beginPath(); ctx.moveTo(L, y(v)); ctx.lineTo(w - R, y(v)); ctx.stroke(); ctx.fillText(v + "°", 8, y(v) + 5); }
+  for (let s = 0; s <= 120; s += 30) ctx.fillText(s === 120 ? "now" : `-${120 - s}s`, x(start + s * 1e9) - 14, h - 8);
+  ctx.strokeStyle = "#f85149"; ctx.setLineDash([8, 6]); ctx.lineWidth = 2; ctx.beginPath();
+  let first = true; for (let t = start; t <= end; t += span / 240) { const v = limitAt(t); if (first) { ctx.moveTo(x(t), y(v)); first = false; } else ctx.lineTo(x(t), y(v)); }
+  ctx.stroke(); ctx.setLineDash([]);
+  ctx.strokeStyle = "#39c5cf"; ctx.lineWidth = 3; ctx.beginPath();
+  pts.forEach((p, i) => (i ? ctx.lineTo(x(p[0]), y(p[1])) : ctx.moveTo(x(p[0]), y(p[1])))); ctx.stroke();
+  if (pts.length) { const p = pts[pts.length - 1]; ctx.fillStyle = "#39c5cf"; ctx.font = "bold 18px Segoe UI"; ctx.fillText(p[1].toFixed(2) + " °C", Math.min(x(p[0]) - 80, w - 110), y(p[1]) - 10); }
+}
+let chartDirty = true;
+setInterval(() => { if (chartDirty) { drawChart(); chartDirty = false; } }, 250);
+window.addEventListener("resize", () => { chartDirty = true; });
+
+/* ---------------- invariants ---------------- */
+const COUNTERS = [["events_seen", "events received"], ["missing", "missing (I1)"], ["duplicates", "duplicates (I1)"],
+                  ["out_of_order", "out-of-order (I2)"], ["value_mismatches", "value mismatches (I3)"],
+                  ["attributed_losses", "losses with a recorded cause (I6)"], ["unexplained_losses", "unexplained losses (I6)"]];
+function stCls(s) { return "st st-" + (s === "N/A" ? "NA" : s); }
+function renderInv(v) {
+  if (!v || !v.rows) return;
+  $("overall").className = stCls(v.overall); $("overall").textContent = v.overall;
+  $("inv").innerHTML = v.rows.map((r) => `<tr><td><b>${r.invariant}</b></td><td>${r.side}</td><td class="c"><span class="${stCls(r.status)}">${r.status}</span></td><td style="font-size:15px">${esc(r.detail)}</td></tr>`).join("");
+  const c = v.counters || {};
+  $("cnt").innerHTML = COUNTERS.map(([k, label]) => {
+    const g = c.GEM ? c.GEM[k] : "—", u = c.UA ? c.UA[k] : "—";
+    const bad = (x) => (k !== "events_seen" && k !== "attributed_losses" && x > 0) ? " no" : "";
+    return `<tr><td>${label}</td><td class="c${bad(g)}">${g}</td><td class="c${bad(u)}">${u}</td></tr>`;
+  }).join("");
+  const l = v.latency || {};
+  const f = (s) => l[s] && l[s].n ? `${s} p50 ${l[s].p50_ms} / p95 ${l[s].p95_ms} / max ${l[s].max_ms} ms (n=${l[s].n})` : `${s} —`;
+  $("lat").textContent = "Event latency: " + f("GEM") + " · " + f("UA");
+}
+
+/* ---------------- snapshot / deltas ---------------- */
+let SPEED = null;
+function applySnapshot(s) {
+  SPEED = s.speed; S = {temps: s.temps, limits: s.limits, alarms: s.alarms, limit0: s.limit0, now: s.header.now_ns};
+  renderHeader(s.header, SPEED); renderColumns(s.columns);
+  $("feed").innerHTML = ""; s.feed.forEach(feedRow);
+  $("tl").innerHTML = ""; tlRows.clear(); s.timeline.forEach(tlRow);
+  lastLink = s.header.link; setLink(s.header.link);
+  renderInv(s.invariants); chartDirty = true;
+}
+function applyItem(it) {
+  switch (it.t) {
+    case "temp": S.temps.push([it.ts, it.v]); if (S.temps.length > 2400) S.temps.shift(); chartDirty = true; break;
+    case "limit": S.limits.push([it.ts, it.v]); chartDirty = true; break;
+    case "alarm": if (it.on) S.alarms.push([it.ts, null]); else if (S.alarms.length) S.alarms[S.alarms.length - 1][1] = it.ts; chartDirty = true; break;
+    case "cmd": feedRow(it); pulse(it.origin === "GEM_HOST" ? ["host", "gemdoor", "core"] : it.origin === "UA_CLIENT" ? ["ua", "uadoor", "core"] : ["op", "core"], it.accepted ? "green" : "red"); break;
+    case "ev": tlRow(it); break;
+    case "mark": tlMark(it); break;
+    case "flow": pulse(it.side === "GEM" ? ["core", "gemdoor", "host"] : ["core", "uadoor", "ua"], it.color); break;
+    case "dropflash": dropFlash(it.side); break;
+    case "link": setLink(it.v); break;
+  }
+}
+function connect() {
+  const es = new EventSource("/events");
+  es.addEventListener("snapshot", (e) => applySnapshot(JSON.parse(e.data)));
+  es.addEventListener("delta", (e) => { const d = JSON.parse(e.data); d.items.forEach(applyItem); renderHeader(d.header, SPEED); renderColumns(d.columns); });
+  es.addEventListener("inv", (e) => renderInv(JSON.parse(e.data)));
+  es.addEventListener("error", () => { $("mode").textContent = "reconnecting…"; });
+}
+connect();
+setInterval(() => { $("clock").textContent = new Date().toLocaleTimeString([], {hour12: false}); }, 1000);
+
+/* ---------------- results tab (tiny markdown renderer) ---------------- */
+let RESULTS = [];
+function inline(s) {
+  return esc(s).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, (m, t) => {
+    const c = t === "PASS" ? "st st-PASS" : t === "FAIL" ? "st st-FAIL" : ""; return c ? `<span class="${c}">${t}</span>` : `<strong>${t}</strong>`; })
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, t, href) => `<a data-md="${href}">${t}</a>`);
+}
+function md(text) {
+  const out = [], lines = text.split(/\r?\n/); let i = 0;
+  while (i < lines.length) {
+    const l = lines[i];
+    if (/^\|/.test(l)) {
+      const rows = []; while (i < lines.length && /^\|/.test(lines[i])) rows.push(lines[i++]);
+      const cells = (r) => r.replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
+      let h = `<table><thead><tr>${cells(rows[0]).map((c) => `<th>${inline(c)}</th>`).join("")}</tr></thead><tbody>`;
+      const td = (c) => ["PASS", "FAIL", "N/A"].includes(c) ? `<td><span class="${stCls(c)}">${c}</span></td>` : `<td>${inline(c)}</td>`;
+      for (const r of rows.slice(1)) if (!/^\|[\s:|-]+\|$/.test(r)) h += `<tr>${cells(r).map(td).join("")}</tr>`;
+      out.push(h + "</tbody></table>"); continue;
+    }
+    const hm = l.match(/^(#{1,4})\s+(.*)/);
+    if (hm) out.push(`<h${hm[1].length}>${inline(hm[2])}</h${hm[1].length}>`);
+    else if (/^- /.test(l)) { const items = []; while (i < lines.length && /^- /.test(lines[i])) items.push(`<li>${inline(lines[i++].slice(2))}</li>`); out.push(`<ul>${items.join("")}</ul>`); continue; }
+    else if (/^> /.test(l)) out.push(`<blockquote>${inline(l.slice(2))}</blockquote>`);
+    else if (l.trim()) out.push(`<p>${inline(l)}</p>`);
+    i++;
+  }
+  return out.join("");
+}
+function showResult(name) {
+  const r = RESULTS.find((x) => x.name === name) || RESULTS[0]; if (!r) { $("md").textContent = "no results yet (run python -m harness.scenarios all)"; return; }
+  $("md").innerHTML = md(r.text);
+  [...$("rlist").children].forEach((b) => b.classList.toggle("on", b.textContent === r.name));
+  $("md").querySelectorAll("a[data-md]").forEach((a) => a.addEventListener("click", () => showResult(a.dataset.md)));
+}
+async function loadResults() {
+  RESULTS = await (await fetch("/api/results")).json();
+  $("rlist").innerHTML = ""; RESULTS.forEach((r) => { const b = document.createElement("button"); b.textContent = r.name; b.onclick = () => showResult(r.name); $("rlist").appendChild(b); });
+  showResult("summary.md");
+}
+function tab(which) {
+  $("live").style.display = which === "live" ? "" : "none"; $("results").style.display = which === "res" ? "block" : "none";
+  $("t-live").classList.toggle("on", which === "live"); $("t-res").classList.toggle("on", which === "res");
+  if (which === "res") loadResults(); else chartDirty = true;
+}
+$("t-live").onclick = () => tab("live"); $("t-res").onclick = () => tab("res");
+</script>
+</body>
+</html>
