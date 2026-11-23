@@ -274,3 +274,24 @@ problems. Verified at CP2: `--set-limit 99` → `BadOutOfRange`, `--set-limit 20
    through that call (or override `_on_s06f11`), otherwise received events raise `KeyError`.
 9. **OPC UA alarm acknowledge is not implemented by asyncua** (B.4); write interception gives a ServiceFault rather
    than a per-node status (B.6). Both are recorded as candidate entries for `limitations.md`.
+
+---
+
+## Part D — Additional findings during CP3
+
+- **One HSMS session only.** `TcpServerConnection` (`common/tcp_server_connection.py`) calls `listen(1)` and stops
+  listening after the first accept; it restarts listening only after that session disconnects. → decision D15 (relay).
+- **`GemHandler.on_connection_closed` is never called** in 0.3.0 (grep finds only the definition and the
+  `super()` call in `GemEquipmentHandler`), so the GEM communication state never leaves COMMUNICATING on its own.
+  The HSMS layer does fire `events.disconnected` (`hsms/protocol.py` `_on_disconnected`). → override O8.
+- **Windows-specific bugs in the passive accept thread** (`TcpServerConnection.__server_thread`):
+  `shutdown()` on a listening socket raises WinError 10057, and the `select()` error path after `disable()` raises
+  `UnboundLocalError`, so `disable()` never returns. → override O9 (`_ServerConnection` in `gem_adapter.py`).
+- **Active (host) connection thread is not a daemon.** If `waitfor_communicating` times out, the host process keeps
+  running and retrying until `disable()` is called. `clients/gem_host.py` always disables on failure.
+- **Harmless warning** on the host: `unexpected function received s01f14`. Both sides send S1F13 when the link comes
+  up (`GemHandler._on_state_wait_cra`). The host answers the equipment's S1F13 and then receives the S1F14 for its
+  own request after it is already COMMUNICATING. Communication is established correctly.
+- `HCACK`/`EAC`/`ONLACK` values sent are plain ints; secsgem encodes them with the right data-item type.
+- `GemHostHandler.events.collection_event_received` delivers `values=[{dvid, value}]` in the order of the report
+  definition. `events.alarm_received` delivers ALCD as a Binary variable (decoded in `gem_host.py`).

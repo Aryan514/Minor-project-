@@ -69,47 +69,52 @@ async def run(args: argparse.Namespace) -> int:
         loop.call_soon_threadsafe(stop_event.set)
 
     console = OperatorConsole(core, on_quit=request_stop)
-    control = ControlSocketServer(console)
-    control.start_thread()
-
+    control: Optional[ControlSocketServer] = None
     ua_door: Optional[OpcUaAdapter] = None
-    if not args.no_ua:
-        ua_door = OpcUaAdapter(core, dispatcher, run_dir)
-        await ua_door.start()
-
-    gem_door = None
-    if not args.no_gem:
-        from equipment.gem_adapter import GemAdapter  # imported here so --no-gem never touches secsgem
-
-        gem_door = GemAdapter(core, dispatcher, run_dir)
-        gem_door.start()
-
-    sampler = SamplingThread(sensor, core.on_sample)
-    sampler.start()
-    if not args.no_console:
-        console.start_stdin_thread()
+    gem_door: Any = None
+    sampler: Optional[SamplingThread] = None
+    # Everything after this point is cleaned up in `finally`, also when startup fails half-way
+    # (e.g. a port is still in use), so no port is ever left open.
     try:
-        loop.add_signal_handler(signal.SIGINT, request_stop)
-    except (NotImplementedError, RuntimeError):
-        pass  # Windows: Ctrl+C raises KeyboardInterrupt in asyncio.run instead
+        control = ControlSocketServer(console)
+        control.start_thread()
+        if not args.no_ua:
+            ua_door = OpcUaAdapter(core, dispatcher, run_dir)
+            await ua_door.start()
+        if not args.no_gem:
+            from equipment.gem_adapter import GemAdapter  # imported here so --no-gem never touches secsgem
 
-    log.info("equipment running: run_id=%s, OPC UA %s, HSMS port %s, control %s:%s",
-             run_id, None if args.no_ua else config.OPCUA_ENDPOINT, None if args.no_gem else config.HSMS_PORT,
-             config.CONTROL_HOST, config.CONTROL_PORT)
-    print(f"READY run_id={run_id}", flush=True)
-    try:
+            gem_door = GemAdapter(core, dispatcher, run_dir)
+            gem_door.start()
+
+        sampler = SamplingThread(sensor, core.on_sample)
+        sampler.start()
+        if not args.no_console:
+            console.start_stdin_thread()
+        try:
+            loop.add_signal_handler(signal.SIGINT, request_stop)
+        except (NotImplementedError, RuntimeError):
+            pass  # Windows: Ctrl+C raises KeyboardInterrupt in asyncio.run instead
+
+        log.info("equipment running: run_id=%s, OPC UA %s, HSMS port %s, control %s:%s",
+                 run_id, None if args.no_ua else config.OPCUA_ENDPOINT, None if args.no_gem else config.HSMS_PORT,
+                 config.CONTROL_HOST, config.CONTROL_PORT)
+        print(f"READY run_id={run_id}", flush=True)
         await stop_event.wait()
     finally:
         log.info("shutting down")
-        sampler.stop()
+        if sampler is not None:
+            sampler.stop()
         if gem_door is not None:
             gem_door.stop()
         if ua_door is not None:
             await ua_door.stop()
         dispatcher.stop()
-        control.shutdown()
-        control.server_close()
+        if control is not None:
+            control.shutdown()
+            control.server_close()
         audit.close()
+        log.info("stopped")
     return 0
 
 

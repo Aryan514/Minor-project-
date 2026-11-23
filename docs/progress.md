@@ -51,3 +51,35 @@ instantiation), `equipment/opcua_adapter.py` (server door, methods Start/Stop/Se
    ChamberType is instantiated inside SemiEquipmentType.
 2. `Server.create_custom_variable_type` creates an ObjectType (library quirk), so the VariableType is created with
    `add_variable_type`.
+
+## CP3-gem
+
+**Built:** `equipment/gem_adapter.py` (GemEquipmentHandler subclass + GemAdapter, overrides O1–O9 in
+`docs/library_overrides.md`), `clients/gem_host.py` (listener with JSONL log + relay port, one-shots).
+`main.py` now starts the GEM door and cleans up even if startup fails half-way.
+
+**Verified** (run `cp3-final`, both doors up, `python -m equipment.main --no-console`):
+- S1F13/F14: the listener reached COMMUNICATING. The core audited `GemCommunicationState = COMMUNICATING`, mirrored to UA.
+- S2F33/35/37: one report per CEID defined, linked and enabled. S5F3 enabled ALID 5001.
+- S1F3 (`--status`): SVIDs 1–5 from the core (ChamberTemp, ControlState 4/5, ProcessingState, Authority, LastEventSeq).
+- S2F41: START in LOCAL → HCACK 2; after console `remote` → HCACK 0; again → HCACK 5. STOP → HCACK 0.
+- S2F15: 81 → EAC 3, 21 → EAC 0 (alarm set), 45 → EAC 0 (alarm cleared).
+- S6F11: 51/51 core events received in the listener window. Missing 0, duplicates 0, in seq order. Every report
+  carries DVID 101 EventSeq, and CEID 1006 carries ECID 201 (`{'201': 21.0}`).
+- S5F1: `ChamberOverTemp SET T=26.18 seq=52` (ALCD 0x84) and `CLEAR … seq=67` (ALCD 0x04), matching the audit.
+- Send log: 52 `sent`, 8 `dropped_no_link` (no host connected).
+- Reconnect: after the listener left, two more host sessions connected. The link state alternated in the audit.
+- Host with no equipment running exits after ~21 s instead of hanging. `quit` stops the equipment with and without a
+  connected host. Ports 4840/5000/5100/5101 free, 0 tracebacks in the equipment output.
+- `pytest`: 93 passed.
+
+**Problems:**
+1. Tracebacks `WinError 10057` from secsgem's accept thread after each connect, and the listening socket leaked.
+   Cause: `shutdown()` on a listening socket fails on Windows. → O9 override.
+2. `quit` hung when no host had connected. Cause: secsgem `disable()` waits for a flag that its dying accept thread
+   never clears (`UnboundLocalError` in the `select()` error path). Found by testing shutdown with and without a host.
+   → same O9 override guarantees close + flag reset.
+3. A later run could not establish GEM communication. Cause: two `gem_host --listen` processes from an earlier failed
+   test were still alive. When `connect()` timed out they raised before disabling the handler, and secsgem's
+   non-daemon connect thread kept retrying, grabbing the single HSMS session as soon as the equipment started.
+   Fixed in `gem_host.py` (disable on failure, cleanup in `finally`). The leaked processes were killed.
