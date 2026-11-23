@@ -169,3 +169,26 @@ All 11 invariant cells PASS or N/A for every scenario. Scenario checks 4/4, 5/5,
 3. **S6 check failed once** (one CEID 1007 with the old report counted as "after"). Cause: the check split the events at
    the moment the redefinition was *requested*, so an event already in flight was misclassified. Fixed by comparing
    only events received before the request and after the redefinition completed.
+
+## CP7-docs
+
+**Built:** `harness/demo.py` (narrated, Enter between steps, one-line explanation per step; `--auto`,
+`--no-live-window`), `docs/architecture.md` (mermaid diagram + component roles + threads), `docs/information_model.md`,
+`docs/mapping.md` (status + observed + six semantic mismatches), `docs/arbitration.md`, `docs/novelty.md` (numbers
+copied from `results/` only), `docs/panel_qa.md` (12 questions), `docs/limitations.md` (measurement scope + future
+work), README (5-line summary, install, demo, scenarios, results table).
+
+**Verified:**
+- `python -m harness.demo --auto --no-live-window`: all 8 steps. Alarm seq 79 identical on core, GEM (S5F1 text) and UA
+  (EventSeq). Race: GEM HCACK 0 / UA BadUserAccessDenied, loser's CEID 1005 received by both. LOCAL → HCACK 2. GEM host
+  killed 10 s → 11 events `dropped_no_link`. Checker verdict on the demo run: overall PASS. All ports released.
+- Interactive mode (Enter fed through stdin) **with** the live view opened in its own console window on Windows: same
+  result, overall PASS, live-view window closed by the demo, 0 python processes and no ports left afterwards.
+- Every number in `novelty.md`, `mapping.md`, `panel_qa.md` and README was checked against `results/*.md`.
+  Repo-wide scan for "compliant / certified / companion specification / first / faster than": only negated or
+  ordinary uses.
+- `pytest`: 95 passed.
+
+**Problems:** in `--auto` mode the GEM host is killed less than 500 ms after the last state changes, so I4 judged
+fewer changes for GEM (5) than for UA (8). This is correct behaviour (I4 does not judge a client that could not have
+converged before it was killed). With a presenter pressing Enter the gap is seconds.

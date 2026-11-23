@@ -29,9 +29,30 @@ Living list. Every simplification, fallback or out-of-scope idea is recorded her
 - **TempHighLimit over OPC UA** is read-only. Writes use the `SetTempHighLimit(value)` method (decision D10).
   A generic UA client therefore cannot "write the variable"; it must call the method.
 
+## Measurement scope (CP5–CP6)
+
+- One simulated tool, one Windows laptop, loopback only, seed 42, scenario durations of 5–62 s. There are no fab-scale,
+  network, long-duration or throughput results.
+- One GEM host at a time (one HSMS session). Multi-host GEM and multiple concurrent UA clients with commands were not
+  tested (S6 used a second, read-only UA subscription).
+- OPC UA without security (NoSecurity, anonymous). No user/role model maps to the arbiter's origins: any UA client is
+  `UA_CLIENT`.
+- I4 uses T = 500 ms. A state change that happens less than T before a client is killed is not judged for that
+  client (it could not have converged).
+- A same-value EC write is not a UA data change (S4 finding). For UA, I4 checks that such writes leave the client
+  value equal to the core value, rather than expecting a notification.
+
 ## Future work
 
-_(filled as items are deferred)_
+- GEM spooling (S6F11 buffering while the link is down) and an OPC UA equivalent, such as buffered events or history
+  read, so the S5 losses could be recovered rather than only attributed.
+- Server-side Alarms & Conditions state machine (Acknowledge/Confirm) and a defined mapping of UA acknowledgement to
+  the core. Today S5F2 and UA Acknowledge mean different things (`mapping.md`).
+- Per-CEID UA event types (instead of a JSON `Payload`), so UA clients can filter individual DVs.
+- Export of the model as a NodeSet2 XML for use in other tools.
+- OPC UA security (signing/encryption, user tokens) and mapping UA users to arbiter origins.
+- Full GEM control-state model (HOST_OFFLINE, ATTEMPT_ONLINE) and multi-host scenarios.
+- Real ESP32 sensor runs (`--sensor serial`) and Wireshark captures per protocol (CLAUDE.md step 9).
 
 ## Observed at CP4 (to be measured properly by the scenarios)
 
