@@ -1,0 +1,35 @@
+2026-11-24 00:42:17,290 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute AccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,290 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute UserAccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,291 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute MinimumSamplingInterval, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,291 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute Historizing, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,312 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute AccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,312 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute UserAccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,312 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute MinimumSamplingInterval, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,312 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute Historizing, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,325 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute AccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,325 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute UserAccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,325 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute MinimumSamplingInterval, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,325 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute Historizing, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,333 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute AccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,333 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute UserAccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,333 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute MinimumSamplingInterval, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,333 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute Historizing, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,341 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute AccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,341 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute UserAccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,341 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute MinimumSamplingInterval, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,341 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute Historizing, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,357 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute AccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,357 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute UserAccessLevel, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,357 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute MinimumSamplingInterval, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,357 WARNING asyncua.common.copy_node_util: Instantiate: while copying attributes from node type ns=2;i=1, attribute Historizing, statuscode is StatusCode(value=2150957056)
+2026-11-24 00:42:17,397 WARNING asyncua.server.server: No signing policy available, user certificate cannot get verified
+2026-11-24 00:42:17,397 WARNING asyncua.server.server: No encrypting policy available, password may get transferred in plaintext
+2026-11-24 00:42:17,404 INFO equipment.opcua_adapter: OPC UA door listening on opc.tcp://0.0.0.0:4840/semi-equipment/ (alarm mode: alarms_and_conditions)
+2026-11-24 00:42:17,518 INFO equipment.gem_adapter._ChamberGemHandler: Connection enabled
+2026-11-24 00:42:17,518 INFO equipment.gem_adapter: GEM door listening on HSMS port 5000 (passive)
+2026-11-24 00:42:17,524 INFO equipment.main: equipment running: run_id=S3_20261124-004213, OPC UA opc.tcp://0.0.0.0:4840/semi-equipment/, HSMS port 5000, control 127.0.0.1:5100
+2026-11-24 00:42:18,495 WARNING equipment.gem_adapter._ChamberGemHandler: unexpected function received s01f14
+{session_id:0x0000, stream:01, function:14, p_type:0x00, s_type:0x00, system:0x4edaa130, require_response:False}
+2026-11-24 00:42:30,600 INFO equipment.main: shutting down
+2026-11-24 00:42:31,386 INFO equipment.gem_adapter._ChamberGemHandler: Connection disabled
+2026-11-24 00:42:32,624 INFO equipment.main: stopped

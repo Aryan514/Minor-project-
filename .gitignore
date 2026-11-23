@@ -22,3 +22,4 @@ Thumbs.db
 *.pcapng
 !results/*.pcapng
 .pytest_tmp/
+!runs/sample_S3/

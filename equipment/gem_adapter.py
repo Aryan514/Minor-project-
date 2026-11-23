@@ -196,6 +196,9 @@ class GemAdapter:
             connect_mode=secsgem.hsms.HsmsConnectMode.PASSIVE,
             device_type=secsgem.common.DeviceType.EQUIPMENT,
             session_id=config.HSMS_SESSION_ID,
+            # T3 reply timeout 3 s instead of 45 s: a reply lost because the link died must not block the
+            # single GEM worker for long (the events queued meanwhile are then attributed correctly). D20.
+            t3=config.GEM_T3_S,
         )
         self.handler = _ChamberGemHandler(settings, core)
         self._configure_handler()
@@ -291,8 +294,7 @@ class GemAdapter:
             reply = self.handler.send_and_waitfor_response(
                 self.handler.stream_function(6, 11)({"DATAID": n.seq, "CEID": ceid, "RPT": reports})
             )
-            self._log_send(n, SendOutcome.SENT if reply is not None else SendOutcome.ERROR,
-                           None if reply is not None else "no S6F12 (link lost or T3 timeout)")
+            self._log_reply(n, reply, expected_function=12)
         except Exception as exc:  # noqa: BLE001 - rule 10
             _log.exception("S6F11 for seq %s failed", n.seq)
             self._log_send(n, SendOutcome.ERROR, str(exc))
@@ -325,11 +327,23 @@ class GemAdapter:
             reply = self.handler.send_and_waitfor_response(
                 self.handler.stream_function(5, 1)({"ALCD": alcd, "ALID": alid, "ALTX": text})
             )
-            self._log_send(n, SendOutcome.SENT if reply is not None else SendOutcome.ERROR,
-                           None if reply is not None else "no S5F2 (link lost or T3 timeout)")
+            self._log_reply(n, reply, expected_function=2)
         except Exception as exc:  # noqa: BLE001 - rule 10
             _log.exception("S5F1 for seq %s failed", n.seq)
             self._log_send(n, SendOutcome.ERROR, str(exc))
+
+    def _log_reply(self, n: Notification, reply: Any, expected_function: int) -> None:
+        """`sent` only if the host acknowledged with the expected reply (S6F12 / S5F2).
+
+        None = link lost or T3 timeout; function 0 = the host aborted the transaction (e.g. it could not
+        decode the report). Both are logged as `error` so they count as attributed, not silent, losses.
+        """
+        if reply is None:
+            self._log_send(n, SendOutcome.ERROR, "no reply (link lost or T3 timeout)")
+        elif reply.header.function != expected_function:
+            self._log_send(n, SendOutcome.ERROR, f"host replied S{reply.header.stream}F{reply.header.function}")
+        else:
+            self._log_send(n, SendOutcome.SENT)
 
     def _log_send(self, n: Notification, outcome: SendOutcome, detail: Optional[str] = None) -> None:
         rec: dict[str, Any] = {"seq": n.seq, "ts_ns": time.time_ns(), "kind": n.kind, "id": n.id,

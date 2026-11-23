@@ -26,6 +26,7 @@ HSMS_ADDRESS: Final[str] = "0.0.0.0"  # equipment listens (passive) on all inter
 HSMS_HOST_CONNECT_ADDRESS: Final[str] = "127.0.0.1"  # where the scripted GEM host connects
 HSMS_PORT: Final[int] = 5000
 HSMS_SESSION_ID: Final[int] = 0  # "device id"; secsgem 0.3.0 calls it session_id
+GEM_T3_S: Final[float] = 3.0  # HSMS T3 reply timeout used by the GEM door (decision D20)
 
 OPCUA_ENDPOINT: Final[str] = "opc.tcp://0.0.0.0:4840/semi-equipment/"
 OPCUA_CLIENT_ENDPOINT: Final[str] = "opc.tcp://127.0.0.1:4840/semi-equipment/"

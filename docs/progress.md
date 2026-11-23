@@ -111,3 +111,29 @@ README run instructions.
    column is now seeded from `config.py` start values (D18), and the GEM snapshot now includes S2F13 (D19).
 3. The GEM temperature legitimately lags by up to 1 s (1 Hz events). The live-view tolerance for that row is now
    1 °C, so a normal lag is not shown as a disagreement.
+
+## CP5-core-scenarios
+
+**Built:** `harness/checker.py` (I1–I6 + latency, markdown/CSV reports, `--self-test` with five corruption
+cases), `harness/scenarios.py` (runner: fresh run_id, equipment with seed 42, both listening clients, barrier races
+GEM-via-relay vs UA-session, clean shutdown with port check, checker, `results/`), scenarios S3 and S2,
+`docs/invariants.md`, `tests/test_checker.py` + committed sample run `runs/sample_S3`.
+Hardening for the scenarios: GEM T3 = 3 s and reply-function check (D20), dispatcher drained before the doors
+stop, session markers `connecting`/`stopped` in both client logs, robust S6F11 decoding in the host (D23).
+
+**Verified:**
+- `python -m harness.scenarios S3`: 50/50 rounds GEM HCACK 0 + UA BadUserAccessDenied. In 3/50 rounds the UA request
+  reached the core first and still lost (policy, not timing). LOCAL → GEM START HCACK 2. I1–I6 all PASS
+  (163 window events on each side, 0 missing, 0 unexplained; I4 max 14 ms GEM / 89 ms UA).
+- `python -m harness.scenarios S2`: alarm set after 19.1 s and cleared 4.4 s after STOP. Both clients saw alarm seqs
+  77/98 exactly as the core did. I1–I4 and I6 PASS; I5 N/A.
+- `python -m harness.checker runs/sample_S3 --self-test`: baseline clean. drop → I1+I6 (and I5, because the dropped
+  event was a CEID 1005), swap → I2, change value → I3, delay → I4, double winner → I5. All flagged.
+- `pytest`: 95 passed. No process or port left after each scenario (runner waits until 5000/4840/5100/5101 are free).
+
+**Problems:**
+1. First S3 run: I5 FAILED in rounds 1, 18, 21 ("2 accepted"). Investigation of the audit showed the reset STOP that
+   follows a round had **the same `time_ns` value** as the round's end time (Windows clock granularity). The
+   checker's time window therefore also caught the STOP. There was no double acceptance: the replies were clean in
+   50/50 rounds. Root-cause fix in the checker: rounds are anchored on the core seq read before the barrier (D21).
+   The invariant was not weakened, and the self-test proves a real double winner is still flagged.

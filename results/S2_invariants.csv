@@ -1,0 +1,14 @@
+scenario,run_id,invariant,side,status,detail
+S2,S2_20261124-004245,I1,GEM,PASS,"expected 32, received 32, missing 0, duplicates 0"
+S2,S2_20261124-004245,I1,UA,PASS,"expected 32, received 32, missing 0, duplicates 0"
+S2,S2_20261124-004245,I2,GEM,PASS,"37 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S2,S2_20261124-004245,I2,UA,PASS,"36 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S2,S2_20261124-004245,I3,GEM,PASS,"37 compared, 0 mismatches"
+S2,S2_20261124-004245,I3,UA,PASS,"36 compared, 0 mismatches"
+S2,S2_20261124-004245,I4,GEM,PASS,"4 changes, max 4.7 ms"
+S2,S2_20261124-004245,I4,UA,PASS,"4 changes, max 71.6 ms"
+S2,S2_20261124-004245,I5,both,N/A,no conflict rounds in this scenario
+S2,S2_20261124-004245,I6,GEM,PASS,0 of 32 window events not received; causes {}
+S2,S2_20261124-004245,I6,UA,PASS,0 of 32 window events not received; causes {}
+S2,S2_20261124-004245,latency,GEM,INFO,"{""n"": 32, ""p50_ms"": 0.16, ""p95_ms"": 3.61, ""max_ms"": 4.66}"
+S2,S2_20261124-004245,latency,UA,INFO,"{""n"": 32, ""p50_ms"": 36.83, ""p95_ms"": 66.1, ""max_ms"": 71.56}"

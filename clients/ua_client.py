@@ -12,6 +12,7 @@ import argparse
 import asyncio
 import json
 import logging
+import os
 import sys
 import time
 from typing import Any, Optional
@@ -102,6 +103,8 @@ async def _event_types(client: Client, idx: int) -> dict[str, Node]:
 async def listen(url: str, run_id: str, duration: Optional[float], echo: bool) -> None:
     """Subscribe to everything and log until `duration` elapses (or forever)."""
     writer = JsonlWriter(run_dir_for(run_id) / config.UA_CLIENT_LOG_FILE)
+    # Session markers for the checker: "connecting" opens a session, "listening" = subscriptions active.
+    writer.write({"ts_ns": time.time_ns(), "kind": "connecting", "id": None, "seq": None, "data": os.getpid()})
     async with Client(url) as client:
         tool, idx = await _tool(client)
         names: dict[ua.NodeId, str] = {}
@@ -126,6 +129,7 @@ async def listen(url: str, run_id: str, duration: Optional[float], echo: bool) -
             else:
                 await asyncio.sleep(duration)
         finally:
+            writer.write({"ts_ns": time.time_ns(), "kind": "stopped", "id": None, "seq": None, "data": None})
             writer.close()
 
 

@@ -1,0 +1,547 @@
+{
+ "scenario": "S3",
+ "description": "Command conflict: REMOTE; GEM START and UA Start released by one barrier, 50 rounds (GEM STOP between); then LOCAL and GEM START must get HCACK 2.",
+ "seed": 42,
+ "run_id": "S3_20261124-004213",
+ "rounds": [
+  {
+   "i": 1,
+   "action": "START",
+   "seq_before": 17,
+   "t0_ns": 1795461140790548200,
+   "t1_ns": 1795461140799019800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 2,
+   "action": "START",
+   "seq_before": 25,
+   "t0_ns": 1795461140924059700,
+   "t1_ns": 1795461140925286400,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 3,
+   "action": "START",
+   "seq_before": 34,
+   "t0_ns": 1795461141057679900,
+   "t1_ns": 1795461141058444700,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 4,
+   "action": "START",
+   "seq_before": 42,
+   "t0_ns": 1795461141183682500,
+   "t1_ns": 1795461141183682500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 5,
+   "action": "START",
+   "seq_before": 50,
+   "t0_ns": 1795461141288199300,
+   "t1_ns": 1795461141292819500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 6,
+   "action": "START",
+   "seq_before": 58,
+   "t0_ns": 1795461141425125500,
+   "t1_ns": 1795461141429248500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 7,
+   "action": "START",
+   "seq_before": 68,
+   "t0_ns": 1795461141553765600,
+   "t1_ns": 1795461141557682800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 8,
+   "action": "START",
+   "seq_before": 76,
+   "t0_ns": 1795461141666618500,
+   "t1_ns": 1795461141666618500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 9,
+   "action": "START",
+   "seq_before": 84,
+   "t0_ns": 1795461141770878600,
+   "t1_ns": 1795461141774800300,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 10,
+   "action": "START",
+   "seq_before": 92,
+   "t0_ns": 1795461141866819400,
+   "t1_ns": 1795461141869300800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 11,
+   "action": "START",
+   "seq_before": 100,
+   "t0_ns": 1795461141991043200,
+   "t1_ns": 1795461141992090300,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 12,
+   "action": "START",
+   "seq_before": 109,
+   "t0_ns": 1795461142109001600,
+   "t1_ns": 1795461142109001600,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 13,
+   "action": "START",
+   "seq_before": 117,
+   "t0_ns": 1795461142250952500,
+   "t1_ns": 1795461142257637800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 14,
+   "action": "START",
+   "seq_before": 125,
+   "t0_ns": 1795461142354010000,
+   "t1_ns": 1795461142357631400,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 15,
+   "action": "START",
+   "seq_before": 133,
+   "t0_ns": 1795461142459914300,
+   "t1_ns": 1795461142459914300,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 16,
+   "action": "START",
+   "seq_before": 143,
+   "t0_ns": 1795461142556625400,
+   "t1_ns": 1795461142557938800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 17,
+   "action": "START",
+   "seq_before": 151,
+   "t0_ns": 1795461142671671600,
+   "t1_ns": 1795461142674542800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 18,
+   "action": "START",
+   "seq_before": 159,
+   "t0_ns": 1795461142769121500,
+   "t1_ns": 1795461142774647800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 19,
+   "action": "START",
+   "seq_before": 167,
+   "t0_ns": 1795461142891646500,
+   "t1_ns": 1795461142891646500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 20,
+   "action": "START",
+   "seq_before": 175,
+   "t0_ns": 1795461143005481900,
+   "t1_ns": 1795461143011346100,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 21,
+   "action": "START",
+   "seq_before": 184,
+   "t0_ns": 1795461143103850600,
+   "t1_ns": 1795461143110551900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 22,
+   "action": "START",
+   "seq_before": 192,
+   "t0_ns": 1795461143240985100,
+   "t1_ns": 1795461143241644300,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 23,
+   "action": "START",
+   "seq_before": 200,
+   "t0_ns": 1795461143303533300,
+   "t1_ns": 1795461143310649300,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 24,
+   "action": "START",
+   "seq_before": 208,
+   "t0_ns": 1795461143408198700,
+   "t1_ns": 1795461143410852700,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 25,
+   "action": "START",
+   "seq_before": 216,
+   "t0_ns": 1795461143524313900,
+   "t1_ns": 1795461143529905700,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 26,
+   "action": "START",
+   "seq_before": 226,
+   "t0_ns": 1795461143657881300,
+   "t1_ns": 1795461143658967800,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 27,
+   "action": "START",
+   "seq_before": 234,
+   "t0_ns": 1795461143766084700,
+   "t1_ns": 1795461143774118400,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 28,
+   "action": "START",
+   "seq_before": 242,
+   "t0_ns": 1795461143901334500,
+   "t1_ns": 1795461143908147900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 29,
+   "action": "START",
+   "seq_before": 250,
+   "t0_ns": 1795461144009453600,
+   "t1_ns": 1795461144010960200,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 30,
+   "action": "START",
+   "seq_before": 259,
+   "t0_ns": 1795461144109221800,
+   "t1_ns": 1795461144111233700,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 31,
+   "action": "START",
+   "seq_before": 267,
+   "t0_ns": 1795461144242516800,
+   "t1_ns": 1795461144245406900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 32,
+   "action": "START",
+   "seq_before": 275,
+   "t0_ns": 1795461144357414200,
+   "t1_ns": 1795461144358758300,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 33,
+   "action": "START",
+   "seq_before": 283,
+   "t0_ns": 1795461144474154700,
+   "t1_ns": 1795461144475128500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 34,
+   "action": "START",
+   "seq_before": 293,
+   "t0_ns": 1795461144591130700,
+   "t1_ns": 1795461144597178200,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 35,
+   "action": "START",
+   "seq_before": 301,
+   "t0_ns": 1795461144703050200,
+   "t1_ns": 1795461144708074400,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 36,
+   "action": "START",
+   "seq_before": 309,
+   "t0_ns": 1795461144837844400,
+   "t1_ns": 1795461144842094900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 37,
+   "action": "START",
+   "seq_before": 317,
+   "t0_ns": 1795461144942383200,
+   "t1_ns": 1795461144946878500,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 38,
+   "action": "START",
+   "seq_before": 326,
+   "t0_ns": 1795461145090996400,
+   "t1_ns": 1795461145091960900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 39,
+   "action": "START",
+   "seq_before": 334,
+   "t0_ns": 1795461145208091900,
+   "t1_ns": 1795461145212144400,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 40,
+   "action": "START",
+   "seq_before": 342,
+   "t0_ns": 1795461145324501500,
+   "t1_ns": 1795461145324993400,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 41,
+   "action": "START",
+   "seq_before": 350,
+   "t0_ns": 1795461145438016800,
+   "t1_ns": 1795461145441391900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 42,
+   "action": "START",
+   "seq_before": 360,
+   "t0_ns": 1795461145557945400,
+   "t1_ns": 1795461145558661200,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 43,
+   "action": "START",
+   "seq_before": 368,
+   "t0_ns": 1795461145667299100,
+   "t1_ns": 1795461145667299100,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 44,
+   "action": "START",
+   "seq_before": 376,
+   "t0_ns": 1795461145790882500,
+   "t1_ns": 1795461145791967200,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 45,
+   "action": "START",
+   "seq_before": 384,
+   "t0_ns": 1795461145890785500,
+   "t1_ns": 1795461145891923200,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 46,
+   "action": "START",
+   "seq_before": 392,
+   "t0_ns": 1795461146007713000,
+   "t1_ns": 1795461146013424900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 47,
+   "action": "START",
+   "seq_before": 401,
+   "t0_ns": 1795461146108087600,
+   "t1_ns": 1795461146113633600,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 48,
+   "action": "START",
+   "seq_before": 409,
+   "t0_ns": 1795461146224853900,
+   "t1_ns": 1795461146226269900,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 49,
+   "action": "START",
+   "seq_before": 417,
+   "t0_ns": 1795461146341993900,
+   "t1_ns": 1795461146343069100,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  },
+  {
+   "i": 50,
+   "action": "START",
+   "seq_before": 425,
+   "t0_ns": 1795461146466759100,
+   "t1_ns": 1795461146471523000,
+   "gem_code": 0,
+   "ua_status": "BadUserAccessDenied",
+   "expected_winner": "GEM_HOST"
+  }
+ ],
+ "checks": [
+  {
+   "name": "console remote",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "50/50 rounds: GEM HCACK 0 and UA BadUserAccessDenied",
+   "pass": true,
+   "detail": "50 clean"
+  },
+  {
+   "name": "console local",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "LOCAL: GEM START -> HCACK 2",
+   "pass": true,
+   "detail": {
+    "action": "start",
+    "code": 2,
+    "code_name": "HCACK"
+   }
+  }
+ ],
+ "findings": [],
+ "phases": [
+  {
+   "t_ns": 1795461140744863200,
+   "name": "window open (both clients listening)"
+  },
+  {
+   "t_ns": 1795461146558476100,
+   "name": "50 conflict rounds done"
+  }
+ ],
+ "t_start_ns": 1795461140744863200,
+ "t_end_ns": 1795461148582333300
+}

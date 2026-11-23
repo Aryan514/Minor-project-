@@ -1,0 +1,455 @@
+{"seq": 1, "ts_ns": 1795461137518234200, "kind": "sample", "id": 1, "value": 25.014, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 2, "ts_ns": 1795461137518234200, "kind": "event", "id": 1007, "value": {"101": 2, "102": 25.014}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 3, "ts_ns": 1795461138024815800, "kind": "sample", "id": 1, "value": 24.953, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 4, "ts_ns": 1795461138495812900, "kind": "state", "id": "GemCommunicationState", "value": "COMMUNICATING", "origin": "EQUIPMENT", "extra": {}}
+{"seq": 5, "ts_ns": 1795461138519700600, "kind": "sample", "id": 1, "value": 24.978, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 6, "ts_ns": 1795461138519700600, "kind": "event", "id": 1007, "value": {"101": 6, "102": 24.978}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 7, "ts_ns": 1795461139024404700, "kind": "sample", "id": 1, "value": 24.972, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 8, "ts_ns": 1795461139534518300, "kind": "sample", "id": 1, "value": 25.024, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 9, "ts_ns": 1795461139534518300, "kind": "event", "id": 1007, "value": {"101": 9, "102": 25.024}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 10, "ts_ns": 1795461140025571000, "kind": "sample", "id": 1, "value": 25.018, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 11, "ts_ns": 1795461140524603900, "kind": "sample", "id": 1, "value": 25.039, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 12, "ts_ns": 1795461140525085000, "kind": "event", "id": 1007, "value": {"101": 12, "102": 25.039}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 13, "ts_ns": 1795461140758863200, "kind": "command_ok", "id": "SET_CONTROL_STATE", "value": "ONLINE_REMOTE", "origin": "OPERATOR", "extra": {}}
+{"seq": 14, "ts_ns": 1795461140758863200, "kind": "state", "id": "ControlState", "value": "ONLINE_REMOTE", "origin": "OPERATOR", "extra": {"id": 5}}
+{"seq": 15, "ts_ns": 1795461140758863200, "kind": "event", "id": 1001, "value": {"101": 15, "104": "OPERATOR", "2": 5}, "origin": "OPERATOR", "extra": {"name": "ControlStateChanged"}}
+{"seq": 16, "ts_ns": 1795461140758863200, "kind": "authority", "id": "Authority", "value": "GEM_HOST", "origin": "OPERATOR", "extra": {}}
+{"seq": 17, "ts_ns": 1795461140758863200, "kind": "event", "id": 1004, "value": {"101": 17, "104": "OPERATOR", "4": "GEM_HOST"}, "origin": "OPERATOR", "extra": {"name": "AuthorityChanged"}}
+{"seq": 18, "ts_ns": 1795461140791731800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 19, "ts_ns": 1795461140791731800, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 20, "ts_ns": 1795461140791731800, "kind": "event", "id": 1002, "value": {"101": 20, "104": "GEM_HOST", "102": 25.039}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 21, "ts_ns": 1795461140791731800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 22, "ts_ns": 1795461140791731800, "kind": "event", "id": 1005, "value": {"101": 22, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 23, "ts_ns": 1795461140825421400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 24, "ts_ns": 1795461140825421400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 25, "ts_ns": 1795461140825421400, "kind": "event", "id": 1003, "value": {"101": 25, "104": "GEM_HOST", "102": 25.039}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 26, "ts_ns": 1795461140925286400, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 27, "ts_ns": 1795461140925286400, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 28, "ts_ns": 1795461140925286400, "kind": "event", "id": 1002, "value": {"101": 28, "104": "GEM_HOST", "102": 25.039}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 29, "ts_ns": 1795461140925286400, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 30, "ts_ns": 1795461140925286400, "kind": "event", "id": 1005, "value": {"101": 30, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 31, "ts_ns": 1795461140932181200, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 32, "ts_ns": 1795461140932181200, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 33, "ts_ns": 1795461140932181200, "kind": "event", "id": 1003, "value": {"101": 33, "104": "GEM_HOST", "102": 25.039}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 34, "ts_ns": 1795461141025544000, "kind": "sample", "id": 1, "value": 24.959, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 35, "ts_ns": 1795461141058444700, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 36, "ts_ns": 1795461141058444700, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 37, "ts_ns": 1795461141058444700, "kind": "event", "id": 1002, "value": {"101": 37, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 38, "ts_ns": 1795461141058444700, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 39, "ts_ns": 1795461141058444700, "kind": "event", "id": 1005, "value": {"101": 39, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 40, "ts_ns": 1795461141076197700, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 41, "ts_ns": 1795461141076197700, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 42, "ts_ns": 1795461141076197700, "kind": "event", "id": 1003, "value": {"101": 42, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 43, "ts_ns": 1795461141183682500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 44, "ts_ns": 1795461141183682500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 45, "ts_ns": 1795461141183682500, "kind": "event", "id": 1002, "value": {"101": 45, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 46, "ts_ns": 1795461141183682500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 47, "ts_ns": 1795461141183682500, "kind": "event", "id": 1005, "value": {"101": 47, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 48, "ts_ns": 1795461141203013900, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 49, "ts_ns": 1795461141203013900, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 50, "ts_ns": 1795461141203013900, "kind": "event", "id": 1003, "value": {"101": 50, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 51, "ts_ns": 1795461141291013700, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 52, "ts_ns": 1795461141291013700, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 53, "ts_ns": 1795461141291013700, "kind": "event", "id": 1002, "value": {"101": 53, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 54, "ts_ns": 1795461141292819500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 55, "ts_ns": 1795461141292819500, "kind": "event", "id": 1005, "value": {"101": 55, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 56, "ts_ns": 1795461141304707300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 57, "ts_ns": 1795461141307609600, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 58, "ts_ns": 1795461141307609600, "kind": "event", "id": 1003, "value": {"101": 58, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 59, "ts_ns": 1795461141426188900, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 60, "ts_ns": 1795461141426188900, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 61, "ts_ns": 1795461141426188900, "kind": "event", "id": 1002, "value": {"101": 61, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 62, "ts_ns": 1795461141426188900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 63, "ts_ns": 1795461141426188900, "kind": "event", "id": 1005, "value": {"101": 63, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 64, "ts_ns": 1795461141442183900, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 65, "ts_ns": 1795461141442183900, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 66, "ts_ns": 1795461141442183900, "kind": "event", "id": 1003, "value": {"101": 66, "104": "GEM_HOST", "102": 24.959}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 67, "ts_ns": 1795461141517834000, "kind": "sample", "id": 1, "value": 24.992, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 68, "ts_ns": 1795461141517834000, "kind": "event", "id": 1007, "value": {"101": 68, "102": 24.992}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 69, "ts_ns": 1795461141553765600, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 70, "ts_ns": 1795461141553765600, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 71, "ts_ns": 1795461141553765600, "kind": "event", "id": 1002, "value": {"101": 71, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 72, "ts_ns": 1795461141557682800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 73, "ts_ns": 1795461141557682800, "kind": "event", "id": 1005, "value": {"101": 73, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 74, "ts_ns": 1795461141575319200, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 75, "ts_ns": 1795461141575319200, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 76, "ts_ns": 1795461141575319200, "kind": "event", "id": 1003, "value": {"101": 76, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 77, "ts_ns": 1795461141666618500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 78, "ts_ns": 1795461141666618500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 79, "ts_ns": 1795461141666618500, "kind": "event", "id": 1002, "value": {"101": 79, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 80, "ts_ns": 1795461141666618500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 81, "ts_ns": 1795461141666618500, "kind": "event", "id": 1005, "value": {"101": 81, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 82, "ts_ns": 1795461141674779600, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 83, "ts_ns": 1795461141674779600, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 84, "ts_ns": 1795461141674779600, "kind": "event", "id": 1003, "value": {"101": 84, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 85, "ts_ns": 1795461141774225800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 86, "ts_ns": 1795461141774225800, "kind": "event", "id": 1005, "value": {"101": 86, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 87, "ts_ns": 1795461141774800300, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 88, "ts_ns": 1795461141774800300, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 89, "ts_ns": 1795461141774800300, "kind": "event", "id": 1002, "value": {"101": 89, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 90, "ts_ns": 1795461141774800300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 91, "ts_ns": 1795461141774800300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 92, "ts_ns": 1795461141774800300, "kind": "event", "id": 1003, "value": {"101": 92, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 93, "ts_ns": 1795461141869300800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 94, "ts_ns": 1795461141869300800, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 95, "ts_ns": 1795461141869300800, "kind": "event", "id": 1002, "value": {"101": 95, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 96, "ts_ns": 1795461141869300800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 97, "ts_ns": 1795461141869300800, "kind": "event", "id": 1005, "value": {"101": 97, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 98, "ts_ns": 1795461141892183300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 99, "ts_ns": 1795461141892183300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 100, "ts_ns": 1795461141892183300, "kind": "event", "id": 1003, "value": {"101": 100, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 101, "ts_ns": 1795461141992090300, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 102, "ts_ns": 1795461141992090300, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 103, "ts_ns": 1795461141992090300, "kind": "event", "id": 1002, "value": {"101": 103, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 104, "ts_ns": 1795461141992090300, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 105, "ts_ns": 1795461141992090300, "kind": "event", "id": 1005, "value": {"101": 105, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 106, "ts_ns": 1795461142009364300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 107, "ts_ns": 1795461142009364300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 108, "ts_ns": 1795461142009364300, "kind": "event", "id": 1003, "value": {"101": 108, "104": "GEM_HOST", "102": 24.992}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 109, "ts_ns": 1795461142023460000, "kind": "sample", "id": 1, "value": 24.953, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 110, "ts_ns": 1795461142109001600, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 111, "ts_ns": 1795461142109001600, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 112, "ts_ns": 1795461142109001600, "kind": "event", "id": 1002, "value": {"101": 112, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 113, "ts_ns": 1795461142109001600, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 114, "ts_ns": 1795461142109001600, "kind": "event", "id": 1005, "value": {"101": 114, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 115, "ts_ns": 1795461142124606100, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 116, "ts_ns": 1795461142124606100, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 117, "ts_ns": 1795461142124606100, "kind": "event", "id": 1003, "value": {"101": 117, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 118, "ts_ns": 1795461142250952500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 119, "ts_ns": 1795461142250952500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 120, "ts_ns": 1795461142250952500, "kind": "event", "id": 1002, "value": {"101": 120, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 121, "ts_ns": 1795461142250952500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 122, "ts_ns": 1795461142250952500, "kind": "event", "id": 1005, "value": {"101": 122, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 123, "ts_ns": 1795461142259605600, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 124, "ts_ns": 1795461142259605600, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 125, "ts_ns": 1795461142259605600, "kind": "event", "id": 1003, "value": {"101": 125, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 126, "ts_ns": 1795461142354010000, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 127, "ts_ns": 1795461142354010000, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 128, "ts_ns": 1795461142357631400, "kind": "event", "id": 1002, "value": {"101": 128, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 129, "ts_ns": 1795461142357631400, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 130, "ts_ns": 1795461142357631400, "kind": "event", "id": 1005, "value": {"101": 130, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 131, "ts_ns": 1795461142370626700, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 132, "ts_ns": 1795461142370626700, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 133, "ts_ns": 1795461142370626700, "kind": "event", "id": 1003, "value": {"101": 133, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 134, "ts_ns": 1795461142459914300, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 135, "ts_ns": 1795461142459914300, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 136, "ts_ns": 1795461142459914300, "kind": "event", "id": 1002, "value": {"101": 136, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 137, "ts_ns": 1795461142459914300, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 138, "ts_ns": 1795461142459914300, "kind": "event", "id": 1005, "value": {"101": 138, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 139, "ts_ns": 1795461142468118800, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 140, "ts_ns": 1795461142468118800, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 141, "ts_ns": 1795461142468118800, "kind": "event", "id": 1003, "value": {"101": 141, "104": "GEM_HOST", "102": 24.953}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 142, "ts_ns": 1795461142524910500, "kind": "sample", "id": 1, "value": 24.972, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 143, "ts_ns": 1795461142524910500, "kind": "event", "id": 1007, "value": {"101": 143, "102": 24.972}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 144, "ts_ns": 1795461142557938800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 145, "ts_ns": 1795461142557938800, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 146, "ts_ns": 1795461142557938800, "kind": "event", "id": 1002, "value": {"101": 146, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 147, "ts_ns": 1795461142557938800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 148, "ts_ns": 1795461142557938800, "kind": "event", "id": 1005, "value": {"101": 148, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 149, "ts_ns": 1795461142574961200, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 150, "ts_ns": 1795461142574961200, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 151, "ts_ns": 1795461142574961200, "kind": "event", "id": 1003, "value": {"101": 151, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 152, "ts_ns": 1795461142674542800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 153, "ts_ns": 1795461142674542800, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 154, "ts_ns": 1795461142674542800, "kind": "event", "id": 1002, "value": {"101": 154, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 155, "ts_ns": 1795461142674542800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 156, "ts_ns": 1795461142674542800, "kind": "event", "id": 1005, "value": {"101": 156, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 157, "ts_ns": 1795461142674542800, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 158, "ts_ns": 1795461142674542800, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 159, "ts_ns": 1795461142674542800, "kind": "event", "id": 1003, "value": {"101": 159, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 160, "ts_ns": 1795461142771531600, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 161, "ts_ns": 1795461142771531600, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 162, "ts_ns": 1795461142771531600, "kind": "event", "id": 1002, "value": {"101": 162, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 163, "ts_ns": 1795461142771531600, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 164, "ts_ns": 1795461142771531600, "kind": "event", "id": 1005, "value": {"101": 164, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 165, "ts_ns": 1795461142785232800, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 166, "ts_ns": 1795461142785232800, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 167, "ts_ns": 1795461142785232800, "kind": "event", "id": 1003, "value": {"101": 167, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 168, "ts_ns": 1795461142891646500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 169, "ts_ns": 1795461142891646500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 170, "ts_ns": 1795461142891646500, "kind": "event", "id": 1002, "value": {"101": 170, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 171, "ts_ns": 1795461142891646500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 172, "ts_ns": 1795461142891646500, "kind": "event", "id": 1005, "value": {"101": 172, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 173, "ts_ns": 1795461142908326200, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 174, "ts_ns": 1795461142908326200, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 175, "ts_ns": 1795461142908326200, "kind": "event", "id": 1003, "value": {"101": 175, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 176, "ts_ns": 1795461143007473500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 177, "ts_ns": 1795461143007473500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 178, "ts_ns": 1795461143007473500, "kind": "event", "id": 1002, "value": {"101": 178, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 179, "ts_ns": 1795461143011346100, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 180, "ts_ns": 1795461143011346100, "kind": "event", "id": 1005, "value": {"101": 180, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 181, "ts_ns": 1795461143021397000, "kind": "sample", "id": 1, "value": 25.401, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 182, "ts_ns": 1795461143021397000, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 183, "ts_ns": 1795461143021397000, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 184, "ts_ns": 1795461143021397000, "kind": "event", "id": 1003, "value": {"101": 184, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 185, "ts_ns": 1795461143107323800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 186, "ts_ns": 1795461143107957600, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 187, "ts_ns": 1795461143108461900, "kind": "event", "id": 1002, "value": {"101": 187, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 188, "ts_ns": 1795461143108461900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 189, "ts_ns": 1795461143109484700, "kind": "event", "id": 1005, "value": {"101": 189, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 190, "ts_ns": 1795461143128180500, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 191, "ts_ns": 1795461143128180500, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 192, "ts_ns": 1795461143128180500, "kind": "event", "id": 1003, "value": {"101": 192, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 193, "ts_ns": 1795461143241644300, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 194, "ts_ns": 1795461143241644300, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 195, "ts_ns": 1795461143241644300, "kind": "event", "id": 1002, "value": {"101": 195, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 196, "ts_ns": 1795461143241644300, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 197, "ts_ns": 1795461143241644300, "kind": "event", "id": 1005, "value": {"101": 197, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 198, "ts_ns": 1795461143241644300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 199, "ts_ns": 1795461143241644300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 200, "ts_ns": 1795461143241644300, "kind": "event", "id": 1003, "value": {"101": 200, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 201, "ts_ns": 1795461143308140400, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 202, "ts_ns": 1795461143308140400, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 203, "ts_ns": 1795461143308140400, "kind": "event", "id": 1002, "value": {"101": 203, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 204, "ts_ns": 1795461143308140400, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 205, "ts_ns": 1795461143308140400, "kind": "event", "id": 1005, "value": {"101": 205, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 206, "ts_ns": 1795461143310649300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 207, "ts_ns": 1795461143310649300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 208, "ts_ns": 1795461143310649300, "kind": "event", "id": 1003, "value": {"101": 208, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 209, "ts_ns": 1795461143410852700, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 210, "ts_ns": 1795461143410852700, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 211, "ts_ns": 1795461143410852700, "kind": "event", "id": 1002, "value": {"101": 211, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 212, "ts_ns": 1795461143410852700, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 213, "ts_ns": 1795461143410852700, "kind": "event", "id": 1005, "value": {"101": 213, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 214, "ts_ns": 1795461143425456800, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 215, "ts_ns": 1795461143425456800, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 216, "ts_ns": 1795461143425456800, "kind": "event", "id": 1003, "value": {"101": 216, "104": "GEM_HOST", "102": 25.401}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 217, "ts_ns": 1795461143524313900, "kind": "sample", "id": 1, "value": 25.103, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 218, "ts_ns": 1795461143524985000, "kind": "event", "id": 1007, "value": {"101": 218, "102": 25.103}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 219, "ts_ns": 1795461143528885800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 220, "ts_ns": 1795461143528885800, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 221, "ts_ns": 1795461143528885800, "kind": "event", "id": 1002, "value": {"101": 221, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 222, "ts_ns": 1795461143529905700, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 223, "ts_ns": 1795461143529905700, "kind": "event", "id": 1005, "value": {"101": 223, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 224, "ts_ns": 1795461143558295100, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 225, "ts_ns": 1795461143558295100, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 226, "ts_ns": 1795461143558295100, "kind": "event", "id": 1003, "value": {"101": 226, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 227, "ts_ns": 1795461143658967800, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 228, "ts_ns": 1795461143658967800, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 229, "ts_ns": 1795461143658967800, "kind": "event", "id": 1002, "value": {"101": 229, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 230, "ts_ns": 1795461143658967800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 231, "ts_ns": 1795461143658967800, "kind": "event", "id": 1005, "value": {"101": 231, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 232, "ts_ns": 1795461143675500600, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 233, "ts_ns": 1795461143675500600, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 234, "ts_ns": 1795461143675500600, "kind": "event", "id": 1003, "value": {"101": 234, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 235, "ts_ns": 1795461143766084700, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 236, "ts_ns": 1795461143766084700, "kind": "event", "id": 1005, "value": {"101": 236, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 237, "ts_ns": 1795461143766084700, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 238, "ts_ns": 1795461143766084700, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 239, "ts_ns": 1795461143766084700, "kind": "event", "id": 1002, "value": {"101": 239, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 240, "ts_ns": 1795461143791668400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 241, "ts_ns": 1795461143791668400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 242, "ts_ns": 1795461143791668400, "kind": "event", "id": 1003, "value": {"101": 242, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 243, "ts_ns": 1795461143901334500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 244, "ts_ns": 1795461143901334500, "kind": "event", "id": 1005, "value": {"101": 244, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 245, "ts_ns": 1795461143901334500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 246, "ts_ns": 1795461143901334500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 247, "ts_ns": 1795461143901334500, "kind": "event", "id": 1002, "value": {"101": 247, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 248, "ts_ns": 1795461143931986400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 249, "ts_ns": 1795461143931986400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 250, "ts_ns": 1795461143931986400, "kind": "event", "id": 1003, "value": {"101": 250, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 251, "ts_ns": 1795461144010960200, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 252, "ts_ns": 1795461144010960200, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 253, "ts_ns": 1795461144010960200, "kind": "event", "id": 1002, "value": {"101": 253, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 254, "ts_ns": 1795461144010960200, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 255, "ts_ns": 1795461144010960200, "kind": "event", "id": 1005, "value": {"101": 255, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 256, "ts_ns": 1795461144010960200, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 257, "ts_ns": 1795461144010960200, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 258, "ts_ns": 1795461144010960200, "kind": "event", "id": 1003, "value": {"101": 258, "104": "GEM_HOST", "102": 25.103}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 259, "ts_ns": 1795461144023578300, "kind": "sample", "id": 1, "value": 24.97, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 260, "ts_ns": 1795461144111233700, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 261, "ts_ns": 1795461144111233700, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 262, "ts_ns": 1795461144111233700, "kind": "event", "id": 1002, "value": {"101": 262, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 263, "ts_ns": 1795461144111233700, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 264, "ts_ns": 1795461144111233700, "kind": "event", "id": 1005, "value": {"101": 264, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 265, "ts_ns": 1795461144125383900, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 266, "ts_ns": 1795461144125383900, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 267, "ts_ns": 1795461144125383900, "kind": "event", "id": 1003, "value": {"101": 267, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 268, "ts_ns": 1795461144245406900, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 269, "ts_ns": 1795461144245406900, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 270, "ts_ns": 1795461144245406900, "kind": "event", "id": 1002, "value": {"101": 270, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 271, "ts_ns": 1795461144245406900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 272, "ts_ns": 1795461144245406900, "kind": "event", "id": 1005, "value": {"101": 272, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 273, "ts_ns": 1795461144258905400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 274, "ts_ns": 1795461144258905400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 275, "ts_ns": 1795461144258905400, "kind": "event", "id": 1003, "value": {"101": 275, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 276, "ts_ns": 1795461144358758300, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 277, "ts_ns": 1795461144358758300, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 278, "ts_ns": 1795461144358758300, "kind": "event", "id": 1002, "value": {"101": 278, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 279, "ts_ns": 1795461144358758300, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 280, "ts_ns": 1795461144358758300, "kind": "event", "id": 1005, "value": {"101": 280, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 281, "ts_ns": 1795461144375668500, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 282, "ts_ns": 1795461144375668500, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 283, "ts_ns": 1795461144375668500, "kind": "event", "id": 1003, "value": {"101": 283, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 284, "ts_ns": 1795461144475128500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 285, "ts_ns": 1795461144475128500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 286, "ts_ns": 1795461144475128500, "kind": "event", "id": 1002, "value": {"101": 286, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 287, "ts_ns": 1795461144475128500, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 288, "ts_ns": 1795461144475128500, "kind": "event", "id": 1005, "value": {"101": 288, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 289, "ts_ns": 1795461144491849700, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 290, "ts_ns": 1795461144491849700, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 291, "ts_ns": 1795461144493464500, "kind": "event", "id": 1003, "value": {"101": 291, "104": "GEM_HOST", "102": 24.97}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 292, "ts_ns": 1795461144532299900, "kind": "sample", "id": 1, "value": 25.015, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 293, "ts_ns": 1795461144532299900, "kind": "event", "id": 1007, "value": {"101": 293, "102": 25.015}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 294, "ts_ns": 1795461144593988400, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 295, "ts_ns": 1795461144593988400, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 296, "ts_ns": 1795461144595081800, "kind": "event", "id": 1002, "value": {"101": 296, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 297, "ts_ns": 1795461144595081800, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 298, "ts_ns": 1795461144595081800, "kind": "event", "id": 1005, "value": {"101": 298, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 299, "ts_ns": 1795461144600316200, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 300, "ts_ns": 1795461144600316200, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 301, "ts_ns": 1795461144600316200, "kind": "event", "id": 1003, "value": {"101": 301, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 302, "ts_ns": 1795461144703050200, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 303, "ts_ns": 1795461144703050200, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 304, "ts_ns": 1795461144703050200, "kind": "event", "id": 1002, "value": {"101": 304, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 305, "ts_ns": 1795461144707497000, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 306, "ts_ns": 1795461144707497000, "kind": "event", "id": 1005, "value": {"101": 306, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 307, "ts_ns": 1795461144719453000, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 308, "ts_ns": 1795461144719453000, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 309, "ts_ns": 1795461144719453000, "kind": "event", "id": 1003, "value": {"101": 309, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 310, "ts_ns": 1795461144837844400, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 311, "ts_ns": 1795461144837844400, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 312, "ts_ns": 1795461144837844400, "kind": "event", "id": 1002, "value": {"101": 312, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 313, "ts_ns": 1795461144842094900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 314, "ts_ns": 1795461144842094900, "kind": "event", "id": 1005, "value": {"101": 314, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 315, "ts_ns": 1795461144842094900, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 316, "ts_ns": 1795461144842094900, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 317, "ts_ns": 1795461144842094900, "kind": "event", "id": 1003, "value": {"101": 317, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 318, "ts_ns": 1795461144942383200, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 319, "ts_ns": 1795461144942383200, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 320, "ts_ns": 1795461144942383200, "kind": "event", "id": 1002, "value": {"101": 320, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 321, "ts_ns": 1795461144942383200, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 322, "ts_ns": 1795461144946878500, "kind": "event", "id": 1005, "value": {"101": 322, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 323, "ts_ns": 1795461144966567800, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 324, "ts_ns": 1795461144966567800, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 325, "ts_ns": 1795461144966567800, "kind": "event", "id": 1003, "value": {"101": 325, "104": "GEM_HOST", "102": 25.015}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 326, "ts_ns": 1795461145025531000, "kind": "sample", "id": 1, "value": 25.004, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 327, "ts_ns": 1795461145091960900, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 328, "ts_ns": 1795461145091960900, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 329, "ts_ns": 1795461145091960900, "kind": "event", "id": 1002, "value": {"101": 329, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 330, "ts_ns": 1795461145091960900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 331, "ts_ns": 1795461145091960900, "kind": "event", "id": 1005, "value": {"101": 331, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 332, "ts_ns": 1795461145109228700, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 333, "ts_ns": 1795461145109228700, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 334, "ts_ns": 1795461145109228700, "kind": "event", "id": 1003, "value": {"101": 334, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 335, "ts_ns": 1795461145209120100, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 336, "ts_ns": 1795461145209120100, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 337, "ts_ns": 1795461145209120100, "kind": "event", "id": 1002, "value": {"101": 337, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 338, "ts_ns": 1795461145212144400, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 339, "ts_ns": 1795461145212144400, "kind": "event", "id": 1005, "value": {"101": 339, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 340, "ts_ns": 1795461145226044000, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 341, "ts_ns": 1795461145226044000, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 342, "ts_ns": 1795461145226044000, "kind": "event", "id": 1003, "value": {"101": 342, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 343, "ts_ns": 1795461145324993400, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 344, "ts_ns": 1795461145324993400, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 345, "ts_ns": 1795461145324993400, "kind": "event", "id": 1002, "value": {"101": 345, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 346, "ts_ns": 1795461145324993400, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 347, "ts_ns": 1795461145324993400, "kind": "event", "id": 1005, "value": {"101": 347, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 348, "ts_ns": 1795461145342214000, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 349, "ts_ns": 1795461145342214000, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 350, "ts_ns": 1795461145342214000, "kind": "event", "id": 1003, "value": {"101": 350, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 351, "ts_ns": 1795461145441391900, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 352, "ts_ns": 1795461145441391900, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 353, "ts_ns": 1795461145441391900, "kind": "event", "id": 1002, "value": {"101": 353, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 354, "ts_ns": 1795461145441391900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 355, "ts_ns": 1795461145441391900, "kind": "event", "id": 1005, "value": {"101": 355, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 356, "ts_ns": 1795461145454503500, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 357, "ts_ns": 1795461145454503500, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 358, "ts_ns": 1795461145457587000, "kind": "event", "id": 1003, "value": {"101": 358, "104": "GEM_HOST", "102": 25.004}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 359, "ts_ns": 1795461145517320300, "kind": "sample", "id": 1, "value": 24.972, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 360, "ts_ns": 1795461145517320300, "kind": "event", "id": 1007, "value": {"101": 360, "102": 24.972}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 361, "ts_ns": 1795461145558661200, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 362, "ts_ns": 1795461145558661200, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 363, "ts_ns": 1795461145558661200, "kind": "event", "id": 1002, "value": {"101": 363, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 364, "ts_ns": 1795461145558661200, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 365, "ts_ns": 1795461145558661200, "kind": "event", "id": 1005, "value": {"101": 365, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 366, "ts_ns": 1795461145575691300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 367, "ts_ns": 1795461145575691300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 368, "ts_ns": 1795461145575691300, "kind": "event", "id": 1003, "value": {"101": 368, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 369, "ts_ns": 1795461145667299100, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 370, "ts_ns": 1795461145667299100, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 371, "ts_ns": 1795461145667299100, "kind": "event", "id": 1002, "value": {"101": 371, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 372, "ts_ns": 1795461145667299100, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 373, "ts_ns": 1795461145667299100, "kind": "event", "id": 1005, "value": {"101": 373, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 374, "ts_ns": 1795461145692018100, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 375, "ts_ns": 1795461145692018100, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 376, "ts_ns": 1795461145692018100, "kind": "event", "id": 1003, "value": {"101": 376, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 377, "ts_ns": 1795461145791967200, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 378, "ts_ns": 1795461145791967200, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 379, "ts_ns": 1795461145791967200, "kind": "event", "id": 1002, "value": {"101": 379, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 380, "ts_ns": 1795461145791967200, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 381, "ts_ns": 1795461145791967200, "kind": "event", "id": 1005, "value": {"101": 381, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 382, "ts_ns": 1795461145799130300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 383, "ts_ns": 1795461145799130300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 384, "ts_ns": 1795461145799130300, "kind": "event", "id": 1003, "value": {"101": 384, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 385, "ts_ns": 1795461145891923200, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 386, "ts_ns": 1795461145891923200, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 387, "ts_ns": 1795461145891923200, "kind": "event", "id": 1002, "value": {"101": 387, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 388, "ts_ns": 1795461145891923200, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 389, "ts_ns": 1795461145891923200, "kind": "event", "id": 1005, "value": {"101": 389, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 390, "ts_ns": 1795461145909018400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 391, "ts_ns": 1795461145909018400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 392, "ts_ns": 1795461145909018400, "kind": "event", "id": 1003, "value": {"101": 392, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 393, "ts_ns": 1795461146009147300, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 394, "ts_ns": 1795461146009147300, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 395, "ts_ns": 1795461146009147300, "kind": "event", "id": 1002, "value": {"101": 395, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 396, "ts_ns": 1795461146009147300, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 397, "ts_ns": 1795461146009147300, "kind": "event", "id": 1005, "value": {"101": 397, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 398, "ts_ns": 1795461146013424900, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 399, "ts_ns": 1795461146013424900, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 400, "ts_ns": 1795461146013424900, "kind": "event", "id": 1003, "value": {"101": 400, "104": "GEM_HOST", "102": 24.972}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 401, "ts_ns": 1795461146023805400, "kind": "sample", "id": 1, "value": 25.009, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 402, "ts_ns": 1795461146109323500, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 403, "ts_ns": 1795461146109323500, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 404, "ts_ns": 1795461146109323500, "kind": "event", "id": 1002, "value": {"101": 404, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 405, "ts_ns": 1795461146113633600, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 406, "ts_ns": 1795461146113633600, "kind": "event", "id": 1005, "value": {"101": 406, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 407, "ts_ns": 1795461146113633600, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 408, "ts_ns": 1795461146113633600, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 409, "ts_ns": 1795461146113633600, "kind": "event", "id": 1003, "value": {"101": 409, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 410, "ts_ns": 1795461146226269900, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 411, "ts_ns": 1795461146226269900, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 412, "ts_ns": 1795461146226269900, "kind": "event", "id": 1002, "value": {"101": 412, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 413, "ts_ns": 1795461146226269900, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 414, "ts_ns": 1795461146226269900, "kind": "event", "id": 1005, "value": {"101": 414, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 415, "ts_ns": 1795461146242092400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 416, "ts_ns": 1795461146242092400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 417, "ts_ns": 1795461146242092400, "kind": "event", "id": 1003, "value": {"101": 417, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 418, "ts_ns": 1795461146343069100, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 419, "ts_ns": 1795461146343069100, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 420, "ts_ns": 1795461146343069100, "kind": "event", "id": 1002, "value": {"101": 420, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 421, "ts_ns": 1795461146343069100, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 422, "ts_ns": 1795461146343069100, "kind": "event", "id": 1005, "value": {"101": 422, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 423, "ts_ns": 1795461146358939300, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 424, "ts_ns": 1795461146358939300, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 425, "ts_ns": 1795461146358939300, "kind": "event", "id": 1003, "value": {"101": 425, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 426, "ts_ns": 1795461146466759100, "kind": "command_ok", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 427, "ts_ns": 1795461146466759100, "kind": "state", "id": "ProcessingState", "value": "EXECUTING", "origin": "GEM_HOST", "extra": {"id": 1}}
+{"seq": 428, "ts_ns": 1795461146466759100, "kind": "event", "id": 1002, "value": {"101": 428, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStarted"}}
+{"seq": 429, "ts_ns": 1795461146466759100, "kind": "command_rejected", "id": "START", "value": null, "origin": "UA_CLIENT", "extra": {"reason": "authority held by GEM_HOST", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 430, "ts_ns": 1795461146466759100, "kind": "event", "id": 1005, "value": {"101": 430, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "origin": "UA_CLIENT", "extra": {"name": "CommandRejected"}}
+{"seq": 431, "ts_ns": 1795461146491526400, "kind": "command_ok", "id": "STOP", "value": null, "origin": "GEM_HOST", "extra": {}}
+{"seq": 432, "ts_ns": 1795461146491526400, "kind": "state", "id": "ProcessingState", "value": "IDLE", "origin": "GEM_HOST", "extra": {"id": 0}}
+{"seq": 433, "ts_ns": 1795461146491526400, "kind": "event", "id": 1003, "value": {"101": 433, "104": "GEM_HOST", "102": 25.009}, "origin": "GEM_HOST", "extra": {"name": "ProcessingStopped"}}
+{"seq": 434, "ts_ns": 1795461146533066500, "kind": "sample", "id": 1, "value": 25.031, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 435, "ts_ns": 1795461146533066500, "kind": "event", "id": 1007, "value": {"101": 435, "102": 25.031}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 436, "ts_ns": 1795461146575378700, "kind": "command_ok", "id": "SET_CONTROL_STATE", "value": "ONLINE_LOCAL", "origin": "OPERATOR", "extra": {}}
+{"seq": 437, "ts_ns": 1795461146575378700, "kind": "state", "id": "ControlState", "value": "ONLINE_LOCAL", "origin": "OPERATOR", "extra": {"id": 4}}
+{"seq": 438, "ts_ns": 1795461146575378700, "kind": "event", "id": 1001, "value": {"101": 438, "104": "OPERATOR", "2": 4}, "origin": "OPERATOR", "extra": {"name": "ControlStateChanged"}}
+{"seq": 439, "ts_ns": 1795461146575378700, "kind": "authority", "id": "Authority", "value": "OPERATOR", "origin": "OPERATOR", "extra": {}}
+{"seq": 440, "ts_ns": 1795461146575378700, "kind": "event", "id": 1004, "value": {"101": 440, "104": "OPERATOR", "4": "OPERATOR"}, "origin": "OPERATOR", "extra": {"name": "AuthorityChanged"}}
+{"seq": 441, "ts_ns": 1795461146575378700, "kind": "command_rejected", "id": "START", "value": null, "origin": "GEM_HOST", "extra": {"reason": "equipment in LOCAL", "gem_code": 2, "ua_status": "BadUserAccessDenied"}}
+{"seq": 442, "ts_ns": 1795461146575378700, "kind": "event", "id": 1005, "value": {"101": 442, "104": "GEM_HOST", "103": "equipment in LOCAL"}, "origin": "GEM_HOST", "extra": {"name": "CommandRejected"}}
+{"seq": 443, "ts_ns": 1795461147024162400, "kind": "sample", "id": 1, "value": 24.951, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 444, "ts_ns": 1795461147524207800, "kind": "sample", "id": 1, "value": 25.031, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 445, "ts_ns": 1795461147524558600, "kind": "event", "id": 1007, "value": {"101": 445, "102": 25.031}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 446, "ts_ns": 1795461148024835000, "kind": "sample", "id": 1, "value": 25.02, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 447, "ts_ns": 1795461148523995100, "kind": "sample", "id": 1, "value": 24.984, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 448, "ts_ns": 1795461148524724500, "kind": "event", "id": 1007, "value": {"101": 448, "102": 24.984}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 449, "ts_ns": 1795461149040352700, "kind": "sample", "id": 1, "value": 24.966, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 450, "ts_ns": 1795461149524054600, "kind": "sample", "id": 1, "value": 25.046, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 451, "ts_ns": 1795461149524829700, "kind": "event", "id": 1007, "value": {"101": 451, "102": 25.046}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 452, "ts_ns": 1795461150024035100, "kind": "sample", "id": 1, "value": 24.984, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 453, "ts_ns": 1795461150533590500, "kind": "sample", "id": 1, "value": 24.959, "origin": "EQUIPMENT", "extra": {}}
+{"seq": 454, "ts_ns": 1795461150533590500, "kind": "event", "id": 1007, "value": {"101": 454, "102": 24.959}, "origin": "EQUIPMENT", "extra": {"name": "TempSample"}}
+{"seq": 455, "ts_ns": 1795461151353434000, "kind": "state", "id": "GemCommunicationState", "value": "NOT_COMMUNICATING", "origin": "EQUIPMENT", "extra": {}}

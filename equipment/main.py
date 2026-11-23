@@ -105,6 +105,7 @@ async def run(args: argparse.Namespace) -> int:
         log.info("shutting down")
         if sampler is not None:
             sampler.stop()
+        dispatcher.wait_idle(3.0)  # deliver (and send-log) what is already queued before closing the doors
         if gem_door is not None:
             gem_door.stop()
         if ua_door is not None:

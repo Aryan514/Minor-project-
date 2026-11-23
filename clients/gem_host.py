@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import re
 import socket
 import socketserver
@@ -43,6 +44,36 @@ def _plain(value: Any) -> Any:
     return value
 
 
+class _HostHandler(secsgem.gem.GemHostHandler):
+    """GemHostHandler whose S6F11 decoding never fails.
+
+    The library looks up `report_subscriptions[rptid]` and raises KeyError (replying S6F0) for a report this
+    process did not define itself. That happens after a host restart: the equipment still has the reports
+    of the previous host session enabled and sends them before the new session has re-defined them.
+    We fall back to our own fixed scheme (RPTID == CEID, VIDs from config.py) so every event is logged.
+    """
+
+    def _on_s06f11(self, handler: Any, message: Any) -> Any:
+        del handler
+        function = self.settings.streams_functions.decode(message)
+        for report in function.RPT:
+            rptid = report.RPTID.get()
+            vids = self.report_subscriptions.get(rptid)
+            if vids is None:
+                try:
+                    vids = list(config.collection_event(int(rptid)).report_vids)
+                except (KeyError, ValueError):
+                    vids = []
+            values = report.V.get()
+            if len(vids) != len(values):  # unknown layout: keep the values, mark the ids as positional
+                vids = [f"pos{i}" for i in range(len(values))]
+            self.events.fire("collection_event_received", {
+                "ceid": function.CEID, "rptid": report.RPTID,
+                "values": [{"dvid": vid, "value": val} for vid, val in zip(vids, values)],
+                "handler": self.protocol, "peer": self})
+        return self.stream_function(6, 12)(0)
+
+
 class GemHost:
     """Thin wrapper around secsgem's GemHostHandler."""
 
@@ -54,7 +85,7 @@ class GemHost:
             device_type=secsgem.common.DeviceType.HOST,
             session_id=config.HSMS_SESSION_ID,
         )
-        self.handler = secsgem.gem.GemHostHandler(settings)
+        self.handler = _HostHandler(settings)
         self._lock = threading.Lock()  # one transaction at a time from this process
 
     def connect(self, timeout: float = 20.0) -> None:
@@ -84,8 +115,20 @@ class GemHost:
             for al in config.ALARMS:
                 self.handler.enable_alarm(al.alid)
 
-    def action(self, name: str, value: Optional[float] = None) -> dict[str, Any]:
+    def define_report(self, ceid: int, vids: list[int]) -> dict[str, Any]:
+        """Replace the report of one CEID (S2F37 off, S2F35 unlink, S2F33 delete + define, S2F35, S2F37 on)."""
+        h = self.handler
+        with self._lock:
+            h.send_and_waitfor_response(h.stream_function(2, 37)({"CEED": False, "CEID": [ceid]}))
+            h.send_and_waitfor_response(h.stream_function(2, 35)({"DATAID": 0, "DATA": [{"CEID": ceid, "RPTID": []}]}))
+            h.send_and_waitfor_response(h.stream_function(2, 33)({"DATAID": 0, "DATA": [{"RPTID": ceid, "VID": []}]}))
+            h.subscribe_collection_event(ceid, vids, report_id=ceid)  # S2F33 + S2F35 + S2F37
+        return {"action": "set-report", "ceid": ceid, "vids": vids, "code": 0}
+
+    def action(self, name: str, value: Optional[float] = None, **extra: Any) -> dict[str, Any]:
         """Run one host action and return {'action', 'code', ...}."""
+        if name == "set-report":
+            return self.define_report(int(extra["ceid"]), [int(v) for v in extra["vids"]])
         with self._lock:
             if name in ("start", "stop"):
                 reply = self.handler.send_remote_command(name.upper(), [])
@@ -119,9 +162,9 @@ def listen(run_id: str, duration: Optional[float], echo: bool) -> None:
     # Each S6F11 report: RPTID == CEID (we defined it so), values in our VID order.
     def on_event(data: dict[str, Any]) -> None:
         now = time.time_ns()
-        values = {int(v["dvid"]): _plain(v["value"]) for v in data["values"]}
+        values = {str(v["dvid"]): _plain(v["value"]) for v in data["values"]}
         emit({"ts_ns": now, "kind": "event", "id": int(_plain(data["ceid"])),
-              "seq": values.get(config.DVID_EVENT_SEQ), "data": {str(k): v for k, v in values.items()}})
+              "seq": values.get(str(config.DVID_EVENT_SEQ)), "data": values})
 
     def on_alarm(data: dict[str, Any]) -> None:
         now = time.time_ns()
@@ -136,6 +179,8 @@ def listen(run_id: str, duration: Optional[float], echo: bool) -> None:
     host.handler.events.collection_event_received += on_event
     host.handler.events.alarm_received += on_alarm
     relay: Optional[socketserver.ThreadingTCPServer] = None
+    # Session markers for the checker: "connecting" opens a session, "listening" = reports active.
+    emit({"ts_ns": time.time_ns(), "kind": "connecting", "id": None, "seq": None, "data": os.getpid()})
     try:
         host.connect()
         host.setup_reports()
@@ -154,6 +199,7 @@ def listen(run_id: str, duration: Optional[float], echo: bool) -> None:
             relay.shutdown()
             relay.server_close()
         host.close()
+        emit({"ts_ns": time.time_ns(), "kind": "stopped", "id": None, "seq": None, "data": None})
         writer.close()
 
 
@@ -162,7 +208,7 @@ class _RelayHandler(socketserver.StreamRequestHandler):
         req = json.loads(self.rfile.readline().decode("utf-8"))
         server: Any = self.server
         try:
-            result = server.host.action(req["action"], req.get("value"))
+            result = server.host.action(req["action"], req.get("value"), **req.get("extra", {}))
         except Exception as exc:  # noqa: BLE001
             result = {"action": req.get("action"), "error": str(exc)}
         self.wfile.write((json.dumps(result, default=str) + "\n").encode("utf-8"))
