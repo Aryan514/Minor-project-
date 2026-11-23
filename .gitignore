@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Virtual environment
+.venv/
+venv/
+
+# Run logs: ignored except one committed sample run (add it with `git add -f runs/<id>`)
+runs/*
+!runs/.gitkeep
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Wireshark captures stay out unless explicitly saved into results/
+*.pcapng
+!results/*.pcapng
