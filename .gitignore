@@ -21,3 +21,4 @@ Thumbs.db
 # Wireshark captures stay out unless explicitly saved into results/
 *.pcapng
 !results/*.pcapng
+.pytest_tmp/

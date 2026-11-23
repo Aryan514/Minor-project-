@@ -32,6 +32,10 @@ OPCUA_CLIENT_ENDPOINT: Final[str] = "opc.tcp://127.0.0.1:4840/semi-equipment/"
 OPCUA_NAMESPACE_URI: Final[str] = "urn:minor-project:semi-equipment-mini"
 OPCUA_SERVER_NAME: Final[str] = "Chamber1Tool OPC UA door"
 
+# Local operator control socket (harness drives the console through it; docs/decisions.md D5)
+CONTROL_HOST: Final[str] = "127.0.0.1"
+CONTROL_PORT: Final[int] = 5100
+
 # --------------------------------------------------------------------------------------
 # Enumerations shared by core, arbiter and both doors
 # --------------------------------------------------------------------------------------
@@ -70,6 +74,9 @@ class Action(str, Enum):
     START = "START"
     STOP = "STOP"
     EC_WRITE = "EC_WRITE"
+    # Operator-console actions, also routed through the arbiter (docs/decisions.md D3)
+    SET_CONTROL_STATE = "SET_CONTROL_STATE"
+    SET_LEASE = "SET_LEASE"
 
 
 class AuditKind(str, Enum):
