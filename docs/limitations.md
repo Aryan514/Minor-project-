@@ -42,6 +42,14 @@ Living list. Every simplification, fallback or out-of-scope idea is recorded her
 - A same-value EC write is not a UA data change (S4 finding). For UA, I4 checks that such writes leave the client
   value equal to the core value, rather than expecting a notification.
 
+## Observed during the Wireshark capture
+
+- secsgem 0.3.0's passive HSMS side stopped accepting connections after a client connected and closed abruptly before
+  HSMS select had completed (`docs/library_notes.md` Part E). Our harness avoids this (D28), but a real host that
+  crashes at exactly that moment could leave the GEM door unreachable until the equipment restarts. Not fixed (the GEM
+  door was frozen for this step). It should be handled in the door's connection override as future work.
+- Wireshark 4.6.10 does not decode port 5000 as HSMS automatically. Use decode-as (`-d tcp.port==5000,hsms`).
+
 ## Future work
 
 - GEM spooling (S6F11 buffering while the link is down) and an OPC UA equivalent, such as buffered events or history

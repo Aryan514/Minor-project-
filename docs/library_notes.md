@@ -295,3 +295,12 @@ problems. Verified at CP2: `--set-limit 99` → `BadOutOfRange`, `--set-limit 20
 - `HCACK`/`EAC`/`ONLACK` values sent are plain ints; secsgem encodes them with the right data-item type.
 - `GemHostHandler.events.collection_event_received` delivers `values=[{dvid, value}]` in the order of the report
   definition. `events.alarm_received` delivers ALCD as a Binary variable (decoded in `gem_host.py`).
+
+## Part E — Finding during the Wireshark capture
+
+- **Abrupt close before HSMS select can stop the passive side listening.** In the first capture attempt a client
+  (our own readiness probe) connected to port 5000 and closed within 1 ms (FIN, then RST) while secsgem was sending
+  its 14-byte Select.req. After that, every SYN to port 5000 was answered with RST for the rest of that run (about 50 s;
+  `tshark` frames 36 onward). In earlier runs without capture the same probe did not cause this, so it is
+  timing-dependent. We did not change the GEM door. Instead the harness no longer probes the HSMS port (decision D28).
+  Recorded as a robustness limitation of secsgem 0.3.0's passive connection (`docs/limitations.md`).

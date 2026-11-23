@@ -3,7 +3,7 @@
 # why it matters, then runs it and shows the evidence. It starts the equipment and both listening clients itself
 # (and, on Windows, the live view in its own console window), and always shuts everything down cleanly.
 # Serves N1 (arbiter in action), N2 (self-describing model) and N3 (checker verdict on the demo run itself).
-"""python -m harness.demo [--auto] [--no-live-window] [--web [--web-port 8080] [--no-browser]]"""
+"""python -m harness.demo [--auto [--step-delay N]] [--no-live-window] [--web [--web-port 8080] [--no-browser]]"""
 
 from __future__ import annotations
 
@@ -21,6 +21,7 @@ from harness import checker
 from harness.scenarios import PY, GemRelay, Run, busy_ports, kill_tree, race, wait_for
 
 AUTO = False
+STEP_DELAY = 6.0  # seconds to pause before each step in --auto mode (so viewers can follow the dashboard)
 
 
 def say(step: str, line: str) -> None:
@@ -28,6 +29,8 @@ def say(step: str, line: str) -> None:
     print(f"\n\033[1m=== {step}\033[0m\n{line}", flush=True)
     if not AUTO:
         input("   [Enter] ")
+    elif STEP_DELAY > 0:
+        time.sleep(STEP_DELAY)
 
 
 def show(text: str) -> None:
@@ -192,15 +195,18 @@ def demo(live_window: bool, web: bool = False, web_port: int = 8080, open_browse
 
 def main(argv: Optional[list[str]] = None) -> int:
     """CLI entry point."""
-    global AUTO
+    global AUTO, STEP_DELAY
     ap = argparse.ArgumentParser(description="Narrated panel demo")
     ap.add_argument("--auto", action="store_true", help="do not wait for Enter between steps")
+    ap.add_argument("--step-delay", type=float, default=6.0, metavar="N",
+                    help="--auto: pause N seconds before each step (default 6; 0 = no pause)")
     ap.add_argument("--no-live-window", action="store_true", help="do not open the live view window")
     ap.add_argument("--web", action="store_true", help="show the web dashboard instead of the terminal live view")
     ap.add_argument("--web-port", type=int, default=8080)
     ap.add_argument("--no-browser", action="store_true", help="--web: do not open a browser tab")
     args = ap.parse_args(argv)
     AUTO = args.auto
+    STEP_DELAY = max(0.0, args.step_delay)
     try:
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[attr-defined]
     except (AttributeError, ValueError):

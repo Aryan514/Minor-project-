@@ -48,6 +48,7 @@ python -m harness.web_view                              # live: follows the newe
 python -m harness.web_view --run-dir runs/<id>          # live: one specific run
 python -m harness.web_view --replay runs/sample_S3 --speed 5 --loop   # replay a finished run (no equipment needed)
 python -m harness.demo --web                            # narrated demo with the dashboard instead of the terminal view
+python -m harness.demo --web --auto --step-delay 8      # hands-free demo, 8 s pause before each step
 ```
 
 Open http://localhost:8080 (`--port` to change). The page shows the architecture with message pulses (green accepted, red
@@ -55,6 +56,24 @@ rejected, amber alarm) and the GEM link state. It also has the three columns GEM
 temperature chart with the limit and alarm periods, the arbiter decision feed, a per-seq event timeline (receive latency
 or `dropped_no_link`), live invariants computed by `harness/checker.py`, and a Results tab. It only tails the run's
 JSONL logs. It never connects to the equipment or its ports. Python standard library only, no CDN.
+
+## Wireshark capture (shows that both protocols are real)
+
+`results/demo_capture.pcapng` is a capture of one full demo, summarised in `results/capture_summary.md`
+(HSMS message counts, OPC UA services, a decoded S6F11 and the decoded simultaneous START on the wire).
+
+- Interface: **Adapter for loopback traffic capture** (`\Device\NPF_Loopback`; needs Npcap with loopback support).
+- Capture filter: `tcp port 5000 or tcp port 4840`
+- Open the file in Wireshark. OPC UA decodes by itself. For HSMS use *Analyze → Decode As…* → TCP port `5000` → `HSMS`.
+  Command line: `tshark -r results\demo_capture.pcapng -d tcp.port==5000,hsms -Y hsms`
+- To capture a new demo yourself (tshark is in `D:\Wireshark` on this laptop), start this, run the demo in a second
+  terminal, then stop tshark with Ctrl+C:
+  ```powershell
+  & "D:\Wireshark\tshark.exe" -i \Device\NPF_Loopback -f "tcp port 5000 or tcp port 4840" -w results\my_capture.pcapng
+  ```
+
+OPC UA runs without security in this testbed, so both payloads are readable. The capture shows that the protocols are
+real. It is not an overhead or speed comparison.
 
 ## Run the scenarios
 

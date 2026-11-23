@@ -35,10 +35,16 @@ ORDER = ("S3", "S2", "S5", "S1", "S4", "S6")  # CLAUDE.md priority order
 
 
 # ---------------------------------------------------------------------- process helpers
-def busy_ports() -> list[int]:
-    """Ports of this testbed that something is listening on."""
+def busy_ports(ports: tuple[int, ...] = PORTS) -> list[int]:
+    """Ports of this testbed that something is listening on.
+
+    This probes by CONNECTING. Use it only when the equipment is not running (before start / after stop) or on
+    ports where a probe is harmless (relay, OPC UA). Never probe the HSMS port of a running equipment: it accepts
+    ONE session, and a probe that connects and closes at once can take that session (and with an abrupt close
+    secsgem may stop listening). See docs/progress.md, "Wireshark capture", problem 1.
+    """
     busy = []
-    for port in PORTS:
+    for port in ports:
         with socket.socket() as s:
             s.settimeout(0.3)
             if s.connect_ex(("127.0.0.1", port)) == 0:
@@ -215,7 +221,10 @@ class Run:
                                     "--seed", str(self.seed)],
                                    stdout=open(self.dir / "equipment.out", "w"), stderr=subprocess.STDOUT)
         wait_for(self._control_up, 30, what="equipment control port")
-        wait_for(lambda: 4840 in busy_ports() and config.HSMS_PORT in busy_ports(), 30, what="both doors")
+        # equipment.main prints READY only after both doors are started; reading it touches no port (the HSMS
+        # port must not be probed, see busy_ports()).
+        wait_for(lambda: "READY run_id=" in (self.dir / "equipment.out").read_text(encoding="utf-8", errors="replace"),
+                 30, what="both doors (equipment READY)")
         self.start_gem()
         self.start_ua_listener()
         self.ua = UaSession()
@@ -237,7 +246,7 @@ class Run:
         self.gem = subprocess.Popen([PY, "-m", "clients.gem_host", "--listen", "--quiet", "--run-id", self.run_id],
                                     stdout=open(self.dir / "gem_host.out", "a"), stderr=subprocess.STDOUT)
         wait_for(lambda: log_has(self.dir / config.GEM_HOST_LOG_FILE, "status", t), 60, what="GEM host listening")
-        wait_for(lambda: RELAY_PORT in busy_ports(), 10, what="GEM relay port")
+        wait_for(lambda: RELAY_PORT in busy_ports((RELAY_PORT,)), 10, what="GEM relay port")
 
     def kill_gem(self) -> None:
         """Hard-kill the GEM host process (simulates a host crash / cable pull)."""

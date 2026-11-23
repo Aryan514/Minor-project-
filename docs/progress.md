@@ -227,3 +227,36 @@ refactored to share `seed_core`/`values_agree`/`APPLIERS` with the dashboard.
    (reader thread, no timeout); the server was fine.
 3. While cleaning up after a test I tried to kill every `python.exe`. The command was blocked as too broad. I then
    stopped only the dashboard by the PID that owned port 8080.
+
+## Wireshark capture + demo pacing
+
+**Built:** `demo.py --step-delay N` (D27; default 6 s, `--auto` only). The scenario runner's readiness check no longer
+connects to the HSMS port (D28). `results/demo_capture.pcapng` + `results/capture_summary.md`. README section.
+
+**Verified:**
+- Tools: TShark 4.6.10 at `D:\Wireshark\tshark.exe` (not in `C:\Program Files`). `tshark -D` entry 8 =
+  `\Device\NPF_Loopback` "Adapter for loopback traffic capture". A 3 s test capture worked without Administrator rights.
+- Capture: `tshark -i \Device\NPF_Loopback -f "tcp port 5000 or tcp port 4840" -w results\demo_capture.pcapng`
+  around `python -m harness.demo --web --auto`. tshark was stopped with Ctrl+Break (exit 0, 3837 packets, 509 996 bytes,
+  97.9 s). Demo overall PASS.
+- `-Y hsms` gave 0 frames, because Wireshark does not map port 5000 to HSMS. `-d tcp.port==5000,hsms -Y hsms` gave 300 frames =
+  290 data messages (S1F13 4, S1F3 2, S2F13 2, S2F33 16, S2F35 14, S2F37 16, S2F41 5, S5F3 2, S5F1 2, S6F11 82,
+  plus their replies) + 10 control messages (Select, Linktest, Separate).
+- `-Y opcua`: 1596 frames (Read 286, Publish 230, Browse 200, Call 1, CreateSubscription 1, …).
+- Decoded S6F11 frame 924 = DATAID 18, CEID 1007, EventSeq 18, EventTemp 24.972, identical to the GEM host's log
+  record seq 18. Decoded CallResponse: ServiceResult Good, method StatusCode BadUserAccessDenied. The simultaneous
+  START is visible on the wire: S2F41 START at .905177, HCACK 00 back, Call Start 3.5 ms later, refused.
+- Replay dashboard started on port 8081 (left running on purpose). GET / served the page; 10 s of `/events` carried
+  46 deltas (342 decisions, 375 events, 751 receipt marks) and 10 invariant updates.
+- `pytest`: 98 passed.
+
+**Problems:**
+1. **First capture attempt: the demo failed** ("timed out after 60 s waiting for GEM host listening"). The capture
+   itself showed why. The runner's readiness probe connected to port 5000 and closed within 1 ms (FIN, RST) while
+   secsgem was sending Select.req. That consumed the single HSMS session, and afterwards port 5000 answered every SYN
+   with RST, including the real GEM host's. The same probe had been harmless in earlier runs, so the Npcap loopback
+   capture's timing exposed a latent harness bug. Fix in the harness only: wait for the equipment's READY line, and never
+   probe the HSMS port of a running equipment (D28). The secsgem behaviour is recorded in `library_notes.md` Part E
+   and `limitations.md`. GEM door unchanged.
+2. A leftover `python.exe` after the failed attempt turned out to be an unrelated application of the user
+   (`cfm_station.py`). It was left alone, and process checks now look only at this project's ports and processes.
