@@ -83,3 +83,31 @@ instantiation), `equipment/opcua_adapter.py` (server door, methods Start/Stop/Se
    test were still alive. When `connect()` timed out they raised before disabling the handler, and secsgem's
    non-daemon connect thread kept retrying, grabbing the single HSMS session as soon as the equipment started.
    Fixed in `gem_host.py` (disable on failure, cleanup in `finally`). The leaked processes were killed.
+
+## CP4-dual
+
+**Built:** `harness/live_view.py` (rich three-column view: GEM host sees | Core (truth) | OPC UA client sees; tails
+the run's JSONL logs; disagreeing cells shown red). `gem_host --listen` now logs an initial S1F3 + S2F13 snapshot.
+README run instructions.
+
+**Verified** (run `cp4-dual`, scripted end-to-end check). Equipment + `gem_host --listen` + `ua_client --listen` running together:
+1. LOCAL: live view shows ControlState ONLINE_LOCAL / Authority OPERATOR / limit 40 identical in all three columns.
+2. Console `remote` → GEM START → HCACK 0. Alarm 5001 set in the core after 18.8 s at 40.18 °C.
+3. UA Start while REMOTE → `BadUserAccessDenied`. CEID 1005 (seq 93, origin UA_CLIENT, "authority held by GEM_HOST")
+   received by **both** clients.
+4. Live view at that moment: EXECUTING / GEM_HOST / Alarm SET / last seq 98 / same last rejection in all three columns.
+5. GEM STOP → HCACK 0. Alarm cleared after 6.5 s at 38.92 °C. Live view shows IDLE / clear in all columns.
+6. Log cross-check: GEM 42/42 and UA 42/42 events in their windows. Missing 0, duplicates 0, in order, 0 value
+   mismatches vs the core payload (1e-3). Alarm seqs 89/122 identical in core, GEM and UA.
+7. State changes visible on GEM within 1.3–14.5 ms (CEIDs 1001/1004/1002/1003) and on UA within 46–49 ms
+   (variable data changes, 50 ms publishing interval).
+8. `quit` → equipment exit code 0. No listening ports left (5000/4840/5100/5101).
+- `pytest`: 93 passed.
+
+**Problems:**
+1. The first verification run printed no live-view table. Cause: my verification script decoded the child's UTF-8
+   box-drawing output as cp1252. Fixed in the script (`encoding="utf-8"`). The view itself was fine.
+2. The core column could not show TempHighLimit before the first write, because the audit has only changes. The core
+   column is now seeded from `config.py` start values (D18), and the GEM snapshot now includes S2F13 (D19).
+3. The GEM temperature legitimately lags by up to 1 s (1 Hz events). The live-view tolerance for that row is now
+   1 °C, so a normal lag is not shown as a disagreement.

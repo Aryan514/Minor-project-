@@ -32,3 +32,16 @@ Living list. Every simplification, fallback or out-of-scope idea is recorded her
 ## Future work
 
 _(filled as items are deferred)_
+
+## Observed at CP4 (to be measured properly by the scenarios)
+
+- **GEM sees the temperature only at 1 Hz** (CEID 1007). OPC UA gets every 0.5 s sample as a data change. The
+  live view therefore allows 1 °C difference on the temperature row. Exact value agreement is checked per seq.
+- **UA latency is dominated by the subscription publishing interval** (50 ms in `ua_client`). CP4 run: UA p50 ≈ 37 ms
+  vs GEM p50 < 1 ms on loopback. This reflects the client's chosen interval, not protocol speed, and must not be
+  presented as "GEM is faster".
+- **Clock resolution:** latencies are `time.time_ns()` differences between processes on one machine. Windows clock
+  granularity makes values below ~1 ms unreliable.
+- **Report definitions outlive the host session** (secsgem keeps them in the equipment handler). A later host
+  session that did not define reports still receives S6F11 for the old ones. This is GEM-like behaviour, recorded
+  for the report-scope discussion (S6).

@@ -97,9 +97,11 @@ class GemHost:
                 return {"action": name, "value": value, "code": int(eac), "code_name": "EAC"}
             if name == "status":
                 svids = [sv.svid for sv in config.STATUS_VARIABLES]
-                values = self.handler.request_svs(svids)
-                return {"action": name, "code": 0,
-                        "values": {sv.name: _plain(v) for sv, v in zip(config.STATUS_VARIABLES, values)}}
+                values = self.handler.request_svs(svids)  # S1F3
+                result = {sv.name: _plain(v) for sv, v in zip(config.STATUS_VARIABLES, values)}
+                ecs = self.handler.request_ecs([ec.ecid for ec in config.EQUIPMENT_CONSTANTS])  # S2F13
+                result.update({ec.name: _plain(v) for ec, v in zip(config.EQUIPMENT_CONSTANTS, ecs)})
+                return {"action": name, "code": 0, "values": result}
             raise ValueError(f"unknown action {name}")
 
 
@@ -138,6 +140,10 @@ def listen(run_id: str, duration: Optional[float], echo: bool) -> None:
         host.connect()
         host.setup_reports()
         emit({"ts_ns": time.time_ns(), "kind": "listening", "id": None, "seq": None, "data": "reports defined"})
+        # GEM is event-driven: read the current SVs once (S1F3) so the host knows the starting state.
+        snapshot = host.action("status")
+        emit({"ts_ns": time.time_ns(), "kind": "status", "id": None,
+              "seq": snapshot["values"].get("LastEventSeq"), "data": snapshot["values"]})
         relay = _start_relay(host, run_id)
         print(f"GEM host listening (run_id={run_id})", flush=True)
         end = None if duration is None else time.monotonic() + duration
