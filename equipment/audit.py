@@ -112,3 +112,53 @@ class AuditLog:
             if self._file is not None:
                 self._file.close()
                 self._file = None
+
+
+class JsonlWriter:
+    """Thread-safe append-only JSONL file, flushed after every line.
+
+    Used for the adapters' send-side logs and the clients' receive-side logs (N3).
+    """
+
+    def __init__(self, path: Optional[Path]) -> None:
+        """Open `path` for appending (None = discard everything)."""
+        self._lock = threading.Lock()
+        self._file: Optional[TextIO] = None
+        if path is not None:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            self._file = open(path, "a", encoding="utf-8")  # noqa: SIM115 - closed in close()
+
+    def write(self, record: dict[str, Any]) -> None:
+        """Append one record as a JSON line."""
+        line = json.dumps(record, default=str)
+        with self._lock:
+            if self._file is not None:
+                self._file.write(line + "\n")
+                self._file.flush()
+
+    def close(self) -> None:
+        """Close the file."""
+        with self._lock:
+            if self._file is not None:
+                self._file.close()
+                self._file = None
+
+
+def run_dir_for(run_id: str, base: Optional[Path] = None) -> Path:
+    """Return runs/<run_id> (created if missing)."""
+    from equipment.config import RUNS_DIR
+
+    path = (base or Path.cwd()) / RUNS_DIR / run_id
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def latest_run_id(base: Optional[Path] = None) -> Optional[str]:
+    """The run id written by the last `equipment.main` start (runs/LATEST), if any."""
+    from equipment.config import RUNS_DIR
+
+    marker = (base or Path.cwd()) / RUNS_DIR / "LATEST"
+    try:
+        return marker.read_text(encoding="utf-8").strip() or None
+    except OSError:
+        return None

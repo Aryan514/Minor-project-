@@ -211,10 +211,30 @@ Three mechanisms exist; findings:
 | `server.subscribe_server_callback(CallbackType.PreWrite, fn)` | Called before the write with the request params; cannot veto or set per-node status. | No (cannot reject cleanly). |
 | Method `SetTempHighLimit(value)` | Per-call `ua.StatusCode` return (B.5). | Yes, reliable. |
 
-Decision deferred to CP2 with a quick test: preferred is the writable variable with
-`set_attribute_value_setter` (so UaExpert can write it directly) if the ServiceFault code reaches the client
-as the right `ua.UaStatusCodeError` subclass; otherwise make the variable read-only and expose
-`SetTempHighLimit(value)` (CLAUDE.md §8.2 fallback). Either way the write goes through `core.submit_ec_write`.
+**Decision (CP2, approved by the student): `TempHighLimit` is read-only and the only way to write it over
+OPC UA is the method `SetTempHighLimit(value: Double)`**, linked with `server.link_method` and implemented in
+`opcua_adapter.py` (`_set_limit_method`). It calls `core.submit_ec_write(UA_CLIENT, 201, value)` and returns the
+mapped per-call `ua.StatusCode` (`Good`, `BadUserAccessDenied`, `BadOutOfRange`, …). Why not the value setter:
+(1) a rejection would come back as a ServiceFault for the whole Write request, not as the per-node result a
+client expects; (2) the setter also fires for the server's own `write_value` calls, so every internal update
+would need a bypass flag, which is exactly the kind of hidden path rule 5 forbids; (3) the setter is synchronous
+and runs inside the event loop, so the core lock would block the UA server. The method has none of these
+problems. Verified at CP2: `--set-limit 99` → `BadOutOfRange`, `--set-limit 20` in LOCAL → `BadUserAccessDenied`.
+
+### B.8 Server internals used read-only
+
+- `server.iserver.subscription_service.subscriptions[*].monitored_item_srv._monitored_events` (dict keyed by the
+  emitting node id) is read by `OpcUaAdapter._has_event_subscriber()` to decide between `sent` and
+  `dropped_no_link` in the UA send-side log. Events are routed only to monitored items on the **emitting node**
+  (`MonitoredItemService.trigger_event`), so every event generator uses `emitting_node=Chamber1Tool` and sets
+  `SourceNode` separately (the alarm's `SourceNode` is `Alarms/ChamberOverTemp`).
+- `asyncua.common.instantiate_util.instantiate` copies child nodes but **not** their `HasModellingRule`
+  reference, so nested declarations would be skipped on the next instantiation. `opcua_model._mark_tree_mandatory`
+  marks the whole type tree Mandatory before instantiating.
+- `Server.create_custom_variable_type` calls `add_object_type` internally (it creates an ObjectType, not a
+  VariableType), so `GemMappedVariableType` is created with `Node.add_variable_type` instead.
+- Client side: event fields of a sub-variable arrive as attributes named with a slash, e.g.
+  `getattr(event, "ActiveState/Id")` (`common/events.py`, `Event.from_event_fields`).
 
 ### B.7 Client side (`client/client.py`, `common/subscription.py`) — for `clients/ua_client.py`
 

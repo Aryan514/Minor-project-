@@ -18,10 +18,16 @@ Living list. Every simplification, fallback or out-of-scope idea is recorded her
 
 - secsgem's built-in S2F41 / S2F15 / S1F15 / S1F17 handlers and `trigger_collection_events` are overridden
   or bypassed by the GEM adapter so that the core and arbiter stay the only authority.
-- asyncua 1.1.8 has no server-side Acknowledge/Confirm logic for Alarms & Conditions. The outcome of the
-  90-minute A&C time box will be recorded here at CP2.
-- Write interception for TempHighLimit: the final choice between a value setter and a method will be
-  recorded here at CP2.
+- **OPC UA alarm (A&C time box outcome, CP2): partial A&C.** ALID 5001 is sent as `GemOffNormalAlarmType` events
+  (a subtype of `OffNormalAlarmType` with `ALID` and `EventSeq`). They carry ActiveState/Id, Retain, ConditionName,
+  ConditionId (`NodeId` = `Alarms/ChamberOverTemp`), Severity and Message, and `ConditionRefresh` replays the active
+  alarm. **Not implemented:** the server-side condition state machine and the `Acknowledge`/`Confirm`/`Enable`
+  methods. asyncua 1.1.8 has no server logic for them, so a client calling Acknowledge gets `BadNothingToDo`.
+  `Alarms/ChamberOverTemp` is a plain object (ALID, AlarmText, Active), not a full `OffNormalAlarmType`
+  instance. The `GemAlarmEventType` fallback is in the model and is used automatically only if the A&C
+  event cannot be built.
+- **TempHighLimit over OPC UA** is read-only. Writes use the `SetTempHighLimit(value)` method (decision D10).
+  A generic UA client therefore cannot "write the variable"; it must call the method.
 
 ## Future work
 
