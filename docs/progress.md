@@ -260,3 +260,8 @@ connects to the HSMS port (D28). `results/demo_capture.pcapng` + `results/captur
    and `limitations.md`. GEM door unchanged.
 2. A leftover `python.exe` after the failed attempt turned out to be an unrelated application of the user
    (`cfm_station.py`). It was left alone, and process checks now look only at this project's ports and processes.
+- **Live demo watched by the student in the browser** (`python -m harness.demo --web --auto --step-delay 8 --no-browser`,
+  run `DEMO_20261124-024251`): alarm seq 148 identical on core, GEM (S5F1) and UA (EventSeq). Race: GEM HCACK 0 / UA
+  BadUserAccessDenied, loser's CEID 1005 (seq 184) received by both. LOCAL → HCACK 2. GEM host killed 10 s → 11 events
+  `dropped_no_link`. Checker: I1–I6 all PASS, overall PASS. Afterwards ports 5000/4840/5100/5101/8080 were free; only the
+  intentional replay dashboard (8081) and an unrelated user application were running.
