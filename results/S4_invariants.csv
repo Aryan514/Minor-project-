@@ -1,0 +1,14 @@
+scenario,run_id,invariant,side,status,detail
+S4,S4_20261124-005157,I1,GEM,PASS,"expected 43, received 43, missing 0, duplicates 0"
+S4,S4_20261124-005157,I1,UA,PASS,"expected 43, received 43, missing 0, duplicates 0"
+S4,S4_20261124-005157,I2,GEM,PASS,"47 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S4,S4_20261124-005157,I2,UA,PASS,"47 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S4,S4_20261124-005157,I3,GEM,PASS,"47 compared, 0 mismatches"
+S4,S4_20261124-005157,I3,UA,PASS,"47 compared, 0 mismatches"
+S4,S4_20261124-005157,I4,GEM,PASS,"28 changes, max 13.4 ms"
+S4,S4_20261124-005157,I4,UA,PASS,"27 changes, max 70.9 ms; 1 same-value EC re-write(s): no UA notification by design, client already held the core value"
+S4,S4_20261124-005157,I5,both,PASS,"10 rounds, 10 clean; request from GEM reached the core first in 10/10 rounds"
+S4,S4_20261124-005157,I6,GEM,PASS,0 of 43 window events not received; causes {}
+S4,S4_20261124-005157,I6,UA,PASS,0 of 43 window events not received; causes {}
+S4,S4_20261124-005157,latency,GEM,INFO,"{""n"": 43, ""p50_ms"": 2.0, ""p95_ms"": 6.16, ""max_ms"": 13.45}"
+S4,S4_20261124-005157,latency,UA,INFO,"{""n"": 43, ""p50_ms"": 37.65, ""p95_ms"": 69.01, ""max_ms"": 71.91}"

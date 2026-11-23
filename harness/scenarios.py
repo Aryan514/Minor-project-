@@ -285,7 +285,7 @@ class Run:
             wait_for(lambda: not busy_ports(), 15, what="ports to be released")
         except TimeoutError:
             print(f"  [{self.scenario}] WARNING ports still busy: {busy_ports()}", flush=True)
-        (self.dir / "scenario.json").write_text(json.dumps(self.meta, indent=1), encoding="utf-8")
+        (self.dir / "scenario.json").write_text(json.dumps(self.meta, indent=1, default=str), encoding="utf-8")
 
     # ---- helpers for scenario bodies
     def ctl(self, cmd: str) -> str:
@@ -424,6 +424,7 @@ def s6(run: Run) -> None:
     run.phase("GEM host redefines report 1007 = [EventSeq] only")
     t_redef = time.time_ns()
     r = GemRelay.call("set-report", ceid=config.CEID_TEMP_SAMPLE, vids=[config.DVID_EVENT_SEQ])
+    t_done = time.time_ns()  # events received between t_redef and t_done may use either report: not compared
     run.check("set-report accepted", r.get("code") == 0, r)
     # A second, independent UA subscription that selects ONLY two fields: per-client filtering in UA.
     narrow = run.ua.run(_narrow_subscription)
@@ -441,9 +442,10 @@ def s6(run: Run) -> None:
         return out
 
     gb, ga, ub, uaf = field_sets("GEM", True), field_sets("GEM", False), field_sets("UA", True), field_sets("UA", False)
-    run.check("GEM CEID 1007 fields before redefinition = {101, 102}", gb == {("101", "102")}, gb)
-    run.check("GEM CEID 1007 fields after redefinition = {101}", ga == {("101",)}, ga)
-    run.check("UA listener CEID 1007 fields unchanged {101, 102}", ub == uaf == {("101", "102")}, f"before {ub}, after {uaf}")
+    run.check("GEM CEID 1007 fields before redefinition = {101, 102}", gb == {("101", "102")}, sorted(gb))
+    run.check("GEM CEID 1007 fields after redefinition = {101}", ga == {("101",)}, sorted(ga))
+    run.check("UA listener CEID 1007 fields unchanged {101, 102}", ub == uaf == {("101", "102")},
+              f"before {sorted(ub)}, after {sorted(uaf)}")
     run.check("2nd UA subscription received only the 2 fields it selected", narrow_fields.get("ok", False), narrow_fields)
     run.meta["findings"].append(
         "GEM report definitions (S2F33/35/37) live on the equipment and apply to the GEM interface as a whole: the "
@@ -480,6 +482,33 @@ async def _narrow_result(sess: UaSession, narrow: dict[str, Any]) -> dict[str, A
     return {"ok": bool(got) and fields == ["CEID", "EventSeq"], "events": len(got), "fields": fields}
 
 
+def s5_post(meta: dict[str, Any], results: list[checker.Result]) -> None:
+    """S5 expected finding, judged from the checker's I6 attribution."""
+    i6 = {r.side: r for r in results if r.invariant == "I6"}
+    gem, uax = i6["GEM"].metrics, i6["UA"].metrics
+    gem_ok = gem["lost"] > 0 and not gem["unexplained"] and set(gem["causes"]) <= {"dropped_no_link", "dropped_disabled", "error"}
+    meta["checks"].append({"name": "GEM missed the gap's events, every loss attributed by the GEM send log",
+                           "pass": gem_ok, "detail": gem["causes"]})
+    meta["checks"].append({"name": "UA missed no event", "pass": uax["lost"] == 0, "detail": uax["causes"]})
+    meta["findings"].append(
+        f"No spooling: while the GEM host was down the GEM door dropped {gem['lost']} events "
+        f"({gem['causes']}); after reconnection they were NOT re-sent. The UA client, unaffected, missed {uax['lost']}.")
+
+
+def s4_post(meta: dict[str, Any], results: list[checker.Result]) -> None:
+    """S4 finding: same-value EC writes are events in GEM but invisible to a UA data-change subscription."""
+    i4 = {r.side: r for r in results if r.invariant == "I4"}
+    n = i4["UA"].metrics.get("noop_writes", 0) if i4["UA"].metrics else 0
+    if n:
+        meta["findings"].append(
+            f"Semantic mismatch: {n} accepted EC write(s) re-wrote TempHighLimit with the value it already had. "
+            "GEM reported each one as CEID 1006 (an event per accepted write). The OPC UA client got no data-change "
+            "notification (default DataChangeTrigger StatusValue reports value changes only), so a UA client cannot "
+            "observe such a write through the variable. The core and both sides still agreed on the value (I4 PASS).")
+
+
+POST: dict[str, Callable[[dict[str, Any], list[checker.Result]], None]] = {"S4": s4_post, "S5": s5_post}
+
 SCENARIOS: dict[str, tuple[Callable[[Run], None], str]] = {
     "S1": (s1, "Normal operation: 60 s idle in ONLINE_LOCAL with periodic CEID 1007 (1 Hz)."),
     "S2": (s2, "Alarm: REMOTE, GEM START, wait for ALID 5001 set, GEM STOP, wait for clear."),
@@ -509,6 +538,10 @@ def run_scenario(name: str, out_dir: Path) -> tuple[str, list[checker.Result], P
         run.stop()
     data = checker.RunData.load(run.dir)
     results = checker.check_run(data)
+    if name in POST:  # scenario-specific checks that need the checker's results
+        POST[name](run.meta, results)
+        (run.dir / "scenario.json").write_text(json.dumps(run.meta, indent=1, default=str), encoding="utf-8")
+        data = checker.RunData.load(run.dir)
     md = checker.write_reports(data, results, out_dir)
     checks_ok = all(c["pass"] for c in run.meta["checks"])
     verdict = "PASS" if checker.overall(results) == "PASS" and checks_ok else "FAIL"

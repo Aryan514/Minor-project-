@@ -231,15 +231,29 @@ def state_changes(run: RunData) -> list[dict[str, Any]]:
     """Core state changes in the window that clients can observe."""
     t0, t1 = run.window()
     out = []
+    limit = config.equipment_constant(config.ECID_TEMP_HIGH_LIMIT).default  # core start value
     for r in run.audit:
+        if r["kind"] == "ec_write":
+            noop = _num_equal(r["value"], limit)
+            limit = r["value"]
         if not (t0 <= r["ts_ns"] <= t1):
             continue
         if (r["kind"] == "state" and r["id"] in _STATE_KEYS) or r["kind"] == "authority":
             out.append({"key": r["id"], "value": r["value"], "seq": r["seq"], "ts_ns": r["ts_ns"],
                         "num": r.get("extra", {}).get("id")})
         elif r["kind"] == "ec_write":
-            out.append({"key": "TempHighLimit", "value": r["value"], "seq": r["seq"], "ts_ns": r["ts_ns"], "num": None})
+            out.append({"key": "TempHighLimit", "value": r["value"], "seq": r["seq"], "ts_ns": r["ts_ns"], "num": None,
+                        "noop": noop})
     return out
+
+
+def _ua_last_value(run: RunData, key: str, until_ns: int) -> Any:
+    """Last value of a UA variable the client had received up to `until_ns`."""
+    last = None
+    for r in run.client["UA"]:
+        if r.get("kind") == "data" and r.get("id") == key and r["ts_ns"] <= until_ns:
+            last = r["data"]["value"]
+    return last
 
 
 def _gem_observation(run: RunData, ch: dict[str, Any]) -> Optional[int]:
@@ -283,8 +297,20 @@ def check_i4(run: RunData) -> list[Result]:
     for side in SIDES:
         observe = _gem_observation if side == "GEM" else _ua_observation
         lat, late, never = [], [], []
-        for ch in changes:
+        noop_ok, noop_bad = 0, []
+        for k, ch in enumerate(changes):
             if not run.in_session(side, ch["ts_ns"], margin_ns=limit_ns):
+                continue
+            if side == "UA" and ch.get("noop"):
+                # the value the client holds until the next change of the same variable (or T), whichever is first
+                nxt = next((c["ts_ns"] for c in changes[k + 1:] if c["key"] == ch["key"]), ch["ts_ns"] + limit_ns)
+                until = min(nxt - 1, ch["ts_ns"] + limit_ns)
+                # Re-write of the SAME value: not a state change. OPC UA (DataChangeTrigger StatusValue) sends
+                # no notification for it, so convergence means: the value the client already holds is right.
+                if _num_equal(_ua_last_value(run, ch["key"], until), ch["value"]):
+                    noop_ok += 1
+                else:
+                    noop_bad.append(f"seq {ch['seq']} {ch['key']}={ch['value']} (no-op write, client value differs)")
                 continue
             t = observe(run, ch)
             if t is None:
@@ -294,16 +320,20 @@ def check_i4(run: RunData) -> list[Result]:
             lat.append(ms)
             if ms > config.STATE_CONVERGENCE_T_MS:
                 late.append(f"seq {ch['seq']} {ch['key']} after {ms:.0f} ms")
-        if not lat and not never:
+        never += noop_bad
+        if not lat and not never and not noop_ok:
             results.append(Result("I4", side, "N/A", "no state change while the client listened"))
             continue
         ok = not late and not never
         detail = (f"{len(lat) + len(never)} changes, max {max(lat):.1f} ms" if lat else f"{len(never)} changes")
+        if noop_ok:
+            detail += (f"; {noop_ok} same-value EC re-write(s): no UA notification by design, "
+                       "client already held the core value")
         if late or never:
             detail += f"; late {late[:3]}; never {never[:3]}"
         results.append(Result("I4", side, "PASS" if ok else "FAIL", detail,
                               {"changes": len(lat) + len(never), "max_ms": max(lat) if lat else None,
-                               "late": late, "never": never}))
+                               "late": late, "never": never, "noop_writes": noop_ok}))
     return results
 
 

@@ -137,3 +137,35 @@ stop, session markers `connecting`/`stopped` in both client logs, robust S6F11 d
    checker's time window therefore also caught the STOP. There was no double acceptance: the replies were clean in
    50/50 rounds. Root-cause fix in the checker: rounds are anchored on the core seq read before the barrier (D21).
    The invariant was not weakened, and the self-test proves a real double winner is still flagged.
+
+## CP6-scenarios
+
+**Built:** scenarios S5 (GEM host hard-killed for 10 s and restarted), S1 (60 s normal), S4 (10 barrier rounds of
+EC conflict + OFFLINE/lease phase), S6 (GEM report redefinition + a second, narrow UA subscription), post-checks
+for S4/S5, `results/summary.md` overview, latency p50/p95/max with the caveat in every summary.
+
+**Verified:** `python -m harness.scenarios all` (one invocation for S3, S2, S5, S1, S4) + S6 rerun after a check fix.
+All 11 invariant cells PASS or N/A for every scenario. Scenario checks 4/4, 5/5, 2/2, 10/10, 5/5.
+- S5: the equipment detected the dead link 136 ms after the kill. The GEM door dropped 11 events, all logged
+  `dropped_no_link`, and did not re-send them after reconnection (no spooling). UA missed 0. I6 PASS on both sides,
+  meaning every loss is attributed.
+- S4: REMOTE conflict 10/10 GEM wins, final limit 35 in core, GEM (S2F13) and UA. Leased UA write 45 → Good, GEM saw
+  CEID 1006 with 201=45, GEM write → EAC 2.
+- S6: GEM CEID 1007 fields {101,102} → {101} after the host's redefinition. The UA listener stayed at {101,102}, and a second UA
+  subscription with an EventFilter got only {CEID, EventSeq}.
+- Latency p50 GEM 0–2 ms, UA 38–69 ms (50 ms publishing interval); details in each `results/S*_summary.md`.
+- `pytest` 95 passed. Checker self-test re-run on the refreshed sample run: all 6 rows OK.
+
+**Problems / findings:**
+1. **S4 I4 UA FAIL on first run**, "seq 18 TempHighLimit=40.0 never observed". Root cause: the first reset wrote 40.0
+   while the limit already was 40.0. GEM reports every accepted write (CEID 1006), but OPC UA's default
+   DataChangeTrigger (StatusValue) sends no notification when the value does not change. **This is a real semantic
+   mismatch, recorded as a finding** (S4 summary, `docs/mapping.md`). I4 was refined, not relaxed: a same-value
+   write is not a state change, so for UA the check becomes "the value the client holds equals the core value". That
+   is still checked, and a wrong value still fails. The first refinement looked up the value too late (it saw the next
+   round's real change). Fixed by bounding the lookup at the next change of the same variable.
+2. **S6 crashed while saving scenario.json** (a Python `set` in a check detail is not JSON). Fixed (`sorted(...)`,
+   `default=str`). Processes and ports had still been cleaned up.
+3. **S6 check failed once** (one CEID 1007 with the old report counted as "after"). Cause: the check split the events at
+   the moment the redefinition was *requested*, so an event already in flight was misclassified. Fixed by comparing
+   only events received before the request and after the redefinition completed.

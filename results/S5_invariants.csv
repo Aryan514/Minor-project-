@@ -1,0 +1,14 @@
+scenario,run_id,invariant,side,status,detail
+S5,S5_20261124-004956,I1,GEM,PASS,"expected 22, received 22, missing 0, duplicates 0"
+S5,S5_20261124-004956,I1,UA,PASS,"expected 33, received 33, missing 0, duplicates 0"
+S5,S5_20261124-004956,I2,GEM,PASS,"27 received, inversions 0, adjacent duplicates 0, gaps 1 (gaps are judged by I1/I6)"
+S5,S5_20261124-004956,I2,UA,PASS,"36 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S5,S5_20261124-004956,I3,GEM,PASS,"27 compared, 0 mismatches"
+S5,S5_20261124-004956,I3,UA,PASS,"36 compared, 0 mismatches"
+S5,S5_20261124-004956,I4,GEM,N/A,no state change while the client listened
+S5,S5_20261124-004956,I4,UA,N/A,no state change while the client listened
+S5,S5_20261124-004956,I5,both,N/A,no conflict rounds in this scenario
+S5,S5_20261124-004956,I6,GEM,PASS,11 of 33 window events not received; causes {'dropped_no_link': 11}
+S5,S5_20261124-004956,I6,UA,PASS,0 of 33 window events not received; causes {}
+S5,S5_20261124-004956,latency,GEM,INFO,"{""n"": 22, ""p50_ms"": 0.0, ""p95_ms"": 1.71, ""max_ms"": 2.0}"
+S5,S5_20261124-004956,latency,UA,INFO,"{""n"": 33, ""p50_ms"": 50.75, ""p95_ms"": 67.37, ""max_ms"": 75.17}"

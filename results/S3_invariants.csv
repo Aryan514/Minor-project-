@@ -1,14 +1,14 @@
 scenario,run_id,invariant,side,status,detail
-S3,S3_20261124-004213,I1,GEM,PASS,"expected 163, received 163, missing 0, duplicates 0"
-S3,S3_20261124-004213,I1,UA,PASS,"expected 163, received 163, missing 0, duplicates 0"
-S3,S3_20261124-004213,I2,GEM,PASS,"167 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
-S3,S3_20261124-004213,I2,UA,PASS,"166 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
-S3,S3_20261124-004213,I3,GEM,PASS,"167 compared, 0 mismatches"
-S3,S3_20261124-004213,I3,UA,PASS,"166 compared, 0 mismatches"
-S3,S3_20261124-004213,I4,GEM,PASS,"104 changes, max 14.4 ms"
-S3,S3_20261124-004213,I4,UA,PASS,"104 changes, max 89.4 ms"
-S3,S3_20261124-004213,I5,both,PASS,"50 rounds, 50 clean; request from GEM reached the core first in 47/50 rounds"
-S3,S3_20261124-004213,I6,GEM,PASS,0 of 163 window events not received; causes {}
-S3,S3_20261124-004213,I6,UA,PASS,0 of 163 window events not received; causes {}
-S3,S3_20261124-004213,latency,GEM,INFO,"{""n"": 163, ""p50_ms"": 0.0, ""p95_ms"": 8.16, ""max_ms"": 14.44}"
-S3,S3_20261124-004213,latency,UA,INFO,"{""n"": 163, ""p50_ms"": 52.79, ""p95_ms"": 78.16, ""max_ms"": 89.38}"
+S3,S3_20261124-004854,I1,GEM,PASS,"expected 163, received 163, missing 0, duplicates 0"
+S3,S3_20261124-004854,I1,UA,PASS,"expected 163, received 163, missing 0, duplicates 0"
+S3,S3_20261124-004854,I2,GEM,PASS,"167 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S3,S3_20261124-004854,I2,UA,PASS,"165 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S3,S3_20261124-004854,I3,GEM,PASS,"167 compared, 0 mismatches"
+S3,S3_20261124-004854,I3,UA,PASS,"165 compared, 0 mismatches"
+S3,S3_20261124-004854,I4,GEM,PASS,"104 changes, max 17.1 ms"
+S3,S3_20261124-004854,I4,UA,PASS,"104 changes, max 90.7 ms"
+S3,S3_20261124-004854,I5,both,PASS,"50 rounds, 50 clean; request from GEM reached the core first in 47/50 rounds"
+S3,S3_20261124-004854,I6,GEM,PASS,0 of 163 window events not received; causes {}
+S3,S3_20261124-004854,I6,UA,PASS,0 of 163 window events not received; causes {}
+S3,S3_20261124-004854,latency,GEM,INFO,"{""n"": 163, ""p50_ms"": 0.0, ""p95_ms"": 7.82, ""max_ms"": 17.08}"
+S3,S3_20261124-004854,latency,UA,INFO,"{""n"": 163, ""p50_ms"": 46.97, ""p95_ms"": 75.23, ""max_ms"": 90.69}"

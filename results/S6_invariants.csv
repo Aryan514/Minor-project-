@@ -1,0 +1,14 @@
+scenario,run_id,invariant,side,status,detail
+S6,S6_20261124-005257,I1,GEM,PASS,"expected 18, received 18, missing 0, duplicates 0"
+S6,S6_20261124-005257,I1,UA,PASS,"expected 18, received 18, missing 0, duplicates 0"
+S6,S6_20261124-005257,I2,GEM,PASS,"22 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S6,S6_20261124-005257,I2,UA,PASS,"22 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)"
+S6,S6_20261124-005257,I3,GEM,PASS,"22 compared, 0 mismatches; report fields absent (not values that disagree): {1007: 12} per CEID"
+S6,S6_20261124-005257,I3,UA,PASS,"22 compared, 0 mismatches"
+S6,S6_20261124-005257,I4,GEM,N/A,no state change while the client listened
+S6,S6_20261124-005257,I4,UA,N/A,no state change while the client listened
+S6,S6_20261124-005257,I5,both,N/A,no conflict rounds in this scenario
+S6,S6_20261124-005257,I6,GEM,PASS,0 of 18 window events not received; causes {}
+S6,S6_20261124-005257,I6,UA,PASS,0 of 18 window events not received; causes {}
+S6,S6_20261124-005257,latency,GEM,INFO,"{""n"": 18, ""p50_ms"": 0.0, ""p95_ms"": 2.07, ""max_ms"": 2.75}"
+S6,S6_20261124-005257,latency,UA,INFO,"{""n"": 18, ""p50_ms"": 69.38, ""p95_ms"": 71.72, ""max_ms"": 74.84}"

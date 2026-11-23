@@ -1,572 +1,570 @@
-{"ts_ns": 1795461139550971700, "kind": "connecting", "id": null, "seq": null, "data": 20840}
-{"ts_ns": 1795461139565598000, "kind": "data", "id": "ControlState", "seq": null, "data": {"value": "ONLINE_LOCAL", "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139565598000, "kind": "data", "id": "ControlStateId", "seq": null, "data": {"value": 4, "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139565598000, "kind": "data", "id": "Authority", "seq": null, "data": {"value": "OPERATOR", "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139565598000, "kind": "data", "id": "CommunicationState", "seq": null, "data": {"value": "COMMUNICATING", "source_ts_ns": 1795461138495812864}}
-{"ts_ns": 1795461139565598000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 9, "source_ts_ns": 1795461139534518016}}
-{"ts_ns": 1795461139578136600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139578136600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139578136600, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.024, "source_ts_ns": 1795461139534518016}}
-{"ts_ns": 1795461139578136600, "kind": "data", "id": "TempHighLimit", "seq": null, "data": {"value": 40.0, "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139578136600, "kind": "data", "id": "AlarmActive", "seq": null, "data": {"value": false, "source_ts_ns": 1795461137397968128}}
-{"ts_ns": 1795461139672731900, "kind": "listening", "id": null, "seq": null, "data": "opc.tcp://127.0.0.1:4840/semi-equipment/"}
-{"ts_ns": 1795461140067405000, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.018, "source_ts_ns": 1795461140025571072}}
-{"ts_ns": 1795461140577521200, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.039, "source_ts_ns": 1795461140524604160}}
-{"ts_ns": 1795461140586568900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 12, "source_ts_ns": 1795461140525084928}}
-{"ts_ns": 1795461140590912500, "kind": "event", "id": 1007, "seq": 12, "data": {"origin": "EQUIPMENT", "payload": {"101": 12, "102": 25.039}, "time_ns": 1795461140525084928}}
-{"ts_ns": 1795461140791731800, "kind": "data", "id": "ControlState", "seq": null, "data": {"value": "ONLINE_REMOTE", "source_ts_ns": 1795461140758862848}}
-{"ts_ns": 1795461140791731800, "kind": "data", "id": "ControlStateId", "seq": null, "data": {"value": 5, "source_ts_ns": 1795461140758862848}}
-{"ts_ns": 1795461140791731800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 15, "source_ts_ns": 1795461140758862848}}
-{"ts_ns": 1795461140791731800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 17, "source_ts_ns": 1795461140758862848}}
-{"ts_ns": 1795461140791731800, "kind": "data", "id": "Authority", "seq": null, "data": {"value": "GEM_HOST", "source_ts_ns": 1795461140758862848}}
-{"ts_ns": 1795461140791731800, "kind": "event", "id": 1001, "seq": 15, "data": {"origin": "OPERATOR", "payload": {"101": 15, "104": "OPERATOR", "2": 5}, "time_ns": 1795461140758862848}}
-{"ts_ns": 1795461140791731800, "kind": "event", "id": 1004, "seq": 17, "data": {"origin": "OPERATOR", "payload": {"101": 17, "104": "OPERATOR", "4": "GEM_HOST"}, "time_ns": 1795461140758862848}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461140791731968}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461140825421056}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461140791731968}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461140825421056}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 20, "source_ts_ns": 1795461140791731968}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 22, "source_ts_ns": 1795461140791731968}}
-{"ts_ns": 1795461140866667000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 25, "source_ts_ns": 1795461140825421056}}
-{"ts_ns": 1795461140866667000, "kind": "event", "id": 1002, "seq": 20, "data": {"origin": "GEM_HOST", "payload": {"101": 20, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461140791731968}}
-{"ts_ns": 1795461140866667000, "kind": "event", "id": 1005, "seq": 22, "data": {"origin": "UA_CLIENT", "payload": {"101": 22, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461140791731968}}
-{"ts_ns": 1795461140866667000, "kind": "event", "id": 1003, "seq": 25, "data": {"origin": "GEM_HOST", "payload": {"101": 25, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461140825421056}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461140925286144}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461140932180992}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461140925286144}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461140932180992}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 28, "source_ts_ns": 1795461140925286144}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 30, "source_ts_ns": 1795461140925286144}}
-{"ts_ns": 1795461140967185600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 33, "source_ts_ns": 1795461140932180992}}
-{"ts_ns": 1795461140967185600, "kind": "event", "id": 1002, "seq": 28, "data": {"origin": "GEM_HOST", "payload": {"101": 28, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461140925286144}}
-{"ts_ns": 1795461140967185600, "kind": "event", "id": 1005, "seq": 30, "data": {"origin": "UA_CLIENT", "payload": {"101": 30, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461140925286144}}
-{"ts_ns": 1795461140967185600, "kind": "event", "id": 1003, "seq": 33, "data": {"origin": "GEM_HOST", "payload": {"101": 33, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461140932180992}}
-{"ts_ns": 1795461141058444700, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.959, "source_ts_ns": 1795461141025543936}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141058445056}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141076198144}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141058445056}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141076198144}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 37, "source_ts_ns": 1795461141058445056}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 39, "source_ts_ns": 1795461141058445056}}
-{"ts_ns": 1795461141125508300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 42, "source_ts_ns": 1795461141076198144}}
-{"ts_ns": 1795461141125508300, "kind": "event", "id": 1002, "seq": 37, "data": {"origin": "GEM_HOST", "payload": {"101": 37, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141058445056}}
-{"ts_ns": 1795461141125508300, "kind": "event", "id": 1005, "seq": 39, "data": {"origin": "UA_CLIENT", "payload": {"101": 39, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141058445056}}
-{"ts_ns": 1795461141125508300, "kind": "event", "id": 1003, "seq": 42, "data": {"origin": "GEM_HOST", "payload": {"101": 42, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141076198144}}
-{"ts_ns": 1795461141208383500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141183682048}}
-{"ts_ns": 1795461141208383500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141183682048}}
-{"ts_ns": 1795461141208383500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 45, "source_ts_ns": 1795461141183682048}}
-{"ts_ns": 1795461141208383500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 47, "source_ts_ns": 1795461141183682048}}
-{"ts_ns": 1795461141208383500, "kind": "event", "id": 1002, "seq": 45, "data": {"origin": "GEM_HOST", "payload": {"101": 45, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141183682048}}
-{"ts_ns": 1795461141208383500, "kind": "event", "id": 1005, "seq": 47, "data": {"origin": "UA_CLIENT", "payload": {"101": 47, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141183682048}}
-{"ts_ns": 1795461141272049100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141203013888}}
-{"ts_ns": 1795461141272049100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141203013888}}
-{"ts_ns": 1795461141272049100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 50, "source_ts_ns": 1795461141203013888}}
-{"ts_ns": 1795461141272049100, "kind": "event", "id": 1003, "seq": 50, "data": {"origin": "GEM_HOST", "payload": {"101": 50, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141203013888}}
-{"ts_ns": 1795461141367291900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141291013888}}
-{"ts_ns": 1795461141370983800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141307610112}}
-{"ts_ns": 1795461141370983800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141291013888}}
-{"ts_ns": 1795461141370983800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141307610112}}
-{"ts_ns": 1795461141370983800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 53, "source_ts_ns": 1795461141291013888}}
-{"ts_ns": 1795461141370983800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 55, "source_ts_ns": 1795461141292818944}}
-{"ts_ns": 1795461141370983800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 58, "source_ts_ns": 1795461141307610112}}
-{"ts_ns": 1795461141370983800, "kind": "event", "id": 1002, "seq": 53, "data": {"origin": "GEM_HOST", "payload": {"101": 53, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141291013888}}
-{"ts_ns": 1795461141370983800, "kind": "event", "id": 1005, "seq": 55, "data": {"origin": "UA_CLIENT", "payload": {"101": 55, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141292818944}}
-{"ts_ns": 1795461141370983800, "kind": "event", "id": 1003, "seq": 58, "data": {"origin": "GEM_HOST", "payload": {"101": 58, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141307610112}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141426189056}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141442183936}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141426189056}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141442183936}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 61, "source_ts_ns": 1795461141426189056}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 63, "source_ts_ns": 1795461141426189056}}
-{"ts_ns": 1795461141474941400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 66, "source_ts_ns": 1795461141442183936}}
-{"ts_ns": 1795461141474941400, "kind": "event", "id": 1002, "seq": 61, "data": {"origin": "GEM_HOST", "payload": {"101": 61, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141426189056}}
-{"ts_ns": 1795461141474941400, "kind": "event", "id": 1005, "seq": 63, "data": {"origin": "UA_CLIENT", "payload": {"101": 63, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141426189056}}
-{"ts_ns": 1795461141474941400, "kind": "event", "id": 1003, "seq": 66, "data": {"origin": "GEM_HOST", "payload": {"101": 66, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461141442183936}}
-{"ts_ns": 1795461141520593100, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.992, "source_ts_ns": 1795461141517833984}}
-{"ts_ns": 1795461141553765600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 68, "source_ts_ns": 1795461141517833984}}
-{"ts_ns": 1795461141553765600, "kind": "event", "id": 1007, "seq": 68, "data": {"origin": "EQUIPMENT", "payload": {"101": 68, "102": 24.992}, "time_ns": 1795461141517833984}}
-{"ts_ns": 1795461141620886800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141553765888}}
-{"ts_ns": 1795461141620886800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141575319040}}
-{"ts_ns": 1795461141624739100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141553765888}}
-{"ts_ns": 1795461141624739100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141575319040}}
-{"ts_ns": 1795461141624739100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 71, "source_ts_ns": 1795461141553765888}}
-{"ts_ns": 1795461141624739100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 73, "source_ts_ns": 1795461141557682944}}
-{"ts_ns": 1795461141624739100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 76, "source_ts_ns": 1795461141575319040}}
-{"ts_ns": 1795461141625063700, "kind": "event", "id": 1002, "seq": 71, "data": {"origin": "GEM_HOST", "payload": {"101": 71, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141553765888}}
-{"ts_ns": 1795461141625063700, "kind": "event", "id": 1005, "seq": 73, "data": {"origin": "UA_CLIENT", "payload": {"101": 73, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141557682944}}
-{"ts_ns": 1795461141625063700, "kind": "event", "id": 1003, "seq": 76, "data": {"origin": "GEM_HOST", "payload": {"101": 76, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141575319040}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141666619136}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141674779904}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141666619136}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141674779904}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 79, "source_ts_ns": 1795461141666619136}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 81, "source_ts_ns": 1795461141666619136}}
-{"ts_ns": 1795461141720804500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 84, "source_ts_ns": 1795461141674779904}}
-{"ts_ns": 1795461141723622300, "kind": "event", "id": 1002, "seq": 79, "data": {"origin": "GEM_HOST", "payload": {"101": 79, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141666619136}}
-{"ts_ns": 1795461141723622300, "kind": "event", "id": 1005, "seq": 81, "data": {"origin": "UA_CLIENT", "payload": {"101": 81, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141666619136}}
-{"ts_ns": 1795461141723622300, "kind": "event", "id": 1003, "seq": 84, "data": {"origin": "GEM_HOST", "payload": {"101": 84, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141674779904}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 86, "source_ts_ns": 1795461141774225920}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 89, "source_ts_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 92, "source_ts_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "event", "id": 1005, "seq": 86, "data": {"origin": "UA_CLIENT", "payload": {"101": 86, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141774225920}}
-{"ts_ns": 1795461141808831900, "kind": "event", "id": 1002, "seq": 89, "data": {"origin": "GEM_HOST", "payload": {"101": 89, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141774800128}}
-{"ts_ns": 1795461141808831900, "kind": "event", "id": 1003, "seq": 92, "data": {"origin": "GEM_HOST", "payload": {"101": 92, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141774800128}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141869300992}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461141892183040}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141869300992}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461141892183040}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 95, "source_ts_ns": 1795461141869300992}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 97, "source_ts_ns": 1795461141869300992}}
-{"ts_ns": 1795461141924854100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 100, "source_ts_ns": 1795461141892183040}}
-{"ts_ns": 1795461141924854100, "kind": "event", "id": 1002, "seq": 95, "data": {"origin": "GEM_HOST", "payload": {"101": 95, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141869300992}}
-{"ts_ns": 1795461141924854100, "kind": "event", "id": 1005, "seq": 97, "data": {"origin": "UA_CLIENT", "payload": {"101": 97, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141869300992}}
-{"ts_ns": 1795461141924854100, "kind": "event", "id": 1003, "seq": 100, "data": {"origin": "GEM_HOST", "payload": {"101": 100, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141892183040}}
-{"ts_ns": 1795461141999405000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461141992090112}}
-{"ts_ns": 1795461141999405000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461141992090112}}
-{"ts_ns": 1795461141999405000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 103, "source_ts_ns": 1795461141992090112}}
-{"ts_ns": 1795461141999405000, "kind": "event", "id": 1002, "seq": 103, "data": {"origin": "GEM_HOST", "payload": {"101": 103, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461141992090112}}
-{"ts_ns": 1795461142075640800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 105, "source_ts_ns": 1795461141992090112}}
-{"ts_ns": 1795461142075640800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 108, "source_ts_ns": 1795461142009363968}}
-{"ts_ns": 1795461142075640800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142009363968}}
-{"ts_ns": 1795461142075640800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142009363968}}
-{"ts_ns": 1795461142075640800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.953, "source_ts_ns": 1795461142023459840}}
-{"ts_ns": 1795461142075640800, "kind": "event", "id": 1005, "seq": 105, "data": {"origin": "UA_CLIENT", "payload": {"101": 105, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461141992090112}}
-{"ts_ns": 1795461142075640800, "kind": "event", "id": 1003, "seq": 108, "data": {"origin": "GEM_HOST", "payload": {"101": 108, "104": "GEM_HOST", "102": 24.992}, "time_ns": 1795461142009363968}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142109002240}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142124605952}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142109002240}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142124605952}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 112, "source_ts_ns": 1795461142109002240}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 114, "source_ts_ns": 1795461142109002240}}
-{"ts_ns": 1795461142171088900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 117, "source_ts_ns": 1795461142124605952}}
-{"ts_ns": 1795461142171088900, "kind": "event", "id": 1002, "seq": 112, "data": {"origin": "GEM_HOST", "payload": {"101": 112, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142109002240}}
-{"ts_ns": 1795461142171088900, "kind": "event", "id": 1005, "seq": 114, "data": {"origin": "UA_CLIENT", "payload": {"101": 114, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142109002240}}
-{"ts_ns": 1795461142171088900, "kind": "event", "id": 1003, "seq": 117, "data": {"origin": "GEM_HOST", "payload": {"101": 117, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142124605952}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142250951936}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142259604992}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142250951936}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142259604992}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 120, "source_ts_ns": 1795461142250951936}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 122, "source_ts_ns": 1795461142250951936}}
-{"ts_ns": 1795461142324447400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 125, "source_ts_ns": 1795461142259604992}}
-{"ts_ns": 1795461142325013200, "kind": "event", "id": 1002, "seq": 120, "data": {"origin": "GEM_HOST", "payload": {"101": 120, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142250951936}}
-{"ts_ns": 1795461142325013200, "kind": "event", "id": 1005, "seq": 122, "data": {"origin": "UA_CLIENT", "payload": {"101": 122, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142250951936}}
-{"ts_ns": 1795461142325013200, "kind": "event", "id": 1003, "seq": 125, "data": {"origin": "GEM_HOST", "payload": {"101": 125, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142259604992}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142354010112}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142370626816}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142354010112}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142370626816}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 128, "source_ts_ns": 1795461142357630976}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 130, "source_ts_ns": 1795461142357630976}}
-{"ts_ns": 1795461142418741800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 133, "source_ts_ns": 1795461142370626816}}
-{"ts_ns": 1795461142418741800, "kind": "event", "id": 1002, "seq": 128, "data": {"origin": "GEM_HOST", "payload": {"101": 128, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142357630976}}
-{"ts_ns": 1795461142418741800, "kind": "event", "id": 1005, "seq": 130, "data": {"origin": "UA_CLIENT", "payload": {"101": 130, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142357630976}}
-{"ts_ns": 1795461142418741800, "kind": "event", "id": 1003, "seq": 133, "data": {"origin": "GEM_HOST", "payload": {"101": 133, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142370626816}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142459913984}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142468118784}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142459913984}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142468118784}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 136, "source_ts_ns": 1795461142459913984}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 138, "source_ts_ns": 1795461142459913984}}
-{"ts_ns": 1795461142516046100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 141, "source_ts_ns": 1795461142468118784}}
-{"ts_ns": 1795461142516046100, "kind": "event", "id": 1002, "seq": 136, "data": {"origin": "GEM_HOST", "payload": {"101": 136, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142459913984}}
-{"ts_ns": 1795461142516046100, "kind": "event", "id": 1005, "seq": 138, "data": {"origin": "UA_CLIENT", "payload": {"101": 138, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142459913984}}
-{"ts_ns": 1795461142516046100, "kind": "event", "id": 1003, "seq": 141, "data": {"origin": "GEM_HOST", "payload": {"101": 141, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461142468118784}}
-{"ts_ns": 1795461142557938800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.972, "source_ts_ns": 1795461142524910848}}
-{"ts_ns": 1795461142557938800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 143, "source_ts_ns": 1795461142524910848}}
-{"ts_ns": 1795461142557938800, "kind": "event", "id": 1007, "seq": 143, "data": {"origin": "EQUIPMENT", "payload": {"101": 143, "102": 24.972}, "time_ns": 1795461142524910848}}
-{"ts_ns": 1795461142621237000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142557938944}}
-{"ts_ns": 1795461142621237000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142574960896}}
-{"ts_ns": 1795461142621237000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142557938944}}
-{"ts_ns": 1795461142621237000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142574960896}}
-{"ts_ns": 1795461142624171300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 146, "source_ts_ns": 1795461142557938944}}
-{"ts_ns": 1795461142624171300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 148, "source_ts_ns": 1795461142557938944}}
-{"ts_ns": 1795461142624171300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 151, "source_ts_ns": 1795461142574960896}}
-{"ts_ns": 1795461142624171300, "kind": "event", "id": 1002, "seq": 146, "data": {"origin": "GEM_HOST", "payload": {"101": 146, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142557938944}}
-{"ts_ns": 1795461142624171300, "kind": "event", "id": 1005, "seq": 148, "data": {"origin": "UA_CLIENT", "payload": {"101": 148, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142557938944}}
-{"ts_ns": 1795461142624171300, "kind": "event", "id": 1003, "seq": 151, "data": {"origin": "GEM_HOST", "payload": {"101": 151, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142574960896}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 154, "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 156, "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 159, "source_ts_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "event", "id": 1002, "seq": 154, "data": {"origin": "GEM_HOST", "payload": {"101": 154, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "event", "id": 1005, "seq": 156, "data": {"origin": "UA_CLIENT", "payload": {"101": 156, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142674542848}}
-{"ts_ns": 1795461142720402300, "kind": "event", "id": 1003, "seq": 159, "data": {"origin": "GEM_HOST", "payload": {"101": 159, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142674542848}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142771532032}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142785232896}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142771532032}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142785232896}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 162, "source_ts_ns": 1795461142771532032}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 164, "source_ts_ns": 1795461142771532032}}
-{"ts_ns": 1795461142818884900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 167, "source_ts_ns": 1795461142785232896}}
-{"ts_ns": 1795461142818884900, "kind": "event", "id": 1002, "seq": 162, "data": {"origin": "GEM_HOST", "payload": {"101": 162, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142771532032}}
-{"ts_ns": 1795461142818884900, "kind": "event", "id": 1005, "seq": 164, "data": {"origin": "UA_CLIENT", "payload": {"101": 164, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142771532032}}
-{"ts_ns": 1795461142818884900, "kind": "event", "id": 1003, "seq": 167, "data": {"origin": "GEM_HOST", "payload": {"101": 167, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142785232896}}
-{"ts_ns": 1795461142909833600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461142891645952}}
-{"ts_ns": 1795461142909833600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461142891645952}}
-{"ts_ns": 1795461142909833600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 170, "source_ts_ns": 1795461142891645952}}
-{"ts_ns": 1795461142909833600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 172, "source_ts_ns": 1795461142891645952}}
-{"ts_ns": 1795461142909833600, "kind": "event", "id": 1002, "seq": 170, "data": {"origin": "GEM_HOST", "payload": {"101": 170, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142891645952}}
-{"ts_ns": 1795461142909833600, "kind": "event", "id": 1005, "seq": 172, "data": {"origin": "UA_CLIENT", "payload": {"101": 172, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461142891645952}}
-{"ts_ns": 1795461142973949100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461142908325888}}
-{"ts_ns": 1795461142973949100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461142908325888}}
-{"ts_ns": 1795461142973949100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 175, "source_ts_ns": 1795461142908325888}}
-{"ts_ns": 1795461142973949100, "kind": "event", "id": 1003, "seq": 175, "data": {"origin": "GEM_HOST", "payload": {"101": 175, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461142908325888}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143007472896}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143021396992}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143007472896}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143021396992}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 178, "source_ts_ns": 1795461143007472896}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 180, "source_ts_ns": 1795461143011346176}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 184, "source_ts_ns": 1795461143021396992}}
-{"ts_ns": 1795461143070977900, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.401, "source_ts_ns": 1795461143021396992}}
-{"ts_ns": 1795461143070977900, "kind": "event", "id": 1002, "seq": 178, "data": {"origin": "GEM_HOST", "payload": {"101": 178, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461143007472896}}
-{"ts_ns": 1795461143070977900, "kind": "event", "id": 1005, "seq": 180, "data": {"origin": "UA_CLIENT", "payload": {"101": 180, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143011346176}}
-{"ts_ns": 1795461143070977900, "kind": "event", "id": 1003, "seq": 184, "data": {"origin": "GEM_HOST", "payload": {"101": 184, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143021396992}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143107958016}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143128180992}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143107958016}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143128180992}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 187, "source_ts_ns": 1795461143108462080}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 189, "source_ts_ns": 1795461143109484800}}
-{"ts_ns": 1795461143168924400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 192, "source_ts_ns": 1795461143128180992}}
-{"ts_ns": 1795461143168924400, "kind": "event", "id": 1002, "seq": 187, "data": {"origin": "GEM_HOST", "payload": {"101": 187, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143108462080}}
-{"ts_ns": 1795461143168924400, "kind": "event", "id": 1005, "seq": 189, "data": {"origin": "UA_CLIENT", "payload": {"101": 189, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143109484800}}
-{"ts_ns": 1795461143168924400, "kind": "event", "id": 1003, "seq": 192, "data": {"origin": "GEM_HOST", "payload": {"101": 192, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143128180992}}
-{"ts_ns": 1795461143250325900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143250325900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143250325900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 195, "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143250325900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 197, "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143250325900, "kind": "event", "id": 1002, "seq": 195, "data": {"origin": "GEM_HOST", "payload": {"101": 195, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143241644032}}
-{"ts_ns": 1795461143250325900, "kind": "event", "id": 1005, "seq": 197, "data": {"origin": "UA_CLIENT", "payload": {"101": 197, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143241644032}}
-{"ts_ns": 1795461143308140400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143308140400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143308140400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 200, "source_ts_ns": 1795461143241644032}}
-{"ts_ns": 1795461143308140400, "kind": "event", "id": 1003, "seq": 200, "data": {"origin": "GEM_HOST", "payload": {"101": 200, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143241644032}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143308140032}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143310648832}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143308140032}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143310648832}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 203, "source_ts_ns": 1795461143308140032}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 205, "source_ts_ns": 1795461143308140032}}
-{"ts_ns": 1795461143367227300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 208, "source_ts_ns": 1795461143310648832}}
-{"ts_ns": 1795461143367227300, "kind": "event", "id": 1002, "seq": 203, "data": {"origin": "GEM_HOST", "payload": {"101": 203, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143308140032}}
-{"ts_ns": 1795461143367227300, "kind": "event", "id": 1005, "seq": 205, "data": {"origin": "UA_CLIENT", "payload": {"101": 205, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143308140032}}
-{"ts_ns": 1795461143367227300, "kind": "event", "id": 1003, "seq": 208, "data": {"origin": "GEM_HOST", "payload": {"101": 208, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143310648832}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143410852864}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143425456896}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143410852864}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143425456896}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 211, "source_ts_ns": 1795461143410852864}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 213, "source_ts_ns": 1795461143410852864}}
-{"ts_ns": 1795461143475002300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 216, "source_ts_ns": 1795461143425456896}}
-{"ts_ns": 1795461143475002300, "kind": "event", "id": 1002, "seq": 211, "data": {"origin": "GEM_HOST", "payload": {"101": 211, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143410852864}}
-{"ts_ns": 1795461143475002300, "kind": "event", "id": 1005, "seq": 213, "data": {"origin": "UA_CLIENT", "payload": {"101": 213, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143410852864}}
-{"ts_ns": 1795461143475002300, "kind": "event", "id": 1003, "seq": 216, "data": {"origin": "GEM_HOST", "payload": {"101": 216, "104": "GEM_HOST", "102": 25.401}, "time_ns": 1795461143425456896}}
-{"ts_ns": 1795461143565330500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.103, "source_ts_ns": 1795461143524313856}}
-{"ts_ns": 1795461143565330500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 218, "source_ts_ns": 1795461143524985088}}
-{"ts_ns": 1795461143565330500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 221, "source_ts_ns": 1795461143528886016}}
-{"ts_ns": 1795461143565330500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 223, "source_ts_ns": 1795461143529905920}}
-{"ts_ns": 1795461143565330500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143528886016}}
-{"ts_ns": 1795461143565330500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143528886016}}
-{"ts_ns": 1795461143565330500, "kind": "event", "id": 1007, "seq": 218, "data": {"origin": "EQUIPMENT", "payload": {"101": 218, "102": 25.103}, "time_ns": 1795461143524985088}}
-{"ts_ns": 1795461143565330500, "kind": "event", "id": 1002, "seq": 221, "data": {"origin": "GEM_HOST", "payload": {"101": 221, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143528886016}}
-{"ts_ns": 1795461143565330500, "kind": "event", "id": 1005, "seq": 223, "data": {"origin": "UA_CLIENT", "payload": {"101": 223, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143529905920}}
-{"ts_ns": 1795461143625151800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143558295040}}
-{"ts_ns": 1795461143625151800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143558295040}}
-{"ts_ns": 1795461143625151800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 226, "source_ts_ns": 1795461143558295040}}
-{"ts_ns": 1795461143625151800, "kind": "event", "id": 1003, "seq": 226, "data": {"origin": "GEM_HOST", "payload": {"101": 226, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143558295040}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143658968064}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143675501056}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143658968064}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143675501056}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 229, "source_ts_ns": 1795461143658968064}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 231, "source_ts_ns": 1795461143658968064}}
-{"ts_ns": 1795461143725365300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 234, "source_ts_ns": 1795461143675501056}}
-{"ts_ns": 1795461143725365300, "kind": "event", "id": 1002, "seq": 229, "data": {"origin": "GEM_HOST", "payload": {"101": 229, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143658968064}}
-{"ts_ns": 1795461143725365300, "kind": "event", "id": 1005, "seq": 231, "data": {"origin": "UA_CLIENT", "payload": {"101": 231, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143658968064}}
-{"ts_ns": 1795461143725365300, "kind": "event", "id": 1003, "seq": 234, "data": {"origin": "GEM_HOST", "payload": {"101": 234, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143675501056}}
-{"ts_ns": 1795461143794056100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 236, "source_ts_ns": 1795461143766084864}}
-{"ts_ns": 1795461143794056100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 239, "source_ts_ns": 1795461143766084864}}
-{"ts_ns": 1795461143794056100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143766084864}}
-{"ts_ns": 1795461143794056100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143766084864}}
-{"ts_ns": 1795461143794056100, "kind": "event", "id": 1005, "seq": 236, "data": {"origin": "UA_CLIENT", "payload": {"101": 236, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143766084864}}
-{"ts_ns": 1795461143794056100, "kind": "event", "id": 1002, "seq": 239, "data": {"origin": "GEM_HOST", "payload": {"101": 239, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143766084864}}
-{"ts_ns": 1795461143866991600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143791667968}}
-{"ts_ns": 1795461143866991600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143791667968}}
-{"ts_ns": 1795461143866991600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 242, "source_ts_ns": 1795461143791667968}}
-{"ts_ns": 1795461143866991600, "kind": "event", "id": 1003, "seq": 242, "data": {"origin": "GEM_HOST", "payload": {"101": 242, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143791667968}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 244, "source_ts_ns": 1795461143901335040}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 247, "source_ts_ns": 1795461143901335040}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 250, "source_ts_ns": 1795461143931986176}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461143901335040}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461143931986176}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461143901335040}}
-{"ts_ns": 1795461143966659500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461143931986176}}
-{"ts_ns": 1795461143966659500, "kind": "event", "id": 1005, "seq": 244, "data": {"origin": "UA_CLIENT", "payload": {"101": 244, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461143901335040}}
-{"ts_ns": 1795461143966659500, "kind": "event", "id": 1002, "seq": 247, "data": {"origin": "GEM_HOST", "payload": {"101": 247, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143901335040}}
-{"ts_ns": 1795461143966659500, "kind": "event", "id": 1003, "seq": 250, "data": {"origin": "GEM_HOST", "payload": {"101": 250, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461143931986176}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 253, "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 255, "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 258, "source_ts_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.97, "source_ts_ns": 1795461144023577856}}
-{"ts_ns": 1795461144076004100, "kind": "event", "id": 1002, "seq": 253, "data": {"origin": "GEM_HOST", "payload": {"101": 253, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "event", "id": 1005, "seq": 255, "data": {"origin": "UA_CLIENT", "payload": {"101": 255, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144010960128}}
-{"ts_ns": 1795461144076004100, "kind": "event", "id": 1003, "seq": 258, "data": {"origin": "GEM_HOST", "payload": {"101": 258, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461144010960128}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144111234048}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144125384192}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144111234048}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144125384192}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 262, "source_ts_ns": 1795461144111234048}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 264, "source_ts_ns": 1795461144111234048}}
-{"ts_ns": 1795461144166455200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 267, "source_ts_ns": 1795461144125384192}}
-{"ts_ns": 1795461144166455200, "kind": "event", "id": 1002, "seq": 262, "data": {"origin": "GEM_HOST", "payload": {"101": 262, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144111234048}}
-{"ts_ns": 1795461144166455200, "kind": "event", "id": 1005, "seq": 264, "data": {"origin": "UA_CLIENT", "payload": {"101": 264, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144111234048}}
-{"ts_ns": 1795461144166455200, "kind": "event", "id": 1003, "seq": 267, "data": {"origin": "GEM_HOST", "payload": {"101": 267, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144125384192}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144245407232}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144258904832}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144245407232}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144258904832}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 270, "source_ts_ns": 1795461144245407232}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 272, "source_ts_ns": 1795461144245407232}}
-{"ts_ns": 1795461144325294100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 275, "source_ts_ns": 1795461144258904832}}
-{"ts_ns": 1795461144325294100, "kind": "event", "id": 1002, "seq": 270, "data": {"origin": "GEM_HOST", "payload": {"101": 270, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144245407232}}
-{"ts_ns": 1795461144325294100, "kind": "event", "id": 1005, "seq": 272, "data": {"origin": "UA_CLIENT", "payload": {"101": 272, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144245407232}}
-{"ts_ns": 1795461144325294100, "kind": "event", "id": 1003, "seq": 275, "data": {"origin": "GEM_HOST", "payload": {"101": 275, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144258904832}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144358757888}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144375668992}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144358757888}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144375668992}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 278, "source_ts_ns": 1795461144358757888}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 280, "source_ts_ns": 1795461144358757888}}
-{"ts_ns": 1795461144424870600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 283, "source_ts_ns": 1795461144375668992}}
-{"ts_ns": 1795461144424870600, "kind": "event", "id": 1002, "seq": 278, "data": {"origin": "GEM_HOST", "payload": {"101": 278, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144358757888}}
-{"ts_ns": 1795461144424870600, "kind": "event", "id": 1005, "seq": 280, "data": {"origin": "UA_CLIENT", "payload": {"101": 280, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144358757888}}
-{"ts_ns": 1795461144424870600, "kind": "event", "id": 1003, "seq": 283, "data": {"origin": "GEM_HOST", "payload": {"101": 283, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144375668992}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144475128832}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144491849984}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144475128832}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144491849984}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 286, "source_ts_ns": 1795461144475128832}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 288, "source_ts_ns": 1795461144475128832}}
-{"ts_ns": 1795461144524263500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 291, "source_ts_ns": 1795461144493464064}}
-{"ts_ns": 1795461144524263500, "kind": "event", "id": 1002, "seq": 286, "data": {"origin": "GEM_HOST", "payload": {"101": 286, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144475128832}}
-{"ts_ns": 1795461144524263500, "kind": "event", "id": 1005, "seq": 288, "data": {"origin": "UA_CLIENT", "payload": {"101": 288, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144475128832}}
-{"ts_ns": 1795461144524263500, "kind": "event", "id": 1003, "seq": 291, "data": {"origin": "GEM_HOST", "payload": {"101": 291, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461144493464064}}
-{"ts_ns": 1795461144566987600, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.015, "source_ts_ns": 1795461144532300032}}
-{"ts_ns": 1795461144566987600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 293, "source_ts_ns": 1795461144532300032}}
-{"ts_ns": 1795461144566987600, "kind": "event", "id": 1007, "seq": 293, "data": {"origin": "EQUIPMENT", "payload": {"101": 293, "102": 25.015}, "time_ns": 1795461144532300032}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144593987840}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144600316160}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144593987840}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144600316160}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 296, "source_ts_ns": 1795461144595081984}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 298, "source_ts_ns": 1795461144595081984}}
-{"ts_ns": 1795461144625518500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 301, "source_ts_ns": 1795461144600316160}}
-{"ts_ns": 1795461144625518500, "kind": "event", "id": 1002, "seq": 296, "data": {"origin": "GEM_HOST", "payload": {"101": 296, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144595081984}}
-{"ts_ns": 1795461144625518500, "kind": "event", "id": 1005, "seq": 298, "data": {"origin": "UA_CLIENT", "payload": {"101": 298, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144595081984}}
-{"ts_ns": 1795461144625518500, "kind": "event", "id": 1003, "seq": 301, "data": {"origin": "GEM_HOST", "payload": {"101": 301, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144600316160}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144703049984}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144719453184}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144703049984}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144719453184}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 304, "source_ts_ns": 1795461144703049984}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 306, "source_ts_ns": 1795461144707496960}}
-{"ts_ns": 1795461144792427000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 309, "source_ts_ns": 1795461144719453184}}
-{"ts_ns": 1795461144792427000, "kind": "event", "id": 1002, "seq": 304, "data": {"origin": "GEM_HOST", "payload": {"101": 304, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144703049984}}
-{"ts_ns": 1795461144792427000, "kind": "event", "id": 1005, "seq": 306, "data": {"origin": "UA_CLIENT", "payload": {"101": 306, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144707496960}}
-{"ts_ns": 1795461144792427000, "kind": "event", "id": 1003, "seq": 309, "data": {"origin": "GEM_HOST", "payload": {"101": 309, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144719453184}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144837843968}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144842094848}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144837843968}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144842094848}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 312, "source_ts_ns": 1795461144837843968}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 314, "source_ts_ns": 1795461144842094848}}
-{"ts_ns": 1795461144866733900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 317, "source_ts_ns": 1795461144842094848}}
-{"ts_ns": 1795461144866733900, "kind": "event", "id": 1002, "seq": 312, "data": {"origin": "GEM_HOST", "payload": {"101": 312, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144837843968}}
-{"ts_ns": 1795461144866733900, "kind": "event", "id": 1005, "seq": 314, "data": {"origin": "UA_CLIENT", "payload": {"101": 314, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144842094848}}
-{"ts_ns": 1795461144866733900, "kind": "event", "id": 1003, "seq": 317, "data": {"origin": "GEM_HOST", "payload": {"101": 317, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144842094848}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461144942383104}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461144966567936}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461144942383104}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461144966567936}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 320, "source_ts_ns": 1795461144942383104}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 322, "source_ts_ns": 1795461144946877952}}
-{"ts_ns": 1795461145025531000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 325, "source_ts_ns": 1795461144966567936}}
-{"ts_ns": 1795461145025531000, "kind": "event", "id": 1002, "seq": 320, "data": {"origin": "GEM_HOST", "payload": {"101": 320, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144942383104}}
-{"ts_ns": 1795461145025531000, "kind": "event", "id": 1005, "seq": 322, "data": {"origin": "UA_CLIENT", "payload": {"101": 322, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461144946877952}}
-{"ts_ns": 1795461145025531000, "kind": "event", "id": 1003, "seq": 325, "data": {"origin": "GEM_HOST", "payload": {"101": 325, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461144966567936}}
-{"ts_ns": 1795461145066833500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.004, "source_ts_ns": 1795461145025531136}}
-{"ts_ns": 1795461145111963600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145091960832}}
-{"ts_ns": 1795461145111963600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145091960832}}
-{"ts_ns": 1795461145111963600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 329, "source_ts_ns": 1795461145091960832}}
-{"ts_ns": 1795461145111963600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 331, "source_ts_ns": 1795461145091960832}}
-{"ts_ns": 1795461145111963600, "kind": "event", "id": 1002, "seq": 329, "data": {"origin": "GEM_HOST", "payload": {"101": 329, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145091960832}}
-{"ts_ns": 1795461145111963600, "kind": "event", "id": 1005, "seq": 331, "data": {"origin": "UA_CLIENT", "payload": {"101": 331, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145091960832}}
-{"ts_ns": 1795461145174948300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145109229056}}
-{"ts_ns": 1795461145174948300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145109229056}}
-{"ts_ns": 1795461145174948300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 334, "source_ts_ns": 1795461145109229056}}
-{"ts_ns": 1795461145174948300, "kind": "event", "id": 1003, "seq": 334, "data": {"origin": "GEM_HOST", "payload": {"101": 334, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145109229056}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145209120000}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145226043904}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145209120000}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145226043904}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 337, "source_ts_ns": 1795461145209120000}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 339, "source_ts_ns": 1795461145212143872}}
-{"ts_ns": 1795461145275794000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 342, "source_ts_ns": 1795461145226043904}}
-{"ts_ns": 1795461145275794000, "kind": "event", "id": 1002, "seq": 337, "data": {"origin": "GEM_HOST", "payload": {"101": 337, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145209120000}}
-{"ts_ns": 1795461145278837500, "kind": "event", "id": 1005, "seq": 339, "data": {"origin": "UA_CLIENT", "payload": {"101": 339, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145212143872}}
-{"ts_ns": 1795461145278837500, "kind": "event", "id": 1003, "seq": 342, "data": {"origin": "GEM_HOST", "payload": {"101": 342, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145226043904}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145324992768}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145342214144}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145324992768}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145342214144}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 345, "source_ts_ns": 1795461145324992768}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 347, "source_ts_ns": 1795461145324992768}}
-{"ts_ns": 1795461145366573200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 350, "source_ts_ns": 1795461145342214144}}
-{"ts_ns": 1795461145366573200, "kind": "event", "id": 1002, "seq": 345, "data": {"origin": "GEM_HOST", "payload": {"101": 345, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145324992768}}
-{"ts_ns": 1795461145366573200, "kind": "event", "id": 1005, "seq": 347, "data": {"origin": "UA_CLIENT", "payload": {"101": 347, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145324992768}}
-{"ts_ns": 1795461145366573200, "kind": "event", "id": 1003, "seq": 350, "data": {"origin": "GEM_HOST", "payload": {"101": 350, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145342214144}}
-{"ts_ns": 1795461145457587000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145441391872}}
-{"ts_ns": 1795461145457587000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145441391872}}
-{"ts_ns": 1795461145457587000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 353, "source_ts_ns": 1795461145441391872}}
-{"ts_ns": 1795461145457587000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 355, "source_ts_ns": 1795461145441391872}}
-{"ts_ns": 1795461145457587000, "kind": "event", "id": 1002, "seq": 353, "data": {"origin": "GEM_HOST", "payload": {"101": 353, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145441391872}}
-{"ts_ns": 1795461145457587000, "kind": "event", "id": 1005, "seq": 355, "data": {"origin": "UA_CLIENT", "payload": {"101": 355, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145441391872}}
-{"ts_ns": 1795461145517320300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145454503936}}
-{"ts_ns": 1795461145521586300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145454503936}}
-{"ts_ns": 1795461145521586300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 358, "source_ts_ns": 1795461145457586944}}
-{"ts_ns": 1795461145521586300, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.972, "source_ts_ns": 1795461145517319936}}
-{"ts_ns": 1795461145521586300, "kind": "event", "id": 1003, "seq": 358, "data": {"origin": "GEM_HOST", "payload": {"101": 358, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461145457586944}}
-{"ts_ns": 1795461145558661200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 360, "source_ts_ns": 1795461145517319936}}
-{"ts_ns": 1795461145558661200, "kind": "event", "id": 1007, "seq": 360, "data": {"origin": "EQUIPMENT", "payload": {"101": 360, "102": 24.972}, "time_ns": 1795461145517319936}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145558660864}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145575691008}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145558660864}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145575691008}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 363, "source_ts_ns": 1795461145558660864}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 365, "source_ts_ns": 1795461145558660864}}
-{"ts_ns": 1795461145625292800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 368, "source_ts_ns": 1795461145575691008}}
-{"ts_ns": 1795461145625292800, "kind": "event", "id": 1002, "seq": 363, "data": {"origin": "GEM_HOST", "payload": {"101": 363, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145558660864}}
-{"ts_ns": 1795461145625292800, "kind": "event", "id": 1005, "seq": 365, "data": {"origin": "UA_CLIENT", "payload": {"101": 365, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145558660864}}
-{"ts_ns": 1795461145625292800, "kind": "event", "id": 1003, "seq": 368, "data": {"origin": "GEM_HOST", "payload": {"101": 368, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145575691008}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145667299072}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145692017920}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145667299072}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145692017920}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 371, "source_ts_ns": 1795461145667299072}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 373, "source_ts_ns": 1795461145667299072}}
-{"ts_ns": 1795461145724222300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 376, "source_ts_ns": 1795461145692017920}}
-{"ts_ns": 1795461145724222300, "kind": "event", "id": 1002, "seq": 371, "data": {"origin": "GEM_HOST", "payload": {"101": 371, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145667299072}}
-{"ts_ns": 1795461145727050800, "kind": "event", "id": 1005, "seq": 373, "data": {"origin": "UA_CLIENT", "payload": {"101": 373, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145667299072}}
-{"ts_ns": 1795461145727050800, "kind": "event", "id": 1003, "seq": 376, "data": {"origin": "GEM_HOST", "payload": {"101": 376, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145692017920}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145791966976}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145799129856}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145791966976}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145799129856}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 379, "source_ts_ns": 1795461145791966976}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 381, "source_ts_ns": 1795461145791966976}}
-{"ts_ns": 1795461145870075700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 384, "source_ts_ns": 1795461145799129856}}
-{"ts_ns": 1795461145870075700, "kind": "event", "id": 1002, "seq": 379, "data": {"origin": "GEM_HOST", "payload": {"101": 379, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145791966976}}
-{"ts_ns": 1795461145870075700, "kind": "event", "id": 1005, "seq": 381, "data": {"origin": "UA_CLIENT", "payload": {"101": 381, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145791966976}}
-{"ts_ns": 1795461145870075700, "kind": "event", "id": 1003, "seq": 384, "data": {"origin": "GEM_HOST", "payload": {"101": 384, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145799129856}}
-{"ts_ns": 1795461145913326100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461145891922944}}
-{"ts_ns": 1795461145913326100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461145891922944}}
-{"ts_ns": 1795461145913326100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 387, "source_ts_ns": 1795461145891922944}}
-{"ts_ns": 1795461145913326100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 389, "source_ts_ns": 1795461145891922944}}
-{"ts_ns": 1795461145913326100, "kind": "event", "id": 1002, "seq": 387, "data": {"origin": "GEM_HOST", "payload": {"101": 387, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145891922944}}
-{"ts_ns": 1795461145913326100, "kind": "event", "id": 1005, "seq": 389, "data": {"origin": "UA_CLIENT", "payload": {"101": 389, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461145891922944}}
-{"ts_ns": 1795461145974951500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461145909018112}}
-{"ts_ns": 1795461145974951500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461145909018112}}
-{"ts_ns": 1795461145974951500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 392, "source_ts_ns": 1795461145909018112}}
-{"ts_ns": 1795461145974951500, "kind": "event", "id": 1003, "seq": 392, "data": {"origin": "GEM_HOST", "payload": {"101": 392, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461145909018112}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461146009146880}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461146013425152}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461146009146880}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461146013425152}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 395, "source_ts_ns": 1795461146009146880}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 397, "source_ts_ns": 1795461146009146880}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 400, "source_ts_ns": 1795461146013425152}}
-{"ts_ns": 1795461146075768900, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.009, "source_ts_ns": 1795461146023804928}}
-{"ts_ns": 1795461146075768900, "kind": "event", "id": 1002, "seq": 395, "data": {"origin": "GEM_HOST", "payload": {"101": 395, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461146009146880}}
-{"ts_ns": 1795461146078034900, "kind": "event", "id": 1005, "seq": 397, "data": {"origin": "UA_CLIENT", "payload": {"101": 397, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461146009146880}}
-{"ts_ns": 1795461146078034900, "kind": "event", "id": 1003, "seq": 400, "data": {"origin": "GEM_HOST", "payload": {"101": 400, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461146013425152}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461146109324032}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461146113634048}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461146109324032}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461146113634048}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 404, "source_ts_ns": 1795461146109324032}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 406, "source_ts_ns": 1795461146113634048}}
-{"ts_ns": 1795461146170442500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 409, "source_ts_ns": 1795461146113634048}}
-{"ts_ns": 1795461146170442500, "kind": "event", "id": 1002, "seq": 404, "data": {"origin": "GEM_HOST", "payload": {"101": 404, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146109324032}}
-{"ts_ns": 1795461146170442500, "kind": "event", "id": 1005, "seq": 406, "data": {"origin": "UA_CLIENT", "payload": {"101": 406, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461146113634048}}
-{"ts_ns": 1795461146170442500, "kind": "event", "id": 1003, "seq": 409, "data": {"origin": "GEM_HOST", "payload": {"101": 409, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146113634048}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461146226269952}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461146242091776}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461146226269952}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461146242091776}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 412, "source_ts_ns": 1795461146226269952}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 414, "source_ts_ns": 1795461146226269952}}
-{"ts_ns": 1795461146275154900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 417, "source_ts_ns": 1795461146242091776}}
-{"ts_ns": 1795461146275154900, "kind": "event", "id": 1002, "seq": 412, "data": {"origin": "GEM_HOST", "payload": {"101": 412, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146226269952}}
-{"ts_ns": 1795461146277477900, "kind": "event", "id": 1005, "seq": 414, "data": {"origin": "UA_CLIENT", "payload": {"101": 414, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461146226269952}}
-{"ts_ns": 1795461146277477900, "kind": "event", "id": 1003, "seq": 417, "data": {"origin": "GEM_HOST", "payload": {"101": 417, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146242091776}}
-{"ts_ns": 1795461146358939300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461146343069184}}
-{"ts_ns": 1795461146358939300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461146343069184}}
-{"ts_ns": 1795461146358939300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 420, "source_ts_ns": 1795461146343069184}}
-{"ts_ns": 1795461146358939300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 422, "source_ts_ns": 1795461146343069184}}
-{"ts_ns": 1795461146358939300, "kind": "event", "id": 1002, "seq": 420, "data": {"origin": "GEM_HOST", "payload": {"101": 420, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146343069184}}
-{"ts_ns": 1795461146358939300, "kind": "event", "id": 1005, "seq": 422, "data": {"origin": "UA_CLIENT", "payload": {"101": 422, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461146343069184}}
-{"ts_ns": 1795461146425867800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461146358938880}}
-{"ts_ns": 1795461146425867800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461146358938880}}
-{"ts_ns": 1795461146425867800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 425, "source_ts_ns": 1795461146358938880}}
-{"ts_ns": 1795461146425867800, "kind": "event", "id": 1003, "seq": 425, "data": {"origin": "GEM_HOST", "payload": {"101": 425, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146358938880}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461146466758912}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461146491525888}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461146466758912}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461146491525888}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 428, "source_ts_ns": 1795461146466758912}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 430, "source_ts_ns": 1795461146466758912}}
-{"ts_ns": 1795461146524318300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 433, "source_ts_ns": 1795461146491525888}}
-{"ts_ns": 1795461146524318300, "kind": "event", "id": 1002, "seq": 428, "data": {"origin": "GEM_HOST", "payload": {"101": 428, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146466758912}}
-{"ts_ns": 1795461146524318300, "kind": "event", "id": 1005, "seq": 430, "data": {"origin": "UA_CLIENT", "payload": {"101": 430, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461146466758912}}
-{"ts_ns": 1795461146524318300, "kind": "event", "id": 1003, "seq": 433, "data": {"origin": "GEM_HOST", "payload": {"101": 433, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461146491525888}}
-{"ts_ns": 1795461146566949300, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.031, "source_ts_ns": 1795461146533067008}}
-{"ts_ns": 1795461146566949300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 435, "source_ts_ns": 1795461146533067008}}
-{"ts_ns": 1795461146566949300, "kind": "event", "id": 1007, "seq": 435, "data": {"origin": "EQUIPMENT", "payload": {"101": 435, "102": 25.031}, "time_ns": 1795461146533067008}}
-{"ts_ns": 1795461146625059100, "kind": "data", "id": "ControlState", "seq": null, "data": {"value": "ONLINE_LOCAL", "source_ts_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "data", "id": "ControlStateId", "seq": null, "data": {"value": 4, "source_ts_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 438, "source_ts_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 440, "source_ts_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 442, "source_ts_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "data", "id": "Authority", "seq": null, "data": {"value": "OPERATOR", "source_ts_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "event", "id": 1001, "seq": 438, "data": {"origin": "OPERATOR", "payload": {"101": 438, "104": "OPERATOR", "2": 4}, "time_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "event", "id": 1004, "seq": 440, "data": {"origin": "OPERATOR", "payload": {"101": 440, "104": "OPERATOR", "4": "OPERATOR"}, "time_ns": 1795461146575378944}}
-{"ts_ns": 1795461146625059100, "kind": "event", "id": 1005, "seq": 442, "data": {"origin": "GEM_HOST", "payload": {"101": 442, "104": "GEM_HOST", "103": "equipment in LOCAL"}, "time_ns": 1795461146575378944}}
-{"ts_ns": 1795461147059190100, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.951, "source_ts_ns": 1795461147024162048}}
-{"ts_ns": 1795461147558527500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.031, "source_ts_ns": 1795461147524208128}}
-{"ts_ns": 1795461147558527500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 445, "source_ts_ns": 1795461147524559104}}
-{"ts_ns": 1795461147558527500, "kind": "event", "id": 1007, "seq": 445, "data": {"origin": "EQUIPMENT", "payload": {"101": 445, "102": 25.031}, "time_ns": 1795461147524559104}}
-{"ts_ns": 1795461148058130600, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.02, "source_ts_ns": 1795461148024835072}}
-{"ts_ns": 1795461148557714100, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.984, "source_ts_ns": 1795461148523994880}}
-{"ts_ns": 1795461148557714100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 448, "source_ts_ns": 1795461148524723968}}
-{"ts_ns": 1795461148557714100, "kind": "event", "id": 1007, "seq": 448, "data": {"origin": "EQUIPMENT", "payload": {"101": 448, "102": 24.984}, "time_ns": 1795461148524723968}}
-{"ts_ns": 1795461149041808000, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.966, "source_ts_ns": 1795461149040353024}}
-{"ts_ns": 1795461149558384000, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.046, "source_ts_ns": 1795461149524055040}}
-{"ts_ns": 1795461149560158500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 451, "source_ts_ns": 1795461149524830208}}
-{"ts_ns": 1795461149560158500, "kind": "event", "id": 1007, "seq": 451, "data": {"origin": "EQUIPMENT", "payload": {"101": 451, "102": 25.046}, "time_ns": 1795461149524830208}}
-{"ts_ns": 1795461150091448300, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.984, "source_ts_ns": 1795461150024035072}}
-{"ts_ns": 1795461150566298700, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.959, "source_ts_ns": 1795461150533591040}}
-{"ts_ns": 1795461150566298700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 454, "source_ts_ns": 1795461150533591040}}
-{"ts_ns": 1795461150566298700, "kind": "event", "id": 1007, "seq": 454, "data": {"origin": "EQUIPMENT", "payload": {"101": 454, "102": 24.959}, "time_ns": 1795461150533591040}}
+{"ts_ns": 1795461539952727200, "kind": "connecting", "id": null, "seq": null, "data": 3012}
+{"ts_ns": 1795461539963161000, "kind": "data", "id": "ControlState", "seq": null, "data": {"value": "ONLINE_LOCAL", "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461539963161000, "kind": "data", "id": "ControlStateId", "seq": null, "data": {"value": 4, "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461539963161000, "kind": "data", "id": "Authority", "seq": null, "data": {"value": "OPERATOR", "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461539963161000, "kind": "data", "id": "CommunicationState", "seq": null, "data": {"value": "COMMUNICATING", "source_ts_ns": 1795461538924094976}}
+{"ts_ns": 1795461539963161000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 9, "source_ts_ns": 1795461539952727040}}
+{"ts_ns": 1795461539979968900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461539979968900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461539979968900, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.024, "source_ts_ns": 1795461539952727040}}
+{"ts_ns": 1795461539979968900, "kind": "data", "id": "TempHighLimit", "seq": null, "data": {"value": 40.0, "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461539979968900, "kind": "data", "id": "AlarmActive", "seq": null, "data": {"value": false, "source_ts_ns": 1795461537832897024}}
+{"ts_ns": 1795461540074261200, "kind": "listening", "id": null, "seq": null, "data": "opc.tcp://127.0.0.1:4840/semi-equipment/"}
+{"ts_ns": 1795461540491049100, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.018, "source_ts_ns": 1795461540442028032}}
+{"ts_ns": 1795461540950860700, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.039, "source_ts_ns": 1795461540950861056}}
+{"ts_ns": 1795461541026067000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 12, "source_ts_ns": 1795461540950861056}}
+{"ts_ns": 1795461541026067000, "kind": "event", "id": 1007, "seq": 12, "data": {"origin": "EQUIPMENT", "payload": {"101": 12, "102": 25.039}, "time_ns": 1795461540950861056}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "ControlState", "seq": null, "data": {"value": "ONLINE_REMOTE", "source_ts_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "ControlStateId", "seq": null, "data": {"value": 5, "source_ts_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 15, "source_ts_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 17, "source_ts_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 20, "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 22, "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 25, "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "Authority", "seq": null, "data": {"value": "GEM_HOST", "source_ts_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "event", "id": 1001, "seq": 15, "data": {"origin": "OPERATOR", "payload": {"101": 15, "104": "OPERATOR", "2": 5}, "time_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "event", "id": 1004, "seq": 17, "data": {"origin": "OPERATOR", "payload": {"101": 17, "104": "OPERATOR", "4": "GEM_HOST"}, "time_ns": 1795461541158631168}}
+{"ts_ns": 1795461541225218500, "kind": "event", "id": 1002, "seq": 20, "data": {"origin": "GEM_HOST", "payload": {"101": 20, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "event", "id": 1005, "seq": 22, "data": {"origin": "UA_CLIENT", "payload": {"101": 22, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541175708928}}
+{"ts_ns": 1795461541225218500, "kind": "event", "id": 1003, "seq": 25, "data": {"origin": "GEM_HOST", "payload": {"101": 25, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461541175708928}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541260633856}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541265812992}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541260633856}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541265812992}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 28, "source_ts_ns": 1795461541260633856}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 30, "source_ts_ns": 1795461541265812992}}
+{"ts_ns": 1795461541325100300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 33, "source_ts_ns": 1795461541265812992}}
+{"ts_ns": 1795461541325100300, "kind": "event", "id": 1002, "seq": 28, "data": {"origin": "GEM_HOST", "payload": {"101": 28, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461541260633856}}
+{"ts_ns": 1795461541325100300, "kind": "event", "id": 1005, "seq": 30, "data": {"origin": "UA_CLIENT", "payload": {"101": 30, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541265812992}}
+{"ts_ns": 1795461541325100300, "kind": "event", "id": 1003, "seq": 33, "data": {"origin": "GEM_HOST", "payload": {"101": 33, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461541265812992}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541367739904}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541399147008}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541367739904}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541399147008}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 36, "source_ts_ns": 1795461541367739904}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 38, "source_ts_ns": 1795461541367739904}}
+{"ts_ns": 1795461541433218400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 41, "source_ts_ns": 1795461541399147008}}
+{"ts_ns": 1795461541433218400, "kind": "event", "id": 1002, "seq": 36, "data": {"origin": "GEM_HOST", "payload": {"101": 36, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461541367739904}}
+{"ts_ns": 1795461541433218400, "kind": "event", "id": 1005, "seq": 38, "data": {"origin": "UA_CLIENT", "payload": {"101": 38, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541367739904}}
+{"ts_ns": 1795461541433218400, "kind": "event", "id": 1003, "seq": 41, "data": {"origin": "GEM_HOST", "payload": {"101": 41, "104": "GEM_HOST", "102": 25.039}, "time_ns": 1795461541399147008}}
+{"ts_ns": 1795461541457515900, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.959, "source_ts_ns": 1795461541441358080}}
+{"ts_ns": 1795461541524002400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541508968960}}
+{"ts_ns": 1795461541524002400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541508968960}}
+{"ts_ns": 1795461541524002400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 45, "source_ts_ns": 1795461541508968960}}
+{"ts_ns": 1795461541524002400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 47, "source_ts_ns": 1795461541508968960}}
+{"ts_ns": 1795461541524002400, "kind": "event", "id": 1002, "seq": 45, "data": {"origin": "GEM_HOST", "payload": {"101": 45, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541508968960}}
+{"ts_ns": 1795461541524002400, "kind": "event", "id": 1005, "seq": 47, "data": {"origin": "UA_CLIENT", "payload": {"101": 47, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541508968960}}
+{"ts_ns": 1795461541591752400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541524002048}}
+{"ts_ns": 1795461541591752400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541524002048}}
+{"ts_ns": 1795461541591752400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 50, "source_ts_ns": 1795461541524002048}}
+{"ts_ns": 1795461541591752400, "kind": "event", "id": 1003, "seq": 50, "data": {"origin": "GEM_HOST", "payload": {"101": 50, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541524002048}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 53, "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 55, "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 58, "source_ts_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "event", "id": 1002, "seq": 53, "data": {"origin": "GEM_HOST", "payload": {"101": 53, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "event", "id": 1005, "seq": 55, "data": {"origin": "UA_CLIENT", "payload": {"101": 55, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541607789056}}
+{"ts_ns": 1795461541674642100, "kind": "event", "id": 1003, "seq": 58, "data": {"origin": "GEM_HOST", "payload": {"101": 58, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541607789056}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541700731904}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541724918016}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541700731904}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541724918016}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 61, "source_ts_ns": 1795461541700731904}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 63, "source_ts_ns": 1795461541700731904}}
+{"ts_ns": 1795461541791426000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 66, "source_ts_ns": 1795461541724918016}}
+{"ts_ns": 1795461541791426000, "kind": "event", "id": 1002, "seq": 61, "data": {"origin": "GEM_HOST", "payload": {"101": 61, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541700731904}}
+{"ts_ns": 1795461541791426000, "kind": "event", "id": 1005, "seq": 63, "data": {"origin": "UA_CLIENT", "payload": {"101": 63, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541700731904}}
+{"ts_ns": 1795461541791426000, "kind": "event", "id": 1003, "seq": 66, "data": {"origin": "GEM_HOST", "payload": {"101": 66, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541724918016}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541818924800}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541835206912}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541818924800}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541835206912}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 69, "source_ts_ns": 1795461541818924800}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 71, "source_ts_ns": 1795461541818924800}}
+{"ts_ns": 1795461541870336100, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 74, "source_ts_ns": 1795461541835206912}}
+{"ts_ns": 1795461541870336100, "kind": "event", "id": 1002, "seq": 69, "data": {"origin": "GEM_HOST", "payload": {"101": 69, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541818924800}}
+{"ts_ns": 1795461541870336100, "kind": "event", "id": 1005, "seq": 71, "data": {"origin": "UA_CLIENT", "payload": {"101": 71, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541818924800}}
+{"ts_ns": 1795461541874122400, "kind": "event", "id": 1003, "seq": 74, "data": {"origin": "GEM_HOST", "payload": {"101": 74, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541835206912}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461541925154048}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461541941776128}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461541925154048}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461541941776128}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 77, "source_ts_ns": 1795461541925154048}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 79, "source_ts_ns": 1795461541925154048}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 81, "source_ts_ns": 1795461541940732928}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 84, "source_ts_ns": 1795461541941776128}}
+{"ts_ns": 1795461541957862800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.392, "source_ts_ns": 1795461541940732928}}
+{"ts_ns": 1795461541957862800, "kind": "event", "id": 1002, "seq": 77, "data": {"origin": "GEM_HOST", "payload": {"101": 77, "104": "GEM_HOST", "102": 24.959}, "time_ns": 1795461541925154048}}
+{"ts_ns": 1795461541957862800, "kind": "event", "id": 1005, "seq": 79, "data": {"origin": "UA_CLIENT", "payload": {"101": 79, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461541925154048}}
+{"ts_ns": 1795461541957862800, "kind": "event", "id": 1007, "seq": 81, "data": {"origin": "EQUIPMENT", "payload": {"101": 81, "102": 25.392}, "time_ns": 1795461541940732928}}
+{"ts_ns": 1795461541957862800, "kind": "event", "id": 1003, "seq": 84, "data": {"origin": "GEM_HOST", "payload": {"101": 84, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461541941776128}}
+{"ts_ns": 1795461542057205700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542041125888}}
+{"ts_ns": 1795461542057205700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542041125888}}
+{"ts_ns": 1795461542057205700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 87, "source_ts_ns": 1795461542041125888}}
+{"ts_ns": 1795461542057205700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 89, "source_ts_ns": 1795461542043870976}}
+{"ts_ns": 1795461542057205700, "kind": "event", "id": 1002, "seq": 87, "data": {"origin": "GEM_HOST", "payload": {"101": 87, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542041125888}}
+{"ts_ns": 1795461542057205700, "kind": "event", "id": 1005, "seq": 89, "data": {"origin": "UA_CLIENT", "payload": {"101": 89, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542043870976}}
+{"ts_ns": 1795461542117510000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542054811904}}
+{"ts_ns": 1795461542117510000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542054811904}}
+{"ts_ns": 1795461542117510000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 92, "source_ts_ns": 1795461542054811904}}
+{"ts_ns": 1795461542117510000, "kind": "event", "id": 1003, "seq": 92, "data": {"origin": "GEM_HOST", "payload": {"101": 92, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542054811904}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 94, "source_ts_ns": 1795461542158703104}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 97, "source_ts_ns": 1795461542158703104}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 100, "source_ts_ns": 1795461542190750976}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542158703104}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542190750976}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542158703104}}
+{"ts_ns": 1795461542224021300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542190750976}}
+{"ts_ns": 1795461542224021300, "kind": "event", "id": 1005, "seq": 94, "data": {"origin": "UA_CLIENT", "payload": {"101": 94, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542158703104}}
+{"ts_ns": 1795461542224021300, "kind": "event", "id": 1002, "seq": 97, "data": {"origin": "GEM_HOST", "payload": {"101": 97, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542158703104}}
+{"ts_ns": 1795461542224021300, "kind": "event", "id": 1003, "seq": 100, "data": {"origin": "GEM_HOST", "payload": {"101": 100, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542190750976}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542285413120}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542293229056}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542285413120}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542293229056}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 103, "source_ts_ns": 1795461542285413120}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 105, "source_ts_ns": 1795461542285413120}}
+{"ts_ns": 1795461542317434900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 108, "source_ts_ns": 1795461542293229056}}
+{"ts_ns": 1795461542317434900, "kind": "event", "id": 1002, "seq": 103, "data": {"origin": "GEM_HOST", "payload": {"101": 103, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542285413120}}
+{"ts_ns": 1795461542317434900, "kind": "event", "id": 1005, "seq": 105, "data": {"origin": "UA_CLIENT", "payload": {"101": 105, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542285413120}}
+{"ts_ns": 1795461542317434900, "kind": "event", "id": 1003, "seq": 108, "data": {"origin": "GEM_HOST", "payload": {"101": 108, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542293229056}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542408632064}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542425228032}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542408632064}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542425228032}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 111, "source_ts_ns": 1795461542408632064}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 113, "source_ts_ns": 1795461542408632064}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 116, "source_ts_ns": 1795461542425228032}}
+{"ts_ns": 1795461542475030400, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.103, "source_ts_ns": 1795461542441793792}}
+{"ts_ns": 1795461542475030400, "kind": "event", "id": 1002, "seq": 111, "data": {"origin": "GEM_HOST", "payload": {"101": 111, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542408632064}}
+{"ts_ns": 1795461542475030400, "kind": "event", "id": 1005, "seq": 113, "data": {"origin": "UA_CLIENT", "payload": {"101": 113, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542408632064}}
+{"ts_ns": 1795461542475030400, "kind": "event", "id": 1003, "seq": 116, "data": {"origin": "GEM_HOST", "payload": {"101": 116, "104": "GEM_HOST", "102": 25.392}, "time_ns": 1795461542425228032}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542533533184}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542541112064}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542533533184}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542541112064}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 120, "source_ts_ns": 1795461542533533184}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 122, "source_ts_ns": 1795461542533533184}}
+{"ts_ns": 1795461542567172600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 125, "source_ts_ns": 1795461542541112064}}
+{"ts_ns": 1795461542570734200, "kind": "event", "id": 1002, "seq": 120, "data": {"origin": "GEM_HOST", "payload": {"101": 120, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542533533184}}
+{"ts_ns": 1795461542570734200, "kind": "event", "id": 1005, "seq": 122, "data": {"origin": "UA_CLIENT", "payload": {"101": 122, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542533533184}}
+{"ts_ns": 1795461542570734200, "kind": "event", "id": 1003, "seq": 125, "data": {"origin": "GEM_HOST", "payload": {"101": 125, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542541112064}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542610172928}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542618104832}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542610172928}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542618104832}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 128, "source_ts_ns": 1795461542610172928}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 130, "source_ts_ns": 1795461542610172928}}
+{"ts_ns": 1795461542674540700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 133, "source_ts_ns": 1795461542618104832}}
+{"ts_ns": 1795461542674540700, "kind": "event", "id": 1002, "seq": 128, "data": {"origin": "GEM_HOST", "payload": {"101": 128, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542610172928}}
+{"ts_ns": 1795461542674540700, "kind": "event", "id": 1005, "seq": 130, "data": {"origin": "UA_CLIENT", "payload": {"101": 130, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542610172928}}
+{"ts_ns": 1795461542674540700, "kind": "event", "id": 1003, "seq": 133, "data": {"origin": "GEM_HOST", "payload": {"101": 133, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542618104832}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542686820864}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542695030016}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542686820864}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542695030016}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 136, "source_ts_ns": 1795461542686820864}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 138, "source_ts_ns": 1795461542690651904}}
+{"ts_ns": 1795461542727704300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 141, "source_ts_ns": 1795461542695030016}}
+{"ts_ns": 1795461542727704300, "kind": "event", "id": 1002, "seq": 136, "data": {"origin": "GEM_HOST", "payload": {"101": 136, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542686820864}}
+{"ts_ns": 1795461542727704300, "kind": "event", "id": 1005, "seq": 138, "data": {"origin": "UA_CLIENT", "payload": {"101": 138, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542690651904}}
+{"ts_ns": 1795461542727704300, "kind": "event", "id": 1003, "seq": 141, "data": {"origin": "GEM_HOST", "payload": {"101": 141, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542695030016}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 143, "source_ts_ns": 1795461542774509824}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 146, "source_ts_ns": 1795461542774509824}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 149, "source_ts_ns": 1795461542792668160}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542774509824}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542792668160}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542774509824}}
+{"ts_ns": 1795461542816834300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542792668160}}
+{"ts_ns": 1795461542816834300, "kind": "event", "id": 1005, "seq": 143, "data": {"origin": "UA_CLIENT", "payload": {"101": 143, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542774509824}}
+{"ts_ns": 1795461542816834300, "kind": "event", "id": 1002, "seq": 146, "data": {"origin": "GEM_HOST", "payload": {"101": 146, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542774509824}}
+{"ts_ns": 1795461542816834300, "kind": "event", "id": 1003, "seq": 149, "data": {"origin": "GEM_HOST", "payload": {"101": 149, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542792668160}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542890496000}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461542896646912}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542890496000}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461542896646912}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 152, "source_ts_ns": 1795461542890496000}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 154, "source_ts_ns": 1795461542890496000}}
+{"ts_ns": 1795461542932252600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 157, "source_ts_ns": 1795461542896646912}}
+{"ts_ns": 1795461542932252600, "kind": "event", "id": 1002, "seq": 152, "data": {"origin": "GEM_HOST", "payload": {"101": 152, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542890496000}}
+{"ts_ns": 1795461542932252600, "kind": "event", "id": 1005, "seq": 154, "data": {"origin": "UA_CLIENT", "payload": {"101": 154, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542890496000}}
+{"ts_ns": 1795461542932252600, "kind": "event", "id": 1003, "seq": 157, "data": {"origin": "GEM_HOST", "payload": {"101": 157, "104": "GEM_HOST", "102": 25.103}, "time_ns": 1795461542896646912}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.972, "source_ts_ns": 1795461542957089024}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 159, "source_ts_ns": 1795461542957616128}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 162, "source_ts_ns": 1795461542991625984}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 164, "source_ts_ns": 1795461542991625984}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 167, "source_ts_ns": 1795461543007631104}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461542991625984}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543007631104}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461542991625984}}
+{"ts_ns": 1795461543032848300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543007631104}}
+{"ts_ns": 1795461543032848300, "kind": "event", "id": 1007, "seq": 159, "data": {"origin": "EQUIPMENT", "payload": {"101": 159, "102": 24.972}, "time_ns": 1795461542957616128}}
+{"ts_ns": 1795461543032848300, "kind": "event", "id": 1002, "seq": 162, "data": {"origin": "GEM_HOST", "payload": {"101": 162, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461542991625984}}
+{"ts_ns": 1795461543032848300, "kind": "event", "id": 1005, "seq": 164, "data": {"origin": "UA_CLIENT", "payload": {"101": 164, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461542991625984}}
+{"ts_ns": 1795461543032848300, "kind": "event", "id": 1003, "seq": 167, "data": {"origin": "GEM_HOST", "payload": {"101": 167, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543007631104}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543108641024}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543126663936}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543108641024}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543126663936}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 170, "source_ts_ns": 1795461543108641024}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 172, "source_ts_ns": 1795461543108641024}}
+{"ts_ns": 1795461543157306000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 175, "source_ts_ns": 1795461543126663936}}
+{"ts_ns": 1795461543157306000, "kind": "event", "id": 1002, "seq": 170, "data": {"origin": "GEM_HOST", "payload": {"101": 170, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543108641024}}
+{"ts_ns": 1795461543157306000, "kind": "event", "id": 1005, "seq": 172, "data": {"origin": "UA_CLIENT", "payload": {"101": 172, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543108641024}}
+{"ts_ns": 1795461543157306000, "kind": "event", "id": 1003, "seq": 175, "data": {"origin": "GEM_HOST", "payload": {"101": 175, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543126663936}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543242022912}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543258393088}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543242022912}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543258393088}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 178, "source_ts_ns": 1795461543245840128}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 180, "source_ts_ns": 1795461543245840128}}
+{"ts_ns": 1795461543292810600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 183, "source_ts_ns": 1795461543258393088}}
+{"ts_ns": 1795461543292810600, "kind": "event", "id": 1002, "seq": 178, "data": {"origin": "GEM_HOST", "payload": {"101": 178, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543245840128}}
+{"ts_ns": 1795461543292810600, "kind": "event", "id": 1005, "seq": 180, "data": {"origin": "UA_CLIENT", "payload": {"101": 180, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543245840128}}
+{"ts_ns": 1795461543292810600, "kind": "event", "id": 1003, "seq": 183, "data": {"origin": "GEM_HOST", "payload": {"101": 183, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543258393088}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543366610176}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543391689984}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543366610176}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543391689984}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 186, "source_ts_ns": 1795461543366610176}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 188, "source_ts_ns": 1795461543366610176}}
+{"ts_ns": 1795461543424017600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 191, "source_ts_ns": 1795461543391689984}}
+{"ts_ns": 1795461543424017600, "kind": "event", "id": 1002, "seq": 186, "data": {"origin": "GEM_HOST", "payload": {"101": 186, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543366610176}}
+{"ts_ns": 1795461543424017600, "kind": "event", "id": 1005, "seq": 188, "data": {"origin": "UA_CLIENT", "payload": {"101": 188, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543366610176}}
+{"ts_ns": 1795461543424017600, "kind": "event", "id": 1003, "seq": 191, "data": {"origin": "GEM_HOST", "payload": {"101": 191, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461543391689984}}
+{"ts_ns": 1795461543458876800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.001, "source_ts_ns": 1795461543457377792}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543491316992}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543507955968}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543491316992}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543507955968}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 195, "source_ts_ns": 1795461543491316992}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 197, "source_ts_ns": 1795461543491316992}}
+{"ts_ns": 1795461543532609900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 200, "source_ts_ns": 1795461543507955968}}
+{"ts_ns": 1795461543532609900, "kind": "event", "id": 1002, "seq": 195, "data": {"origin": "GEM_HOST", "payload": {"101": 195, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543491316992}}
+{"ts_ns": 1795461543532609900, "kind": "event", "id": 1005, "seq": 197, "data": {"origin": "UA_CLIENT", "payload": {"101": 197, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543491316992}}
+{"ts_ns": 1795461543532609900, "kind": "event", "id": 1003, "seq": 200, "data": {"origin": "GEM_HOST", "payload": {"101": 200, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543507955968}}
+{"ts_ns": 1795461543684450200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543617641984}}
+{"ts_ns": 1795461543688195000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543626177024}}
+{"ts_ns": 1795461543688195000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543617641984}}
+{"ts_ns": 1795461543688195000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543626177024}}
+{"ts_ns": 1795461543688195000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 203, "source_ts_ns": 1795461543617641984}}
+{"ts_ns": 1795461543688195000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 205, "source_ts_ns": 1795461543617641984}}
+{"ts_ns": 1795461543688195000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 208, "source_ts_ns": 1795461543626177024}}
+{"ts_ns": 1795461543688195000, "kind": "event", "id": 1002, "seq": 203, "data": {"origin": "GEM_HOST", "payload": {"101": 203, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543617641984}}
+{"ts_ns": 1795461543688195000, "kind": "event", "id": 1005, "seq": 205, "data": {"origin": "UA_CLIENT", "payload": {"101": 205, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543617641984}}
+{"ts_ns": 1795461543688195000, "kind": "event", "id": 1003, "seq": 208, "data": {"origin": "GEM_HOST", "payload": {"101": 208, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543626177024}}
+{"ts_ns": 1795461543766437000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543734317056}}
+{"ts_ns": 1795461543766437000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543734317056}}
+{"ts_ns": 1795461543766437000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 211, "source_ts_ns": 1795461543734317056}}
+{"ts_ns": 1795461543766437000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 213, "source_ts_ns": 1795461543734317056}}
+{"ts_ns": 1795461543766437000, "kind": "event", "id": 1002, "seq": 211, "data": {"origin": "GEM_HOST", "payload": {"101": 211, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543734317056}}
+{"ts_ns": 1795461543766437000, "kind": "event", "id": 1005, "seq": 213, "data": {"origin": "UA_CLIENT", "payload": {"101": 213, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543734317056}}
+{"ts_ns": 1795461543825057600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543766437120}}
+{"ts_ns": 1795461543825057600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543766437120}}
+{"ts_ns": 1795461543825057600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 216, "source_ts_ns": 1795461543766437120}}
+{"ts_ns": 1795461543825057600, "kind": "event", "id": 1003, "seq": 216, "data": {"origin": "GEM_HOST", "payload": {"101": 216, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543766437120}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461543869647104}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461543891676928}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461543869647104}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461543891676928}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 219, "source_ts_ns": 1795461543870125056}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 221, "source_ts_ns": 1795461543871129088}}
+{"ts_ns": 1795461543924642200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 224, "source_ts_ns": 1795461543891676928}}
+{"ts_ns": 1795461543924642200, "kind": "event", "id": 1002, "seq": 219, "data": {"origin": "GEM_HOST", "payload": {"101": 219, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543870125056}}
+{"ts_ns": 1795461543924642200, "kind": "event", "id": 1005, "seq": 221, "data": {"origin": "UA_CLIENT", "payload": {"101": 221, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461543871129088}}
+{"ts_ns": 1795461543926895700, "kind": "event", "id": 1003, "seq": 224, "data": {"origin": "GEM_HOST", "payload": {"101": 224, "104": "GEM_HOST", "102": 25.001}, "time_ns": 1795461543891676928}}
+{"ts_ns": 1795461543951761500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.953, "source_ts_ns": 1795461543951760896}}
+{"ts_ns": 1795461544024784000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 226, "source_ts_ns": 1795461543951760896}}
+{"ts_ns": 1795461544024784000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 229, "source_ts_ns": 1795461544000125952}}
+{"ts_ns": 1795461544024784000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 231, "source_ts_ns": 1795461544000125952}}
+{"ts_ns": 1795461544024784000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544000125952}}
+{"ts_ns": 1795461544024784000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544000125952}}
+{"ts_ns": 1795461544024784000, "kind": "event", "id": 1007, "seq": 226, "data": {"origin": "EQUIPMENT", "payload": {"101": 226, "102": 24.953}, "time_ns": 1795461543951760896}}
+{"ts_ns": 1795461544024784000, "kind": "event", "id": 1002, "seq": 229, "data": {"origin": "GEM_HOST", "payload": {"101": 229, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544000125952}}
+{"ts_ns": 1795461544024784000, "kind": "event", "id": 1005, "seq": 231, "data": {"origin": "UA_CLIENT", "payload": {"101": 231, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544000125952}}
+{"ts_ns": 1795461544091615700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544024784128}}
+{"ts_ns": 1795461544091615700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544024784128}}
+{"ts_ns": 1795461544091615700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 234, "source_ts_ns": 1795461544024784128}}
+{"ts_ns": 1795461544091615700, "kind": "event", "id": 1003, "seq": 234, "data": {"origin": "GEM_HOST", "payload": {"101": 234, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544024784128}}
+{"ts_ns": 1795461544166231400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544126401024}}
+{"ts_ns": 1795461544166231400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544141874176}}
+{"ts_ns": 1795461544166231400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544126401024}}
+{"ts_ns": 1795461544166231400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544141874176}}
+{"ts_ns": 1795461544166231400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 237, "source_ts_ns": 1795461544126401024}}
+{"ts_ns": 1795461544166231400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 239, "source_ts_ns": 1795461544126401024}}
+{"ts_ns": 1795461544169789800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 242, "source_ts_ns": 1795461544141874176}}
+{"ts_ns": 1795461544169789800, "kind": "event", "id": 1002, "seq": 237, "data": {"origin": "GEM_HOST", "payload": {"101": 237, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544126401024}}
+{"ts_ns": 1795461544169789800, "kind": "event", "id": 1005, "seq": 239, "data": {"origin": "UA_CLIENT", "payload": {"101": 239, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544126401024}}
+{"ts_ns": 1795461544169789800, "kind": "event", "id": 1003, "seq": 242, "data": {"origin": "GEM_HOST", "payload": {"101": 242, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544141874176}}
+{"ts_ns": 1795461544259373600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544250881024}}
+{"ts_ns": 1795461544259373600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544250881024}}
+{"ts_ns": 1795461544259373600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 245, "source_ts_ns": 1795461544250881024}}
+{"ts_ns": 1795461544259373600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 247, "source_ts_ns": 1795461544250881024}}
+{"ts_ns": 1795461544262991500, "kind": "event", "id": 1002, "seq": 245, "data": {"origin": "GEM_HOST", "payload": {"101": 245, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544250881024}}
+{"ts_ns": 1795461544262991500, "kind": "event", "id": 1005, "seq": 247, "data": {"origin": "UA_CLIENT", "payload": {"101": 247, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544250881024}}
+{"ts_ns": 1795461544320596900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544259373824}}
+{"ts_ns": 1795461544322618800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544259373824}}
+{"ts_ns": 1795461544322618800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 250, "source_ts_ns": 1795461544259373824}}
+{"ts_ns": 1795461544322618800, "kind": "event", "id": 1003, "seq": 250, "data": {"origin": "GEM_HOST", "payload": {"101": 250, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544259373824}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544358385152}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544376355840}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544358385152}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544376355840}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 253, "source_ts_ns": 1795461544358385152}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 255, "source_ts_ns": 1795461544358385152}}
+{"ts_ns": 1795461544424043200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 258, "source_ts_ns": 1795461544376355840}}
+{"ts_ns": 1795461544424043200, "kind": "event", "id": 1002, "seq": 253, "data": {"origin": "GEM_HOST", "payload": {"101": 253, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544358385152}}
+{"ts_ns": 1795461544424043200, "kind": "event", "id": 1005, "seq": 255, "data": {"origin": "UA_CLIENT", "payload": {"101": 255, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544358385152}}
+{"ts_ns": 1795461544424043200, "kind": "event", "id": 1003, "seq": 258, "data": {"origin": "GEM_HOST", "payload": {"101": 258, "104": "GEM_HOST", "102": 24.953}, "time_ns": 1795461544376355840}}
+{"ts_ns": 1795461544474870800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.97, "source_ts_ns": 1795461544440592896}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544475557120}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544491333888}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544475557120}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544491333888}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 262, "source_ts_ns": 1795461544475557120}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 264, "source_ts_ns": 1795461544475557120}}
+{"ts_ns": 1795461544533311900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 267, "source_ts_ns": 1795461544491333888}}
+{"ts_ns": 1795461544533311900, "kind": "event", "id": 1002, "seq": 262, "data": {"origin": "GEM_HOST", "payload": {"101": 262, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544475557120}}
+{"ts_ns": 1795461544533311900, "kind": "event", "id": 1005, "seq": 264, "data": {"origin": "UA_CLIENT", "payload": {"101": 264, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544475557120}}
+{"ts_ns": 1795461544533311900, "kind": "event", "id": 1003, "seq": 267, "data": {"origin": "GEM_HOST", "payload": {"101": 267, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544491333888}}
+{"ts_ns": 1795461544607930700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544590871040}}
+{"ts_ns": 1795461544607930700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544590871040}}
+{"ts_ns": 1795461544607930700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 270, "source_ts_ns": 1795461544590871040}}
+{"ts_ns": 1795461544607930700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 272, "source_ts_ns": 1795461544590871040}}
+{"ts_ns": 1795461544607930700, "kind": "event", "id": 1002, "seq": 270, "data": {"origin": "GEM_HOST", "payload": {"101": 270, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544590871040}}
+{"ts_ns": 1795461544607930700, "kind": "event", "id": 1005, "seq": 272, "data": {"origin": "UA_CLIENT", "payload": {"101": 272, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544590871040}}
+{"ts_ns": 1795461544673720000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544607930880}}
+{"ts_ns": 1795461544673720000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544607930880}}
+{"ts_ns": 1795461544673720000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 275, "source_ts_ns": 1795461544607930880}}
+{"ts_ns": 1795461544674271800, "kind": "event", "id": 1003, "seq": 275, "data": {"origin": "GEM_HOST", "payload": {"101": 275, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544607930880}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544707016960}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544720233984}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544707016960}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544720233984}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 278, "source_ts_ns": 1795461544707016960}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 280, "source_ts_ns": 1795461544707488000}}
+{"ts_ns": 1795461544785400500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 283, "source_ts_ns": 1795461544720233984}}
+{"ts_ns": 1795461544785400500, "kind": "event", "id": 1002, "seq": 278, "data": {"origin": "GEM_HOST", "payload": {"101": 278, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544707016960}}
+{"ts_ns": 1795461544785400500, "kind": "event", "id": 1005, "seq": 280, "data": {"origin": "UA_CLIENT", "payload": {"101": 280, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544707488000}}
+{"ts_ns": 1795461544785400500, "kind": "event", "id": 1003, "seq": 283, "data": {"origin": "GEM_HOST", "payload": {"101": 283, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544720233984}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544824263936}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544831237120}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544824263936}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544831237120}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 286, "source_ts_ns": 1795461544824263936}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 288, "source_ts_ns": 1795461544824263936}}
+{"ts_ns": 1795461544877310800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 291, "source_ts_ns": 1795461544831237120}}
+{"ts_ns": 1795461544877310800, "kind": "event", "id": 1002, "seq": 286, "data": {"origin": "GEM_HOST", "payload": {"101": 286, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544824263936}}
+{"ts_ns": 1795461544877310800, "kind": "event", "id": 1005, "seq": 288, "data": {"origin": "UA_CLIENT", "payload": {"101": 288, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544824263936}}
+{"ts_ns": 1795461544877310800, "kind": "event", "id": 1003, "seq": 291, "data": {"origin": "GEM_HOST", "payload": {"101": 291, "104": "GEM_HOST", "102": 24.97}, "time_ns": 1795461544831237120}}
+{"ts_ns": 1795461544958441300, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.015, "source_ts_ns": 1795461544941819904}}
+{"ts_ns": 1795461544958441300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 293, "source_ts_ns": 1795461544941819904}}
+{"ts_ns": 1795461544958441300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 296, "source_ts_ns": 1795461544942665216}}
+{"ts_ns": 1795461544958441300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 298, "source_ts_ns": 1795461544942665216}}
+{"ts_ns": 1795461544958441300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461544942665216}}
+{"ts_ns": 1795461544958441300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461544942665216}}
+{"ts_ns": 1795461544958441300, "kind": "event", "id": 1007, "seq": 293, "data": {"origin": "EQUIPMENT", "payload": {"101": 293, "102": 25.015}, "time_ns": 1795461544941819904}}
+{"ts_ns": 1795461544958441300, "kind": "event", "id": 1002, "seq": 296, "data": {"origin": "GEM_HOST", "payload": {"101": 296, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461544942665216}}
+{"ts_ns": 1795461544958441300, "kind": "event", "id": 1005, "seq": 298, "data": {"origin": "UA_CLIENT", "payload": {"101": 298, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461544942665216}}
+{"ts_ns": 1795461545025522200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461544958440960}}
+{"ts_ns": 1795461545025522200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461544958440960}}
+{"ts_ns": 1795461545025522200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 301, "source_ts_ns": 1795461544958440960}}
+{"ts_ns": 1795461545025522200, "kind": "event", "id": 1003, "seq": 301, "data": {"origin": "GEM_HOST", "payload": {"101": 301, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461544958440960}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545057924096}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545076059136}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545057924096}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545076059136}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 304, "source_ts_ns": 1795461545057924096}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 306, "source_ts_ns": 1795461545057924096}}
+{"ts_ns": 1795461545124534900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 309, "source_ts_ns": 1795461545076059136}}
+{"ts_ns": 1795461545124534900, "kind": "event", "id": 1002, "seq": 304, "data": {"origin": "GEM_HOST", "payload": {"101": 304, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545057924096}}
+{"ts_ns": 1795461545124534900, "kind": "event", "id": 1005, "seq": 306, "data": {"origin": "UA_CLIENT", "payload": {"101": 306, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545057924096}}
+{"ts_ns": 1795461545124534900, "kind": "event", "id": 1003, "seq": 309, "data": {"origin": "GEM_HOST", "payload": {"101": 309, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545076059136}}
+{"ts_ns": 1795461545208698000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545191322112}}
+{"ts_ns": 1795461545208698000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545191322112}}
+{"ts_ns": 1795461545208698000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 312, "source_ts_ns": 1795461545191322112}}
+{"ts_ns": 1795461545208698000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 314, "source_ts_ns": 1795461545191322112}}
+{"ts_ns": 1795461545208698000, "kind": "event", "id": 1002, "seq": 312, "data": {"origin": "GEM_HOST", "payload": {"101": 312, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545191322112}}
+{"ts_ns": 1795461545208698000, "kind": "event", "id": 1005, "seq": 314, "data": {"origin": "UA_CLIENT", "payload": {"101": 314, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545191322112}}
+{"ts_ns": 1795461545275677600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545208698112}}
+{"ts_ns": 1795461545275677600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545208698112}}
+{"ts_ns": 1795461545275677600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 317, "source_ts_ns": 1795461545208698112}}
+{"ts_ns": 1795461545277185600, "kind": "event", "id": 1003, "seq": 317, "data": {"origin": "GEM_HOST", "payload": {"101": 317, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545208698112}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545307614976}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545323823872}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545307614976}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545323823872}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 320, "source_ts_ns": 1795461545307614976}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 322, "source_ts_ns": 1795461545307614976}}
+{"ts_ns": 1795461545366827400, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 325, "source_ts_ns": 1795461545323823872}}
+{"ts_ns": 1795461545366827400, "kind": "event", "id": 1002, "seq": 320, "data": {"origin": "GEM_HOST", "payload": {"101": 320, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545307614976}}
+{"ts_ns": 1795461545366827400, "kind": "event", "id": 1005, "seq": 322, "data": {"origin": "UA_CLIENT", "payload": {"101": 322, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545307614976}}
+{"ts_ns": 1795461545366827400, "kind": "event", "id": 1003, "seq": 325, "data": {"origin": "GEM_HOST", "payload": {"101": 325, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545323823872}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545423847936}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545436701952}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545423847936}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545436701952}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 328, "source_ts_ns": 1795461545424227840}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 330, "source_ts_ns": 1795461545424227840}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 333, "source_ts_ns": 1795461545436701952}}
+{"ts_ns": 1795461545456158200, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.004, "source_ts_ns": 1795461545452406784}}
+{"ts_ns": 1795461545456158200, "kind": "event", "id": 1002, "seq": 328, "data": {"origin": "GEM_HOST", "payload": {"101": 328, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545424227840}}
+{"ts_ns": 1795461545456158200, "kind": "event", "id": 1005, "seq": 330, "data": {"origin": "UA_CLIENT", "payload": {"101": 330, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545424227840}}
+{"ts_ns": 1795461545456158200, "kind": "event", "id": 1003, "seq": 333, "data": {"origin": "GEM_HOST", "payload": {"101": 333, "104": "GEM_HOST", "102": 25.015}, "time_ns": 1795461545436701952}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545551644160}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545557216000}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545551644160}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545557216000}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 337, "source_ts_ns": 1795461545551644160}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 339, "source_ts_ns": 1795461545557216000}}
+{"ts_ns": 1795461545617392700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 342, "source_ts_ns": 1795461545557216000}}
+{"ts_ns": 1795461545617392700, "kind": "event", "id": 1002, "seq": 337, "data": {"origin": "GEM_HOST", "payload": {"101": 337, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545551644160}}
+{"ts_ns": 1795461545617392700, "kind": "event", "id": 1005, "seq": 339, "data": {"origin": "UA_CLIENT", "payload": {"101": 339, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545557216000}}
+{"ts_ns": 1795461545617392700, "kind": "event", "id": 1003, "seq": 342, "data": {"origin": "GEM_HOST", "payload": {"101": 342, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545557216000}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545657831936}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545664933888}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545657831936}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545664933888}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 345, "source_ts_ns": 1795461545657831936}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 347, "source_ts_ns": 1795461545657831936}}
+{"ts_ns": 1795461545733277600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 350, "source_ts_ns": 1795461545664933888}}
+{"ts_ns": 1795461545733277600, "kind": "event", "id": 1002, "seq": 345, "data": {"origin": "GEM_HOST", "payload": {"101": 345, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545657831936}}
+{"ts_ns": 1795461545733277600, "kind": "event", "id": 1005, "seq": 347, "data": {"origin": "UA_CLIENT", "payload": {"101": 347, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545657831936}}
+{"ts_ns": 1795461545733277600, "kind": "event", "id": 1003, "seq": 350, "data": {"origin": "GEM_HOST", "payload": {"101": 350, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545664933888}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545778434048}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545792417024}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545778434048}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545792417024}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 353, "source_ts_ns": 1795461545778434048}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 355, "source_ts_ns": 1795461545778434048}}
+{"ts_ns": 1795461545824835800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 358, "source_ts_ns": 1795461545792417024}}
+{"ts_ns": 1795461545824835800, "kind": "event", "id": 1002, "seq": 353, "data": {"origin": "GEM_HOST", "payload": {"101": 353, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545778434048}}
+{"ts_ns": 1795461545824835800, "kind": "event", "id": 1005, "seq": 355, "data": {"origin": "UA_CLIENT", "payload": {"101": 355, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545778434048}}
+{"ts_ns": 1795461545824835800, "kind": "event", "id": 1003, "seq": 358, "data": {"origin": "GEM_HOST", "payload": {"101": 358, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545792417024}}
+{"ts_ns": 1795461545907943700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461545899368960}}
+{"ts_ns": 1795461545907943700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461545899368960}}
+{"ts_ns": 1795461545907943700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 361, "source_ts_ns": 1795461545899368960}}
+{"ts_ns": 1795461545907943700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 363, "source_ts_ns": 1795461545899368960}}
+{"ts_ns": 1795461545907943700, "kind": "event", "id": 1002, "seq": 361, "data": {"origin": "GEM_HOST", "payload": {"101": 361, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545899368960}}
+{"ts_ns": 1795461545907943700, "kind": "event", "id": 1005, "seq": 363, "data": {"origin": "UA_CLIENT", "payload": {"101": 363, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461545899368960}}
+{"ts_ns": 1795461545966993600, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461545924448000}}
+{"ts_ns": 1795461545966993600, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461545924448000}}
+{"ts_ns": 1795461545966993600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 366, "source_ts_ns": 1795461545924448000}}
+{"ts_ns": 1795461545966993600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 368, "source_ts_ns": 1795461545938692096}}
+{"ts_ns": 1795461545966993600, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.972, "source_ts_ns": 1795461545938692096}}
+{"ts_ns": 1795461545966993600, "kind": "event", "id": 1003, "seq": 366, "data": {"origin": "GEM_HOST", "payload": {"101": 366, "104": "GEM_HOST", "102": 25.004}, "time_ns": 1795461545924448000}}
+{"ts_ns": 1795461545966993600, "kind": "event", "id": 1007, "seq": 368, "data": {"origin": "EQUIPMENT", "payload": {"101": 368, "102": 24.972}, "time_ns": 1795461545938692096}}
+{"ts_ns": 1795461546060713000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546041644032}}
+{"ts_ns": 1795461546060713000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546041644032}}
+{"ts_ns": 1795461546060713000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 371, "source_ts_ns": 1795461546041644032}}
+{"ts_ns": 1795461546060713000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 373, "source_ts_ns": 1795461546041644032}}
+{"ts_ns": 1795461546060713000, "kind": "event", "id": 1002, "seq": 371, "data": {"origin": "GEM_HOST", "payload": {"101": 371, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546041644032}}
+{"ts_ns": 1795461546060713000, "kind": "event", "id": 1005, "seq": 373, "data": {"origin": "UA_CLIENT", "payload": {"101": 373, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546041644032}}
+{"ts_ns": 1795461546124897800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546058877952}}
+{"ts_ns": 1795461546124897800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546058877952}}
+{"ts_ns": 1795461546124897800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 376, "source_ts_ns": 1795461546058877952}}
+{"ts_ns": 1795461546124897800, "kind": "event", "id": 1003, "seq": 376, "data": {"origin": "GEM_HOST", "payload": {"101": 376, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546058877952}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546175241984}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546191365120}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546175241984}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546191365120}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 379, "source_ts_ns": 1795461546175241984}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 381, "source_ts_ns": 1795461546179374080}}
+{"ts_ns": 1795461546224303000, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 384, "source_ts_ns": 1795461546191365120}}
+{"ts_ns": 1795461546224303000, "kind": "event", "id": 1002, "seq": 379, "data": {"origin": "GEM_HOST", "payload": {"101": 379, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546175241984}}
+{"ts_ns": 1795461546224303000, "kind": "event", "id": 1005, "seq": 381, "data": {"origin": "UA_CLIENT", "payload": {"101": 381, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546179374080}}
+{"ts_ns": 1795461546224303000, "kind": "event", "id": 1003, "seq": 384, "data": {"origin": "GEM_HOST", "payload": {"101": 384, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546191365120}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546291662080}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546297210880}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546291662080}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546297210880}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 387, "source_ts_ns": 1795461546291662080}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 389, "source_ts_ns": 1795461546294107904}}
+{"ts_ns": 1795461546324057300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 392, "source_ts_ns": 1795461546297210880}}
+{"ts_ns": 1795461546324057300, "kind": "event", "id": 1002, "seq": 387, "data": {"origin": "GEM_HOST", "payload": {"101": 387, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546291662080}}
+{"ts_ns": 1795461546324057300, "kind": "event", "id": 1005, "seq": 389, "data": {"origin": "UA_CLIENT", "payload": {"101": 389, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546294107904}}
+{"ts_ns": 1795461546324057300, "kind": "event", "id": 1003, "seq": 392, "data": {"origin": "GEM_HOST", "payload": {"101": 392, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546297210880}}
+{"ts_ns": 1795461546407741900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 394, "source_ts_ns": 1795461546384238080}}
+{"ts_ns": 1795461546407741900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 397, "source_ts_ns": 1795461546384238080}}
+{"ts_ns": 1795461546407741900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546384238080}}
+{"ts_ns": 1795461546407741900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546384238080}}
+{"ts_ns": 1795461546407741900, "kind": "event", "id": 1005, "seq": 394, "data": {"origin": "UA_CLIENT", "payload": {"101": 394, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546384238080}}
+{"ts_ns": 1795461546407741900, "kind": "event", "id": 1002, "seq": 397, "data": {"origin": "GEM_HOST", "payload": {"101": 397, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546384238080}}
+{"ts_ns": 1795461546458147800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546407741952}}
+{"ts_ns": 1795461546458147800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546407741952}}
+{"ts_ns": 1795461546458147800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 400, "source_ts_ns": 1795461546407741952}}
+{"ts_ns": 1795461546458147800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.009, "source_ts_ns": 1795461546456953088}}
+{"ts_ns": 1795461546458147800, "kind": "event", "id": 1003, "seq": 400, "data": {"origin": "GEM_HOST", "payload": {"101": 400, "104": "GEM_HOST", "102": 24.972}, "time_ns": 1795461546407741952}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546524269056}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546531808000}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546524269056}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546531808000}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 404, "source_ts_ns": 1795461546524269056}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 406, "source_ts_ns": 1795461546524269056}}
+{"ts_ns": 1795461546575099900, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 409, "source_ts_ns": 1795461546531808000}}
+{"ts_ns": 1795461546575099900, "kind": "event", "id": 1002, "seq": 404, "data": {"origin": "GEM_HOST", "payload": {"101": 404, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546524269056}}
+{"ts_ns": 1795461546575099900, "kind": "event", "id": 1005, "seq": 406, "data": {"origin": "UA_CLIENT", "payload": {"101": 406, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546524269056}}
+{"ts_ns": 1795461546575099900, "kind": "event", "id": 1003, "seq": 409, "data": {"origin": "GEM_HOST", "payload": {"101": 409, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546531808000}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546623857920}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546642158080}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546623857920}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546642158080}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 412, "source_ts_ns": 1795461546623857920}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 414, "source_ts_ns": 1795461546623857920}}
+{"ts_ns": 1795461546674972200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 417, "source_ts_ns": 1795461546642158080}}
+{"ts_ns": 1795461546674972200, "kind": "event", "id": 1002, "seq": 412, "data": {"origin": "GEM_HOST", "payload": {"101": 412, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546623857920}}
+{"ts_ns": 1795461546674972200, "kind": "event", "id": 1005, "seq": 414, "data": {"origin": "UA_CLIENT", "payload": {"101": 414, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546623857920}}
+{"ts_ns": 1795461546674972200, "kind": "event", "id": 1003, "seq": 417, "data": {"origin": "GEM_HOST", "payload": {"101": 417, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546642158080}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546741785088}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546758488832}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546741785088}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546758488832}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 420, "source_ts_ns": 1795461546741785088}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 422, "source_ts_ns": 1795461546741785088}}
+{"ts_ns": 1795461546780734700, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 425, "source_ts_ns": 1795461546758488832}}
+{"ts_ns": 1795461546780734700, "kind": "event", "id": 1002, "seq": 420, "data": {"origin": "GEM_HOST", "payload": {"101": 420, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546741785088}}
+{"ts_ns": 1795461546780734700, "kind": "event", "id": 1005, "seq": 422, "data": {"origin": "UA_CLIENT", "payload": {"101": 422, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546741785088}}
+{"ts_ns": 1795461546780734700, "kind": "event", "id": 1003, "seq": 425, "data": {"origin": "GEM_HOST", "payload": {"101": 425, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546758488832}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "EXECUTING", "source_ts_ns": 1795461546875056896}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "ProcessingState", "seq": null, "data": {"value": "IDLE", "source_ts_ns": 1795461546891340032}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 1, "source_ts_ns": 1795461546875056896}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "ProcessingStateId", "seq": null, "data": {"value": 0, "source_ts_ns": 1795461546891340032}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 428, "source_ts_ns": 1795461546875056896}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 430, "source_ts_ns": 1795461546875056896}}
+{"ts_ns": 1795461546924475800, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 433, "source_ts_ns": 1795461546891340032}}
+{"ts_ns": 1795461546924475800, "kind": "event", "id": 1002, "seq": 428, "data": {"origin": "GEM_HOST", "payload": {"101": 428, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546875056896}}
+{"ts_ns": 1795461546924475800, "kind": "event", "id": 1005, "seq": 430, "data": {"origin": "UA_CLIENT", "payload": {"101": 430, "104": "UA_CLIENT", "103": "authority held by GEM_HOST"}, "time_ns": 1795461546875056896}}
+{"ts_ns": 1795461546924475800, "kind": "event", "id": 1003, "seq": 433, "data": {"origin": "GEM_HOST", "payload": {"101": 433, "104": "GEM_HOST", "102": 25.009}, "time_ns": 1795461546891340032}}
+{"ts_ns": 1795461546948162500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.031, "source_ts_ns": 1795461546948163072}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 435, "source_ts_ns": 1795461546948163072}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 438, "source_ts_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 440, "source_ts_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 442, "source_ts_ns": 1795461546981499904}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "ControlState", "seq": null, "data": {"value": "ONLINE_LOCAL", "source_ts_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "ControlStateId", "seq": null, "data": {"value": 4, "source_ts_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "data", "id": "Authority", "seq": null, "data": {"value": "OPERATOR", "source_ts_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "event", "id": 1007, "seq": 435, "data": {"origin": "EQUIPMENT", "payload": {"101": 435, "102": 25.031}, "time_ns": 1795461546948163072}}
+{"ts_ns": 1795461547024543200, "kind": "event", "id": 1001, "seq": 438, "data": {"origin": "OPERATOR", "payload": {"101": 438, "104": "OPERATOR", "2": 4}, "time_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "event", "id": 1004, "seq": 440, "data": {"origin": "OPERATOR", "payload": {"101": 440, "104": "OPERATOR", "4": "OPERATOR"}, "time_ns": 1795461546966310912}}
+{"ts_ns": 1795461547024543200, "kind": "event", "id": 1005, "seq": 442, "data": {"origin": "GEM_HOST", "payload": {"101": 442, "104": "GEM_HOST", "103": "equipment in LOCAL"}, "time_ns": 1795461546981499904}}
+{"ts_ns": 1795461547457562500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.951, "source_ts_ns": 1795461547456619008}}
+{"ts_ns": 1795461547950620800, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.031, "source_ts_ns": 1795461547950620928}}
+{"ts_ns": 1795461548024548600, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 445, "source_ts_ns": 1795461547950620928}}
+{"ts_ns": 1795461548024548600, "kind": "event", "id": 1007, "seq": 445, "data": {"origin": "EQUIPMENT", "payload": {"101": 445, "102": 25.031}, "time_ns": 1795461547950620928}}
+{"ts_ns": 1795461548474913600, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.02, "source_ts_ns": 1795461548441958912}}
+{"ts_ns": 1795461549025625300, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.984, "source_ts_ns": 1795461548950036992}}
+{"ts_ns": 1795461549025625300, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 448, "source_ts_ns": 1795461548950036992}}
+{"ts_ns": 1795461549025625300, "kind": "event", "id": 1007, "seq": 448, "data": {"origin": "EQUIPMENT", "payload": {"101": 448, "102": 24.984}, "time_ns": 1795461548950036992}}
+{"ts_ns": 1795461549457832700, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.966, "source_ts_ns": 1795461549457330944}}
+{"ts_ns": 1795461550033542500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 25.046, "source_ts_ns": 1795461549950141952}}
+{"ts_ns": 1795461550033542500, "kind": "data", "id": "LastEventSeq", "seq": null, "data": {"value": 451, "source_ts_ns": 1795461549950141952}}
+{"ts_ns": 1795461550033542500, "kind": "event", "id": 1007, "seq": 451, "data": {"origin": "EQUIPMENT", "payload": {"101": 451, "102": 25.046}, "time_ns": 1795461549950141952}}
+{"ts_ns": 1795461550457739500, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.984, "source_ts_ns": 1795461550457294080}}
+{"ts_ns": 1795461550949973000, "kind": "data", "id": "Temperature", "seq": null, "data": {"value": 24.959, "source_ts_ns": 1795461550949972992}}
