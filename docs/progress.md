@@ -314,3 +314,5 @@ Both START (GEM HCACK 0, UA BadUserAccessDenied, I5 round) → LOCAL → GEM STA
    in this task); documented as a known issue with a workaround.
 2. The first capture at 1500 px width cut off the UA column when rejection texts were long; recaptured at 1800 px.
    The fixed footer overlapped full-page captures; hidden during capture only.
+
+**Follow-up:** Results tab fixed (`showResult` → `showCmdResult` for the control panel, D35), verified in a browser, guide updated with figure A5, 101 tests pass.

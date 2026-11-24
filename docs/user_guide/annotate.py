@@ -32,6 +32,7 @@ FIGS: dict[str, tuple[str, tuple, list[str], int]] = {
                                 ["w-secs", "w-ua", "inv", "cnt", "lat", "overall"], 22),
     "A4_inside_policy_browser_race": ("20_inside", ("top", "sec-race"),
                                       ["t-ins", "pol-active", "browse-btn", "tree-gem-tag", "race"], 28),
+    "A5_results_tab": ("30_results", ("keys", ["rlist", "md"]), ["rlist", "md"], 33),
     # ---- Part B: demo steps ----
     "B01_start_system": ("01_system_started", ("top", "sec-cols"), ["sys-start", "sys-msg", "sys-extra", "b-link", "sec-cols"], 1),
     "B02_remote": ("02_remote", ("top", "sec-cols"), ["btn-remote", "result", "b-cs", "b-auth"], 1),

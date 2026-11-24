@@ -89,10 +89,12 @@ directly, so the arbiter treats a button press exactly like a real host or clien
 
 ### A.5 Results tab
 
-The *Results* tab lists the committed scenario summaries (`results/summary.md`, `S1_summary.md` … `S6_summary.md`,
-`checker_self_test.md`, `capture_summary.md`). **Known issue:** in the current dashboard version the Results tab stays on
-"loading…" (see Part C, "Results tab shows loading…"). Until that is fixed, open `results/summary.md` directly in the
-editor or on GitHub.
+![Results tab](img/A5_results_tab.png)
+
+| # | Element | What it shows |
+|---|---|---|
+| ㉝ | **Result files** | The committed results: `summary.md` (overview of all scenarios), `S1_summary.md` … `S6_summary.md`, `checker_self_test.md`. Click one to show it. |
+| ㉞ | **Rendered summary** | The overview table per scenario and invariant (PASS green, FAIL red, N/A grey), read from `results/` on disk. These are the reported results, produced by `python -m harness.scenarios all`, not by the panel run. |
 
 ### A.6 Known harmless effects (say this if the panel asks about a red cell)
 
@@ -238,7 +240,6 @@ I6 UA PASS 0 of 90 window events not received; causes {}
 | **A button says "system not running"** | All command buttons are greyed out. | Press *Start system* first and wait for RUNNING. |
 | **GEM commands time out after Kill GEM host** | Reply shows an error. | Press *Reconnect GEM host* first. |
 | **Model browser shows an error** | "connection refused" | The browse needs the running system (OPC UA server on 4840). Start the system first. |
-| **Results tab shows "loading…"** | Known issue in this dashboard version (a name clash in `web_view.html`). | Open `results/summary.md` in the editor instead. |
 | **Live demo is not possible at all** | — | Switch to the **replay dashboard**. It plays back a committed real run and needs no equipment and no free ports except 8081: `.venv\Scripts\python.exe -m harness.web_view --replay runs/sample_S3 --speed 3 --loop --port 8081`, then open http://localhost:8081. It shows the same panels (header says REPLAY), without the control panel. |
 | **Dashboard page is blank / "reconnecting…"** | The dashboard process ended. | Restart it (below) and reload the page. |
 

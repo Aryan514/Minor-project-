@@ -489,9 +489,9 @@ async function refreshSystem() {
   if (SYS.verdict) extra += (extra ? " &nbsp;|&nbsp; " : "") + `last panel run: checker <span class="${stCls(SYS.verdict.overall)}">${SYS.verdict.overall}</span> · ports released: ${SYS.verdict.ports_free}`;
   $("sys-extra").innerHTML = extra;
 }
-$("sys-start").onclick = async () => { const r = await post("/api/system/start"); if (!r.ok) showResult({reply: r.error, accepted: false}); refreshSystem(); };
-$("sys-stop").onclick = async () => { const r = await post("/api/system/stop"); if (!r.ok) showResult({reply: r.error, accepted: false}); refreshSystem(); };
-function showResult(r) {
+$("sys-start").onclick = async () => { const r = await post("/api/system/start"); if (!r.ok) showCmdResult({reply: r.error, accepted: false}); refreshSystem(); };
+$("sys-stop").onclick = async () => { const r = await post("/api/system/stop"); if (!r.ok) showCmdResult({reply: r.error, accepted: false}); refreshSystem(); };
+function showCmdResult(r) {
   const el = $("result"); el.className = r.accepted ? "acc" : "rej";
   el.innerHTML = `<b>${esc(r.label || r.command || "")}</b>${r.value != null ? " (" + esc(r.value) + ")" : ""}<br>` +
     `reply: <b class="${r.accepted ? "ok" : "no"}">${esc(r.reply || r.error || "")}</b>` +
@@ -500,7 +500,7 @@ function showResult(r) {
 document.querySelectorAll(".cmd").forEach((b) => b.onclick = async () => {
   const value = b.dataset.v ? $(b.dataset.v).value : null;
   b.dataset.busy = "1"; b.disabled = true; $("result").className = ""; $("result").textContent = "sending…";
-  try { showResult(await post("/api/cmd", {name: b.dataset.c, value})); } finally { delete b.dataset.busy; refreshSystem(); }
+  try { showCmdResult(await post("/api/cmd", {name: b.dataset.c, value})); } finally { delete b.dataset.busy; refreshSystem(); }
 });
 setInterval(refreshSystem, 1000); refreshSystem();
 
