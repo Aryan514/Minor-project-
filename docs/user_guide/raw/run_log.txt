@@ -1,0 +1,48 @@
+  shot 00_before_start
+  shot 01_system_started
+remote -> Operator console: remote | reply: OK seq=29 (27 ms)
+  shot 02_remote
+gem_start -> GEM host: S2F41 START (via the GEM host's command port) | reply: HCACK 0 (29 ms)
+  shot 03_gem_start
+wire match: {"seq": 45, "ua": "Publish: EventNotification (GemCollectionEventType)server \u2192 client \u00b7 18:21:58.474 \u00b7 Good\nCEID 1002\n{\"EventSeq\":45,\"Origin\":\"GEM_HOST\",\"Payload\":{\"101\":45,\"102\":24.966,\"104\":\"GEM_HOST\"}}", "secs": "S6F11 Wequipment \u2192 host \u00b7 18:21:58.417 \u00b7 system 3457237428\n  <L [3]\n    <U1 45 >\n    <U2 1002 >\n    <L [1]\n      <L [2]\n        <U2 1002 >\n        <L [3]\n          <U4 45 >\n          <A \"GEM_HOST\">\n          <F4 24.966 >\n        >\n      >\n    >\n  > ."}
+  shot w1_wire_same_seq
+alarm active on all three after 14.7s
+  shot 04_alarm_both_sides
+ua_start -> UA client: Call Start() (ua_client one-shot) | reply: StatusCode BadUserAccessDenied · reason: authority held by GEM_HOST (582 ms)
+  shot 05_ua_start_rejected
+gem_stop -> GEM host: S2F41 STOP | reply: HCACK 0 (7 ms)
+  shot 06_gem_stop
+both_start -> GEM S2F41 START + UA Call Start released by one barrier (like S3) | reply: GEM HCACK 0 | UA BadUserAccessDenied [conflict round (authority GEM_HOST) - judged by I5] · reason: authority held by GEM_HOST (28 ms)
+  shot 07_both_start
+gem_stop -> GEM host: S2F41 STOP | reply: HCACK 0 (46 ms)
+local -> Operator console: local | reply: OK seq=153 (4 ms)
+  shot 08_local
+gem_start -> GEM host: S2F41 START (via the GEM host's command port) | reply: HCACK 2 · reason: equipment in LOCAL (42 ms)
+  shot 09_gem_start_rejected_local
+remote -> Operator console: remote | reply: OK seq=174 (15 ms)
+  shot 10_remote_again
+kill_gem -> Kill the GEM host process (simulated crash) | reply: GEM host process killed (HSMS link will drop) (155 ms)
+  shot 11_gem_host_killed
+  shot 12_after_10s_disconnected
+reconnect_gem -> Start the GEM host again | reply: GEM host connected, reports defined again (444 ms)
+  shot 13_gem_reconnected
+race: UNSAFE check-then-act (1 ms injected gap, this script only) | double winners: 200/200 | single winner 0 · no winner 0 · 0.37 s | REAL EquipmentCore (atomic decide-and-apply) | double winners: 0/200 | single winner 200 · no winner 0 · 0.07 s
+browse: urn:minor-project:semi-equipment-mini (ns=2) · 84 ms · read live from the server
+  shot 20_inside
+  shot 14_before_stop_invariants
+verdict: PASS ports free: True
+    I1 GEM PASS expected 77, received 77, missing 0, duplicates 0
+    I1 UA PASS expected 90, received 90, missing 0, duplicates 0
+    I2 GEM PASS 81 received, inversions 0, adjacent duplicates 0, gaps 1 (gaps are judged by I1/I6)
+    I2 UA PASS 93 received, inversions 0, adjacent duplicates 0, gaps 0 (gaps are judged by I1/I6)
+    I3 GEM PASS 81 compared, 0 mismatches
+    I3 UA PASS 93 compared, 0 mismatches
+    I4 GEM PASS 10 changes, max 5.4 ms
+    I4 UA PASS 10 changes, max 63.6 ms
+    I5 both PASS 1 rounds, 1 clean; request from GEM reached the core first in 1/1 rounds
+    I6 GEM PASS 13 of 90 window events not received; causes {'dropped_no_link': 13}
+    I6 UA PASS 0 of 90 window events not received; causes {}
+  shot 15_system_stopped_verdict
+  shot 21_inside_after_stop
+  shot 30_results
+results md: loading…

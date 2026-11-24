@@ -13,6 +13,7 @@ and why each lost message was lost. GEM-inspired testbed on one laptop (loopback
 | N3 | Consistency method: seq-numbered audit oracle, send/receive logs, invariants I1–I6, checker self-test | `docs/invariants.md`, `results/` |
 
 Claims with evidence: `docs/novelty.md`. Panel questions: `docs/panel_qa.md`. Build log: `docs/progress.md`.
+Presenting with the dashboard: `docs/user_guide/USER_GUIDE.md` (also `.pdf`), slide images in `docs/screenshots_for_slides/`.
 
 ## Install
 

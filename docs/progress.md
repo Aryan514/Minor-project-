@@ -297,3 +297,20 @@ policy table from `arbiter.decide`; tshark packet counter), `equipment/wire_log.
    Rule D31: such presses are shown but not counted as conflict rounds.
 3. The local clock was 14:40 when this task started, so the "stop by 5:00 AM" timebox had already passed. Worked to the
    stated 2-hour timebox instead.
+
+## User guide with annotated screenshots (2026-11-24)
+
+**Done:** `docs/user_guide/USER_GUIDE.md` (+ `.html` and `.pdf` with images embedded): Part A dashboard tour with
+32 numbered callouts, Part B demo script (15 steps, what to click / what appears / what to say), Part C recovery.
+Screenshots from run `PANEL_20261124-182143`, driven entirely by the dashboard's own buttons in headless Edge:
+REMOTE → GEM START HCACK 0 → alarm 5001 SET on GEM, core and UA after 14.7 s → UA Start BadUserAccessDenied → GEM STOP →
+Both START (GEM HCACK 0, UA BadUserAccessDenied, I5 round) → LOCAL → GEM START HCACK 2 → REMOTE → kill GEM host 10 s
+(13 events `dropped_no_link`) → reconnect → Stop: **checker PASS**, ports released. Race demo 200/200 vs 0/200, browse
+84 ms. Same seq 45 shown in the SECS-II S6F11 and the OPC UA EventNotification. 8 unannotated crops in
+`docs/screenshots_for_slides/`.
+
+**Problems:**
+1. The Results tab stays on "loading…" (duplicate `showResult` in `web_view.html`, D35). Not fixed (no harness changes
+   in this task); documented as a known issue with a workaround.
+2. The first capture at 1500 px width cut off the UA column when rejection texts were long; recaptured at 1800 px.
+   The fixed footer overlapped full-page captures; hidden during capture only.
