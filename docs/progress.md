@@ -265,3 +265,35 @@ connects to the HSMS port (D28). `results/demo_capture.pcapng` + `results/captur
   BadUserAccessDenied, loser's CEID 1005 (seq 184) received by both. LOCAL → HCACK 2. GEM host killed 10 s → 11 events
   `dropped_no_link`. Checker: I1–I6 all PASS, overall PASS. Afterwards ports 5000/4840/5100/5101/8080 were free; only the
   intentional replay dashboard (8081) and an unrelated user application were running.
+
+## Dashboard: control panel, wire panel, model browser, policy, race demo
+
+**Built:** `harness/control_panel.py` (P1 system start/stop + 14 commands via protocol entry points; P3 browse; P4
+policy table from `arbiter.decide`; tshark packet counter), `equipment/wire_log.py` + hooks in `equipment/main.py` and
+`clients/gem_host.py` (P2 SECS-II SML wire log), UA wire logging + `browse_tree()` in `clients/ua_client.py`,
+`harness/race_demo.py` (P5), page sections Control / On the wire / Inside tab (policy, model browser, race),
+`tests/test_control_panel.py` (3 tests). No core, arbiter, adapter or checker code changed.
+
+**Verified** (dashboard live on 8080, every endpoint driven by an HTTP client, then key buttons pressed in a browser):
+- Start system → `PANEL_20261124-144639` running. Real replies with the core's reasons: GEM START in LOCAL → HCACK 2
+  "equipment in LOCAL"; after REMOTE → HCACK 0, again → HCACK 5 "already EXECUTING"; UA Start → BadUserAccessDenied
+  "authority held by GEM_HOST"; GEM limit 81 → EAC 3 (range), 35 → EAC 0; UA limit 45 in REMOTE → BadUserAccessDenied;
+  OFFLINE + lease → UA limit 45 Good, GEM limit 30 → EAC 2 "maintenance lease held by UA_CLIENT"; Both START at once
+  in REMOTE → GEM HCACK 0 / UA BadUserAccessDenied, under lease → GEM HCACK 2 / UA Good; Kill / Reconnect GEM host
+  worked. POST without `X-Panel` → 403. Commands before start → "start the system first".
+- Wire panel: 200 SECS-II messages with SML (e.g. S6F11 W with DATAID/CEID/EventSeq/EventTemp, S6F12) and 166 UA
+  records (Publish notifications, Call with status). Model browser: real browse, 25 nodes, 6 GEM-mapped variables
+  with units. Policy table equals `docs/arbitration.md` and highlights the active row. Race demo: unsafe 200/200 double
+  winners, real core 0/200 (CLI `python -m harness.race_demo`: same numbers). tshark counter: 434 packets on 5000,
+  1980 on 4840.
+- Stop system → **checker PASS** on the panel-driven run (I1–I6 PASS, I5 with 2 panel conflict rounds, GEM
+  5 losses all `dropped_no_link` from the kill). A second run driven by browser button presses
+  (`PANEL_20261124-144724`): checker PASS. Ports free afterwards.
+- `pytest`: 101 passed.
+
+**Problems:**
+1. A shell heredoc could not carry the long patch scripts (quoting). The patches were written as files and applied.
+2. "Both START at once" pressed in LOCAL would make I5 fail, because both are rejected by policy and that is not a conflict.
+   Rule D31: such presses are shown but not counted as conflict rounds.
+3. The local clock was 14:40 when this task started, so the "stop by 5:00 AM" timebox had already passed. Worked to the
+   stated 2-hour timebox instead.

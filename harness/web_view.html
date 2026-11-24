@@ -71,7 +71,29 @@
   .md code { background: #21262d; padding: 1px 5px; border-radius: 4px; font-size: 15px; }
   .md strong { color: #fff; } .md a { color: var(--blue); cursor: pointer; }
   .md td strong:only-child { padding: 1px 6px; border-radius: 4px; }
-  @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 10px; align-items: center; }
+  .btn { font: inherit; font-size: 17px; padding: 7px 14px; border-radius: 7px; border: 1px solid var(--line);
+         background: #21262d; color: var(--text); cursor: pointer; }
+  .btn:hover { border-color: var(--blue); } .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn.go { border-color: var(--green); color: var(--green); } .btn.halt { border-color: var(--red); color: var(--red); }
+  .btn.gem { border-color: #7ee787; } .btn.ua { border-color: var(--cyan); } .btn.op { border-color: var(--violet); }
+  .btns input { font: inherit; width: 80px; padding: 6px; background: #0d1117; color: var(--text); border: 1px solid var(--line); border-radius: 6px; }
+  .grp { color: var(--dim); font-size: 15px; min-width: 110px; }
+  #result { font-size: 20px; padding: 10px 12px; border-radius: 8px; background: #0d1117; border: 1px solid var(--line); min-height: 48px; }
+  #result.acc { border-color: var(--green); } #result.rej { border-color: var(--red); }
+  .wire { max-height: 520px; overflow-y: auto; }
+  .wmsg { border-bottom: 1px solid var(--line); padding: 6px 2px; }
+  .wmsg .wh { font-weight: 700; } .wmsg .wd { color: var(--dim); font-size: 14px; margin-left: 8px; }
+  .wmsg pre { margin: 4px 0 0; font: 15px/1.3 Consolas, monospace; color: #c9d1d9; white-space: pre-wrap; max-height: 230px; overflow: hidden; }
+  .dir-in { color: var(--cyan); } .dir-out { color: #7ee787; }
+  #inside { display: none; }
+  .tree { font: 16px/1.5 Consolas, monospace; } .tree ul { list-style: none; padding-left: 22px; margin: 0; border-left: 1px dashed var(--line); }
+  .tree .gem { color: var(--amber); } .tree .val { color: var(--cyan); } .tree .ty { color: var(--violet); } .tree .cls { color: var(--dim); }
+  tr.active-row td { background: rgba(88, 166, 255, .18); outline: 2px solid var(--blue); }
+  .pol td { font-size: 17px; } .pol .ok { color: var(--green); } .pol .no { color: #ffb3ad; } .pol .part { color: var(--amber); }
+  .race { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .race .big { font-size: 46px; font-weight: 800; }
+  @media (max-width: 1100px) { .grid, .race { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -84,11 +106,30 @@
   <span class="badge" id="b-ps"><small>processing</small><span>—</span></span>
   <span class="badge" id="b-auth"><small>authority</small><span>—</span></span>
   <span class="badge" id="b-link"><small>GEM link</small><span>—</span></span>
-  <div class="tabs"><button id="t-live" class="on">Live</button><button id="t-res">Results</button></div>
+  <div class="tabs"><button id="t-live" class="on">Live</button><button id="t-ins">Inside</button><button id="t-res">Results</button></div>
 </header>
 
 <main id="live">
   <div class="grid">
+    <section class="full" id="ctl" style="display:none">
+      <h2>Control panel <span style="color:var(--dim);font-size:15px;font-weight:400">every button uses a real protocol entry point (GEM host command port → S2F41/S2F15, ua_client → OPC UA Call, operator console socket), so the arbiter decides exactly as for any external client</span></h2>
+      <div class="btns"><span class="grp">System</span>
+        <button class="btn go" id="sys-start">▶ Start system</button><button class="btn halt" id="sys-stop">■ Stop system</button>
+        <span id="sys-msg" style="font-size:18px"></span></div>
+      <div class="btns" id="sys-extra" style="color:var(--dim);font-size:15px"></div>
+      <div class="btns"><span class="grp">GEM host</span>
+        <button class="btn gem cmd" data-c="gem_start">GEM START</button><button class="btn gem cmd" data-c="gem_stop">GEM STOP</button>
+        <input id="gem-val" value="35"><button class="btn gem cmd" data-c="gem_limit" data-v="gem-val">Set limit (GEM)</button>
+        <button class="btn halt cmd" data-c="kill_gem">Kill GEM host</button><button class="btn go cmd" data-c="reconnect_gem">Reconnect GEM host</button></div>
+      <div class="btns"><span class="grp">OPC UA client</span>
+        <button class="btn ua cmd" data-c="ua_start">UA Start</button><button class="btn ua cmd" data-c="ua_stop">UA Stop</button>
+        <input id="ua-val" value="45"><button class="btn ua cmd" data-c="ua_limit" data-v="ua-val">Set limit (UA)</button>
+        <button class="btn cmd" data-c="both_start" style="border-color:var(--amber);color:var(--amber)">⚡ Both START at once</button></div>
+      <div class="btns"><span class="grp">Operator</span>
+        <button class="btn op cmd" data-c="remote">REMOTE</button><button class="btn op cmd" data-c="local">LOCAL</button><button class="btn op cmd" data-c="offline">OFFLINE</button>
+        <button class="btn op cmd" data-c="lease_ua">Lease UA</button><button class="btn op cmd" data-c="lease_off">Lease off</button></div>
+      <div id="result">Start the system, then press any command: its real reply (HCACK / EAC / StatusCode) and the core's reason appear here.</div>
+    </section>
     <section class="full">
       <h2>Architecture: one core, two doors (pulses = messages: green accepted · red rejected · amber alarm)</h2>
       <svg id="arch" viewBox="0 0 1000 230" width="100%" height="230">
@@ -134,6 +175,14 @@
     </section>
 
     <section class="full">
+      <h2>On the wire (newest first)</h2>
+      <div class="grid">
+        <div><h2 style="font-size:18px;color:#7ee787">SECS-II on port 5000 <span style="color:var(--dim);font-size:14px;font-weight:400">SML as logged by secsgem in the equipment</span></h2><div class="wire" id="w-secs"><div class="pend">no SECS-II messages yet</div></div></div>
+        <div><h2 style="font-size:18px;color:var(--cyan)">OPC UA on port 4840 <span style="color:var(--dim);font-size:14px;font-weight:400">service calls / notifications as logged by the UA clients</span></h2><div class="wire" id="w-ua"><div class="pend">no OPC UA messages yet</div></div></div>
+      </div>
+    </section>
+
+    <section class="full">
       <h2>Live invariants (harness/checker.py on the logs so far) <span class="st" id="overall">—</span></h2>
       <div class="grid">
         <div><table><thead><tr><th>Invariant</th><th>Side</th><th class="c">Result</th><th>Detail</th></tr></thead><tbody id="inv"></tbody></table></div>
@@ -146,11 +195,32 @@
   </div>
 </main>
 
+<main id="inside">
+  <div class="grid">
+    <section class="full">
+      <h2>Control-authority policy (computed from arbiter.decide; active row highlighted)</h2>
+      <table class="pol"><thead><tr><th>Control state</th><th>Authority</th><th>GEM_HOST</th><th>UA_CLIENT</th><th>OPERATOR</th></tr></thead><tbody id="pol"></tbody></table>
+      <div class="caveat">Actions START / STOP / EC_WRITE. Control state and lease changes are operator-only in every state.</div>
+    </section>
+    <section class="full">
+      <h2>Model browser (real OPC UA browse of opc.tcp://127.0.0.1:4840)</h2>
+      <div class="btns"><button class="btn ua" id="browse-btn">Browse the server now</button><span id="browse-msg" style="color:var(--dim)"></span></div>
+      <div class="tree" id="tree"></div>
+    </section>
+    <section class="full">
+      <h2>Break-it demo: why decide-and-apply must be atomic</h2>
+      <div class="btns"><button class="btn" id="race-btn" style="border-color:var(--amber);color:var(--amber)">Run race demo (200 concurrent START pairs)</button><span id="race-msg" style="color:var(--dim)"></span></div>
+      <div class="race" id="race"></div>
+      <div class="caveat">Both variants use the same arbiter in EQUIPMENT_OFFLINE + UA lease, where OPERATOR and UA_CLIENT are both allowed to START. The UNSAFE variant exists only in harness/race_demo.py: it checks, releases the lock, waits 1 ms (injected to expose the check-then-act window) and then applies. It runs in-process and does not touch the running system.</div>
+    </section>
+  </div>
+</main>
+
 <main id="results">
   <section><h2>Results</h2><div class="rlist" id="rlist"></div><div class="md" id="md">loading…</div></section>
 </main>
 
-<footer><span>Simulated chamber, loopback, single laptop · read-only view of the run logs</span><span id="clock"></span></footer>
+<footer><span>Simulated chamber, loopback, single laptop · views read the run logs · commands go through the protocol entry points</span><span id="clock"></span></footer>
 
 <script>
 "use strict";
@@ -177,7 +247,9 @@ function renderHeader(h, speed) {
   badge("b-link", h.link, h.link === "COMMUNICATING" ? "b-green" : "b-red");
   setLink(h.link);
   S.now = h.now_ns || S.now;
+  CUR = {cs: h.control_state, lease: h.lease}; highlightPolicy();
 }
+let CUR = {cs: null, lease: false};
 function setLink(v) {
   const seg = $("seg-gem-link");
   seg.classList.toggle("up", v === "COMMUNICATING"); seg.classList.toggle("down", v !== "COMMUNICATING");
@@ -303,6 +375,10 @@ function applySnapshot(s) {
   $("tl").innerHTML = ""; tlRows.clear(); s.timeline.forEach(tlRow);
   lastLink = s.header.link; setLink(s.header.link);
   renderInv(s.invariants); chartDirty = true;
+  $("w-secs").innerHTML = ""; $("w-ua").innerHTML = "";
+  (s.wire?.SECS || []).forEach((r) => wireRow("SECS", r)); (s.wire?.UA || []).forEach((r) => wireRow("UA", r));
+  if (!(s.wire?.SECS || []).length) $("w-secs").innerHTML = '<div class="pend">no SECS-II wire log in this run</div>';
+  if (!(s.wire?.UA || []).length) $("w-ua").innerHTML = '<div class="pend">no OPC UA wire log in this run</div>';
 }
 function applyItem(it) {
   switch (it.t) {
@@ -315,6 +391,7 @@ function applyItem(it) {
     case "flow": pulse(it.side === "GEM" ? ["core", "gemdoor", "host"] : ["core", "uadoor", "ua"], it.color); break;
     case "dropflash": dropFlash(it.side); break;
     case "link": setLink(it.v); break;
+    case "wire": wireRow(it.proto, it.rec); break;
   }
 }
 function connect() {
@@ -368,10 +445,104 @@ async function loadResults() {
 }
 function tab(which) {
   $("live").style.display = which === "live" ? "" : "none"; $("results").style.display = which === "res" ? "block" : "none";
+  $("inside").style.display = which === "ins" ? "block" : "none";
   $("t-live").classList.toggle("on", which === "live"); $("t-res").classList.toggle("on", which === "res");
-  if (which === "res") loadResults(); else chartDirty = true;
+  $("t-ins").classList.toggle("on", which === "ins");
+  if (which === "res") loadResults(); else if (which === "ins") loadPolicy(); else chartDirty = true;
 }
-$("t-live").onclick = () => tab("live"); $("t-res").onclick = () => tab("res");
+$("t-live").onclick = () => tab("live"); $("t-res").onclick = () => tab("res"); $("t-ins").onclick = () => tab("ins");
+
+/* ---------------- wire panel ---------------- */
+const STYPE = {1: "Select.req", 2: "Select.rsp", 3: "Deselect.req", 4: "Deselect.rsp", 5: "Linktest.req", 6: "Linktest.rsp", 7: "Reject.req", 9: "Separate.req"};
+function wireRow(proto, r) {
+  const box = $(proto === "SECS" ? "w-secs" : "w-ua");
+  if (box.firstChild && box.firstChild.classList && box.firstChild.classList.contains("pend")) box.innerHTML = "";
+  const d = document.createElement("div"); d.className = "wmsg";
+  if (proto === "SECS") {
+    const head = r.stype ? `HSMS ${STYPE[r.stype] || "SType " + r.stype}` : `S${r.stream}F${r.function}${r.wbit ? " W" : ""}`;
+    const dir = r.dir === "out" ? "equipment → host" : "host → equipment";
+    const body = r.stype ? "" : String(r.sml || "").split("\n").slice(1).join("\n");
+    d.innerHTML = `<span class="wh ${r.dir === "out" ? "dir-out" : "dir-in"}">${esc(head)}</span><span class="wd">${dir} · ${tfmt(r.ts_ns)} · system ${r.system ?? ""}</span>` + (body ? `<pre>${esc(body)}</pre>` : "");
+  } else {
+    const dir = r.dir === "out" ? "client → server" : "server → client";
+    const st = r.status ? ` · <span class="${r.status === "Good" ? "ok" : "no"}">${esc(r.status)}</span>` : "";
+    const det = r.detail && typeof r.detail === "object" ? JSON.stringify(r.detail) : (r.detail || "");
+    d.innerHTML = `<span class="wh ${r.dir === "out" ? "dir-out" : "dir-in"}">${esc(r.service)}</span><span class="wd">${dir} · ${tfmt(r.ts_ns)}${st}</span>` +
+                  `<pre>${esc((r.node ? r.node + "\n" : "") + det)}</pre>`;
+  }
+  box.insertBefore(d, box.firstChild); while (box.children.length > 150) box.lastChild.remove();
+}
+
+/* ---------------- control panel ---------------- */
+const post = async (url, body) => (await fetch(url, {method: "POST", headers: {"Content-Type": "application/json", "X-Panel": "1"}, body: JSON.stringify(body || {})})).json();
+let SYS = null;
+async function refreshSystem() {
+  try { SYS = await (await fetch("/api/system")).json(); } catch (e) { return; }
+  $("ctl").style.display = SYS.enabled ? "" : "none";
+  if (!SYS.enabled) return;
+  const running = SYS.state === "running";
+  $("sys-start").disabled = SYS.state !== "stopped"; $("sys-stop").disabled = !running;
+  document.querySelectorAll(".cmd").forEach((b) => { if (!b.dataset.busy) b.disabled = !running; });
+  $("sys-msg").innerHTML = `<b>${esc(SYS.state.toUpperCase())}</b> · ${esc(SYS.message)}`;
+  let extra = "";
+  if (SYS.packets) extra += `tshark (loopback): port 5000 ${SYS.packets["5000"]} packets · port 4840 ${SYS.packets["4840"]} packets`;
+  if (SYS.verdict) extra += (extra ? " &nbsp;|&nbsp; " : "") + `last panel run: checker <span class="${stCls(SYS.verdict.overall)}">${SYS.verdict.overall}</span> · ports released: ${SYS.verdict.ports_free}`;
+  $("sys-extra").innerHTML = extra;
+}
+$("sys-start").onclick = async () => { const r = await post("/api/system/start"); if (!r.ok) showResult({reply: r.error, accepted: false}); refreshSystem(); };
+$("sys-stop").onclick = async () => { const r = await post("/api/system/stop"); if (!r.ok) showResult({reply: r.error, accepted: false}); refreshSystem(); };
+function showResult(r) {
+  const el = $("result"); el.className = r.accepted ? "acc" : "rej";
+  el.innerHTML = `<b>${esc(r.label || r.command || "")}</b>${r.value != null ? " (" + esc(r.value) + ")" : ""}<br>` +
+    `reply: <b class="${r.accepted ? "ok" : "no"}">${esc(r.reply || r.error || "")}</b>` +
+    (r.reason ? ` · reason: <b>${esc(r.reason)}</b>` : "") + (r.ms != null ? ` <span style="color:var(--dim)">(${r.ms} ms)</span>` : "");
+}
+document.querySelectorAll(".cmd").forEach((b) => b.onclick = async () => {
+  const value = b.dataset.v ? $(b.dataset.v).value : null;
+  b.dataset.busy = "1"; b.disabled = true; $("result").className = ""; $("result").textContent = "sending…";
+  try { showResult(await post("/api/cmd", {name: b.dataset.c, value})); } finally { delete b.dataset.busy; refreshSystem(); }
+});
+setInterval(refreshSystem, 1000); refreshSystem();
+
+/* ---------------- Inside: policy, model browser, race ---------------- */
+let POLICY = [];
+async function loadPolicy() { if (!POLICY.length) POLICY = (await (await fetch("/api/policy")).json()).rows; renderPolicy(); }
+function renderPolicy() {
+  $("pol").innerHTML = POLICY.map((r, i) => `<tr data-i="${i}"><td><b>${esc(r.state)}</b></td><td>${esc(r.authority)}</td>` +
+    ["GEM_HOST", "UA_CLIENT", "OPERATOR"].map((o) => `<td class="${r.cells[o].kind}">${esc(r.cells[o].text)}</td>`).join("") + "</tr>").join("");
+  highlightPolicy();
+}
+function highlightPolicy() {
+  const rows = $("pol").children; if (!rows.length) return;
+  POLICY.forEach((r, i) => rows[i].classList.toggle("active-row", r.control_state === CUR.cs && r.lease === (CUR.cs === "EQUIPMENT_OFFLINE" && !!CUR.lease)));
+}
+function treeHtml(n) {
+  const gem = n.gem ? ` <span class="gem">⟷ GEM ${esc(n.gem.kind)} ${esc(n.gem.id)} (${esc(n.gem.format)})</span>` : "";
+  const val = n.value !== undefined ? ` = <span class="val">${esc(JSON.stringify(n.value))}</span>` : "";
+  const extra = (n.units ? ` <span class="cls">[${esc(n.units)}]</span>` : "") + (n.range ? ` <span class="cls">range ${n.range[0]}..${n.range[1]}</span>` : "") +
+                (n.inputs ? ` <span class="cls">(${esc(n.inputs.join(", "))})</span>` : "");
+  const ty = n.type ? ` <span class="ty">: ${esc(n.type)}</span>` : "";
+  const kids = n.children && n.children.length ? `<ul>${n.children.map((c) => `<li>${treeHtml(c)}</li>`).join("")}</ul>` : "";
+  return `<b>${esc(n.name)}</b> <span class="cls">${esc(n.class)}</span>${ty}${val}${extra}${gem}${kids}`;
+}
+$("browse-btn").onclick = async () => {
+  $("browse-msg").textContent = "browsing…"; const t0 = performance.now();
+  const r = await post("/api/browse");
+  if (!r.ok) { $("browse-msg").textContent = r.error; $("tree").innerHTML = ""; return; }
+  $("browse-msg").textContent = `${r.tree.namespace} (ns=${r.tree.ns_index}) · ${Math.round(performance.now() - t0)} ms · read live from the server`;
+  $("tree").innerHTML = `<ul style="border:0;padding:0"><li>${treeHtml(r.tree)}</li></ul>`;
+};
+$("race-btn").onclick = async () => {
+  $("race-btn").disabled = true; $("race-msg").textContent = "running 2 × 200 concurrent pairs…";
+  try {
+    const r = await post("/api/race", {n: 200});
+    $("race-msg").textContent = r.setup;
+    $("race").innerHTML = ["unsafe", "real"].map((k) => { const v = r[k], bad = v.double_winners > 0;
+      return `<section><h2 style="color:${bad ? "var(--red)" : "var(--green)"}">${esc(v.variant)}</h2>` +
+             `<div class="big ${bad ? "no" : "ok"}">double winners: ${v.double_winners}/${v.pairs}</div>` +
+             `<div>single winner ${v.single_winner} · no winner ${v.no_winner} · ${v.seconds} s</div></section>`; }).join("");
+  } finally { $("race-btn").disabled = false; }
+};
 </script>
 </body>
 </html>

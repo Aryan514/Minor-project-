@@ -1,8 +1,9 @@
 # harness/web_view.py
 # Live web dashboard for one run (stdlib only: http.server + Server-Sent Events; the page web_view.html is a
-# single self-contained file with no CDN). It is READ-ONLY: it only tails the run's JSONL logs, exactly like
-# live_view.py, and never talks to the core, the arbiter or ports 5000/4840/5100/5101. The invariants panel calls
-# harness/checker.py on the records seen so far (no re-implementation). --replay plays a finished run back.
+# single self-contained file with no CDN). The DISPLAY is read-only: it only tails the run's JSONL logs, exactly
+# like live_view.py; the invariants panel calls harness/checker.py on the records seen so far. In live mode on
+# 127.0.0.1 an optional control panel (harness/control_panel.py) can start/stop the system and send commands, but
+# only through the same protocol entry points as any external client (decision D29). --replay plays a run back.
 # Serves N3 (makes the consistency method visible) and N1/N2 (arbiter decisions and interface gaps live).
 """python -m harness.web_view [--run-dir runs/<id>] [--port 8080] | --replay runs/<id> [--speed 5] [--loop]"""
 
@@ -20,6 +21,7 @@ from typing import Any, Optional
 
 from equipment import config
 from harness import checker
+from harness.control_panel import ControlPanel, policy_table
 from harness.live_view import APPLIERS, ROWS, JsonlTail, Side, seed_core, values_agree
 
 PAGE = Path(__file__).with_name("web_view.html")
@@ -30,7 +32,14 @@ COMMAND_KINDS = {"command_ok": True, "command_rejected": False, "ec_write": True
 EVENT_KINDS = ("event", "alarm_set", "alarm_clear")
 CEID_NAMES = {ce.ceid: ce.name for ce in config.COLLECTION_EVENTS}
 LIVE_EDGE_NS = 2_000_000_000  # live: judge only events at least 2 s old (in-flight ones are not "missing")
-KEEP_TIMELINE, KEEP_FEED, KEEP_TEMPS = 300, 200, 2400
+KEEP_TIMELINE, KEEP_FEED, KEEP_TEMPS, KEEP_WIRE = 300, 200, 2400, 200
+
+
+def wire_files(run_dir: Path) -> list[tuple[str, Path]]:
+    """(source key, file) of the wire logs present in a run folder: SECS-II (equipment side) and all UA clients."""
+    out = [("secs_wire", run_dir / config.GEM_WIRE_LOG_FILE)]
+    out += [("ua_wire", f) for f in sorted(run_dir.glob(f"{config.UA_WIRE_LOG_PREFIX}*.jsonl"))]
+    return out
 
 
 # ====================================================================== data layer
@@ -78,6 +87,8 @@ class RunState:
         self.limits: list[list[float]] = []
         self.alarms: list[list[Optional[int]]] = []
         self.link = "NOT_COMMUNICATING"
+        self.lease = False
+        self.wire: dict[str, list[dict[str, Any]]] = {"SECS": [], "UA": []}
         self.now_ns = 0  # data time of the latest record (replay: virtual clock)
         self.version = 0
 
@@ -101,6 +112,11 @@ class RunState:
             self.send[side].append(rec)
             if rec.get("outcome") != "sent":
                 items += self._mark(side, rec["seq"], {"drop": rec.get("outcome")})
+        elif source in ("secs_wire", "ua_wire"):  # display only; never part of the checker's input
+            proto = "SECS" if source == "secs_wire" else "UA"
+            self.wire[proto].append(rec)
+            del self.wire[proto][:-KEEP_WIRE]
+            items.append({"t": "wire", "proto": proto, "rec": rec})
         return items
 
     def set_scenario(self, scenario: dict[str, Any], finished: bool) -> None:
@@ -134,6 +150,8 @@ class RunState:
         elif kind == "state" and r["id"] == "GemCommunicationState":
             self.link = r["value"]
             out.append({"t": "link", "v": r["value"], "ts": ts})
+        elif kind == "state" and r["id"] == "LeaseUA":
+            self.lease = bool(r["value"])
         elif kind in ("alarm_set", "alarm_clear"):
             if kind == "alarm_set":
                 self.alarms.append([ts, None])
@@ -230,7 +248,8 @@ class RunState:
         return {"run_id": self.run_dir.name if self.run_dir else None, "mode": self.mode,
                 "scenario": self.scenario.get("scenario"), "description": self.scenario.get("description", ""),
                 "control_state": core.get("ControlState"), "processing_state": core.get("ProcessingState"),
-                "authority": core.get("Authority"), "link": self.link, "finished": self.finished,
+                "authority": core.get("Authority"), "link": self.link, "lease": self.lease,
+                "finished": self.finished,
                 "now_ns": self.now_ns}
 
     def snapshot(self) -> dict[str, Any]:
@@ -238,7 +257,8 @@ class RunState:
         seqs = sorted(self.timeline)[-KEEP_TIMELINE:]
         return {"header": self.header(), "columns": self.columns(), "feed": self.feed[-KEEP_FEED:],
                 "timeline": [self.timeline[s] for s in seqs], "temps": self.temps, "limits": self.limits,
-                "alarms": self.alarms, "limit0": config.equipment_constant(config.ECID_TEMP_HIGH_LIMIT).default}
+                "alarms": self.alarms, "limit0": config.equipment_constant(config.ECID_TEMP_HIGH_LIMIT).default,
+                "wire": self.wire}
 
 
 # ====================================================================== sources
@@ -282,7 +302,9 @@ class LiveSource:
             switched = target
         if self.run_dir is None:
             return None, [], None
-        recs = [(key, r) for key, tail in self.tails.items() for r in tail.read_new()]
+        for key, path in wire_files(self.run_dir):  # UA one-shot clients create new wire files during a run
+            self.tails.setdefault(f"{key}:{path.name}", JsonlTail(path))
+        recs = [(key.split(":")[0], r) for key, tail in self.tails.items() for r in tail.read_new()]
         scenario = None
         sc = self.run_dir / "scenario.json"
         try:
@@ -302,8 +324,9 @@ class ReplaySource:
         self.run_dir = run_dir
         self.speed = max(0.1, speed)
         self.loop = loop
-        streams = [[(r.get("ts_ns", 0), i, key, r) for r in checker.load_jsonl(run_dir / name)]
-                   for i, (key, name) in enumerate(SOURCES)]
+        files = [(key, run_dir / name) for key, name in SOURCES] + wire_files(run_dir)
+        streams = [[(r.get("ts_ns", 0), i, key, r) for r in checker.load_jsonl(path)]
+                   for i, (key, path) in enumerate(files)]
         # heapq.merge keeps each file's own order (arrival order matters for I2) while interleaving by time.
         self.records = [(ts, key, r) for ts, _i, key, r in heapq.merge(*streams, key=lambda x: x[0])]
         try:
@@ -379,9 +402,11 @@ class Hub:
 class Dashboard:
     """Owns the source, the state, the hub and the pump thread."""
 
-    def __init__(self, source: Any, mode: str) -> None:
+    def __init__(self, source: Any, mode: str, control: bool = False) -> None:
         self.source = source
         self.mode = mode
+        # Control panel only in live mode; it switches the view to the run it starts.
+        self.panel = ControlPanel(enabled=control and mode == "live", on_run_started=self._follow)
         self.lock = threading.Lock()
         self.state = RunState(None, mode)
         self.hub = Hub()
@@ -389,6 +414,10 @@ class Dashboard:
         self._inv_version = -1
         self._last_inv: Optional[dict[str, Any]] = None
         self.thread = threading.Thread(target=self._pump, name="web-view-pump", daemon=True)
+
+    def _follow(self, run_dir: Path) -> None:
+        if isinstance(self.source, LiveSource):
+            self.source.fixed = run_dir
 
     def snapshot(self) -> tuple[int, dict[str, Any]]:
         """(hub id, full state) taken atomically, so a client continues exactly after it."""
@@ -486,8 +515,37 @@ def make_handler(dash: Dashboard, base: Path) -> type[BaseHTTPRequestHandler]:
                 self._send(200, json.dumps(snap, default=str).encode("utf-8"), "application/json")
             elif path == "/api/results":
                 self._send(200, json.dumps(results_listing(base)).encode("utf-8"), "application/json")
+            elif path == "/api/system":
+                self._json(dash.panel.status())
+            elif path == "/api/policy":
+                self._json({"rows": policy_table()})
             elif path == "/events":
                 self._sse()
+            else:
+                self._send(404, b"not found", "text/plain")
+
+        def _json(self, data: Any, code: int = 200) -> None:
+            self._send(code, json.dumps(data, default=str).encode("utf-8"), "application/json")
+
+        def do_POST(self) -> None:  # noqa: N802 - http.server API
+            """Panel actions. A custom header is required: cross-origin pages cannot send it without a CORS
+            preflight, which this server never approves, so another web page cannot drive the tool (D29)."""
+            path = self.path.split("?")[0]
+            length = int(self.headers.get("Content-Length") or 0)
+            body = json.loads(self.rfile.read(length) or b"{}") if length else {}
+            if self.headers.get("X-Panel") != "1":
+                self._json({"ok": False, "error": "missing X-Panel header"}, 403)
+            elif path == "/api/system/start":
+                self._json(dash.panel.start_system())
+            elif path == "/api/system/stop":
+                self._json(dash.panel.stop_system())
+            elif path == "/api/cmd":
+                value = body.get("value")
+                self._json(dash.panel.command(str(body.get("name")), float(value) if value not in (None, "") else None))
+            elif path == "/api/browse":
+                self._json(dash.panel.browse(dash.panel.run.run_id if dash.panel.run else None))
+            elif path == "/api/race":
+                self._json(dash.panel.race_demo(int(body.get("n") or 200)))
             else:
                 self._send(404, b"not found", "text/plain")
 
@@ -538,6 +596,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     ap.add_argument("--port", type=int, default=8080)
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--open", action="store_true", help="open the page in the default browser")
+    ap.add_argument("--no-control", action="store_true", help="live mode: hide the control panel (view only)")
     args = ap.parse_args(argv)
     if args.port in (config.HSMS_PORT, 4840, config.CONTROL_PORT, 5101):
         ap.error("that port belongs to the system under test")
@@ -549,13 +608,15 @@ def main(argv: Optional[list[str]] = None) -> int:
         dash = Dashboard(ReplaySource(rd, args.speed, args.loop), mode="replay")
     else:
         rd = checker.resolve_run(args.run_dir) if args.run_dir else None
-        dash = Dashboard(LiveSource(rd, base), mode="live")
+        local = args.host in ("127.0.0.1", "localhost")  # the control panel never listens beyond this laptop
+        dash = Dashboard(LiveSource(rd, base), mode="live", control=local and not args.no_control)
     server = ThreadingHTTPServer((args.host, args.port), make_handler(dash, base))
     server.daemon_threads = True
     dash.thread.start()
     url = f"http://localhost:{args.port}/"
     what = f"replay of {rd.name} at {args.speed}x" if args.replay else (f"run {rd.name}" if rd else "newest run")
-    print(f"web view: {url}  ({what}; read-only; Ctrl+C to stop)", flush=True)
+    mode = "control panel ON (127.0.0.1 only)" if dash.panel.enabled else "view only"
+    print(f"web view: {url}  ({what}; {mode}; Ctrl+C to stop)", flush=True)
     if args.open:
         webbrowser.open(url)
     try:
@@ -563,6 +624,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     except KeyboardInterrupt:
         pass
     finally:
+        dash.panel.shutdown()  # never leave a panel-started system running
         dash.stop.set()
         server.server_close()
     return 0

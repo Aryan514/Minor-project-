@@ -27,7 +27,7 @@ python -m pytest -q
 
 Linux/macOS: `python3.12 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`.
 Do **not** install `secsgem-driver`: it is an unrelated package that also imports as `secsgem`.
-Expected: `98 passed`.
+Expected: `101 passed`.
 
 ## Run the narrated panel demo
 
@@ -56,6 +56,19 @@ rejected, amber alarm) and the GEM link state. It also has the three columns GEM
 temperature chart with the limit and alarm periods, the arbiter decision feed, a per-seq event timeline (receive latency
 or `dropped_no_link`), live invariants computed by `harness/checker.py`, and a Results tab. It only tails the run's
 JSONL logs. It never connects to the equipment or its ports. Python standard library only, no CDN.
+
+## Control panel (live dashboard)
+
+`python -m harness.web_view` (live mode, bound to 127.0.0.1) shows a **Control panel**: *Start system* / *Stop system*
+(equipment + GEM host + OPC UA client, like the demo) and command buttons: GEM START/STOP, UA Start/Stop, *Both START at
+once*, set limit via GEM or UA, REMOTE/LOCAL/OFFLINE, Lease UA/off, Kill/Reconnect GEM host. Each button uses a real
+protocol entry point (GEM host command port → S2F41/S2F15, `ua_client` → OPC UA Call, operator console), so the arbiter
+decides exactly as for any external client. The result line shows the real reply (HCACK / EAC / StatusCode) and the
+core's reason. *Stop system* runs the checker on the run. Also on the page: **On the wire** (SML of every SECS-II message
+on port 5000, OPC UA service calls/notifications on 4840, tshark packet counts if installed). The **Inside** tab has the
+policy table computed from the arbiter with the active row highlighted, a **model browser** (real OPC UA browse) and the
+**race demo** (`python -m harness.race_demo`: 200 concurrent START pairs, unsafe check-then-act vs the real core).
+`--no-control` gives a view-only page.
 
 ## Wireshark capture (shows that both protocols are real)
 
@@ -131,5 +144,5 @@ through it.
 ## Repository layout
 
 `equipment/` (core, arbiter, dispatcher, audit, sensors, both doors, console, main), `clients/` (GEM host, OPC UA
-client), `harness/` (checker, scenarios, live view, web dashboard, demo), `tests/` (98 tests), `results/`, `docs/`.
+client), `harness/` (checker, scenarios, live view, web dashboard, demo), `tests/` (101 tests), `results/`, `docs/`.
 Limitations and future work: `docs/limitations.md`.

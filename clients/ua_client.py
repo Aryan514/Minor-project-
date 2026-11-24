@@ -37,6 +37,19 @@ LISTEN_VARS = {
 }
 
 
+def ua_wire(run_id: Optional[str], role: str) -> JsonlWriter:
+    """Per-process OPC UA wire log: service calls and notifications at client API level (not decoded packets)."""
+    if not run_id:
+        return JsonlWriter(None)
+    return JsonlWriter(run_dir_for(run_id) / f"{config.UA_WIRE_LOG_PREFIX}{role}_{os.getpid()}.jsonl")
+
+
+def wire(w: JsonlWriter, direction: str, service: str, node: str = "", status: str = "", detail: Any = "") -> None:
+    """One UA wire record: direction 'out' = request sent by this client, 'in' = response/notification received."""
+    w.write({"ts_ns": time.time_ns(), "dir": direction, "service": service, "node": node, "status": status,
+             "detail": detail})
+
+
 def _dt_ns(dt: Any) -> Optional[int]:
     """datetime -> ns since epoch (None-safe)."""
     return int(dt.timestamp() * 1e9) if dt is not None else None
@@ -46,8 +59,9 @@ class _Handler:
     """Subscription callbacks: write every notification to the JSONL receive log."""
 
     def __init__(self, writer: JsonlWriter, names: dict[ua.NodeId, str], type_kinds: dict[ua.NodeId, str],
-                 echo: bool) -> None:
+                 echo: bool, wire_w: Optional[JsonlWriter] = None) -> None:
         self._w = writer
+        self._wire = wire_w or JsonlWriter(None)
         self._names = names
         self._type_kinds = type_kinds
         self._echo = echo
@@ -60,8 +74,10 @@ class _Handler:
     def datachange_notification(self, node: Node, val: Any, data: Any) -> None:
         """A subscribed variable changed."""
         dv = data.monitored_item.Value
-        self._emit({"ts_ns": time.time_ns(), "kind": "data", "id": self._names.get(node.nodeid, str(node.nodeid)),
+        name = self._names.get(node.nodeid, str(node.nodeid))
+        self._emit({"ts_ns": time.time_ns(), "kind": "data", "id": name,
                     "seq": None, "data": {"value": val, "source_ts_ns": _dt_ns(dv.SourceTimestamp)}})
+        wire(self._wire, "in", "Publish: DataChangeNotification", node.nodeid.to_string(), "Good", {name: val})
 
     def event_notification(self, event: Any) -> None:
         """An event from Chamber1Tool arrived."""
@@ -71,6 +87,8 @@ class _Handler:
             payload = json.loads(event.Payload) if getattr(event, "Payload", None) else {}
             self._emit({"ts_ns": now, "kind": "event", "id": event.CEID, "seq": event.EventSeq,
                         "data": {"origin": event.Origin, "payload": payload, "time_ns": _dt_ns(event.Time)}})
+            wire(self._wire, "in", "Publish: EventNotification (GemCollectionEventType)", f"CEID {event.CEID}",
+                 "Good", {"EventSeq": event.EventSeq, "Origin": event.Origin, "Payload": payload})
         elif kind == "alarm":
             active = getattr(event, "ActiveState/Id", None)
             if active is None:
@@ -78,6 +96,8 @@ class _Handler:
             self._emit({"ts_ns": now, "kind": "alarm_set" if active else "alarm_clear", "id": event.ALID,
                         "seq": event.EventSeq, "data": {"active": active, "message": str(event.Message.Text),
                                                          "severity": event.Severity, "time_ns": _dt_ns(event.Time)}})
+            wire(self._wire, "in", "Publish: EventNotification (GemOffNormalAlarmType)", f"ALID {event.ALID}",
+                 "Good", {"EventSeq": event.EventSeq, "Active": active, "Message": str(event.Message.Text)})
 
     def status_change_notification(self, status: Any) -> None:
         """Subscription status change (e.g. server going away)."""
@@ -105,7 +125,10 @@ async def listen(url: str, run_id: str, duration: Optional[float], echo: bool) -
     writer = JsonlWriter(run_dir_for(run_id) / config.UA_CLIENT_LOG_FILE)
     # Session markers for the checker: "connecting" opens a session, "listening" = subscriptions active.
     writer.write({"ts_ns": time.time_ns(), "kind": "connecting", "id": None, "seq": None, "data": os.getpid()})
+    ww = ua_wire(run_id, "listen")
+    wire(ww, "out", "OpenSecureChannel + CreateSession + ActivateSession", url)
     async with Client(url) as client:
+        wire(ww, "in", "ActivateSession", url, "Good", "anonymous, SecurityPolicy None")
         tool, idx = await _tool(client)
         names: dict[ua.NodeId, str] = {}
         nodes: list[Node] = []
@@ -116,10 +139,14 @@ async def listen(url: str, run_id: str, duration: Optional[float], echo: bool) -
         etypes = await _event_types(client, idx)
         type_kinds = {etypes["event"].nodeid: "event", etypes["alarm"].nodeid: "alarm",
                       etypes["alarm_fallback"].nodeid: "alarm"}
-        handler = _Handler(writer, names, type_kinds, echo)
+        handler = _Handler(writer, names, type_kinds, echo, ww)
         sub = await client.create_subscription(50, handler)  # 50 ms publishing interval
+        wire(ww, "in", "CreateSubscription", "", "Good", "publishing interval 50 ms")
         await sub.subscribe_data_change(nodes, queuesize=100)
+        wire(ww, "in", "CreateMonitoredItems (data change)", "", "Good", f"{len(nodes)} variables")
         await sub.subscribe_events(tool, list(etypes.values()), queuesize=1000)
+        wire(ww, "in", "CreateMonitoredItems (events)", tool.nodeid.to_string(), "Good",
+             "GemCollectionEventType, GemOffNormalAlarmType, GemAlarmEventType")
         writer.write({"ts_ns": time.time_ns(), "kind": "listening", "id": None, "seq": None, "data": url})
         print(f"UA client listening (run_id={run_id})", flush=True)
         try:
@@ -141,11 +168,16 @@ async def call(url: str, run_id: str, action: str, value: Optional[float] = None
         method = {"start": "Start", "stop": "Stop", "set-limit": "SetTempHighLimit"}[action]
         args = [ua.Variant(float(value), ua.VariantType.Double)] if action == "set-limit" else []
         t0 = time.time_ns()
+        ww = ua_wire(run_id, "call")
+        target = f"{config.TOOL_NAME}.{method}"
+        wire(ww, "out", "Call", target, "", {"InputArguments": [value] if args else []})
         try:
             await tool.call_method(f"{idx}:{method}", *args)
             status = "Good"
         except ua.UaStatusCodeError as exc:
             status = _status_name(exc.code)
+        wire(ww, "in", "Call", target, status, "CallMethodResult.StatusCode")
+        ww.close()
         writer.write({"ts_ns": time.time_ns(), "kind": "reply", "id": method, "seq": None,
                       "data": {"status": status, "value": value, "sent_ns": t0}})
         writer.close()
@@ -158,6 +190,55 @@ def _status_name(code: int) -> str:
         if isinstance(val, int) and val == code:
             return name
     return hex(code)
+
+
+async def browse_tree(url: str = config.OPCUA_CLIENT_ENDPOINT, run_id: Optional[str] = None) -> dict[str, Any]:
+    """Browse Chamber1Tool recursively and return it as data (used by the web dashboard's model browser).
+
+    Each node: name, node id, class, type definition, value; GEM-mapped variables also carry gem {id, kind,
+    format}; EngineeringUnits / EURange / method InputArguments are folded into their parent.
+    """
+    ww = ua_wire(run_id, "browse")
+    wire(ww, "out", "Browse (recursive) + Read", config.TOOL_NAME, "", url)
+    count = 0
+    async with Client(url) as client:
+        tool, idx = await _tool(client)
+
+        async def info(node: Node) -> dict[str, Any]:
+            nonlocal count
+            count += 1
+            ncls = await node.read_node_class()
+            out: dict[str, Any] = {"name": (await node.read_browse_name()).Name, "nodeid": node.nodeid.to_string(),
+                                   "class": ncls.name, "children": []}
+            if ncls in (ua.NodeClass.Object, ua.NodeClass.Variable):
+                tdef = await node.read_type_definition()
+                if tdef is not None and tdef.NamespaceIndex == idx:
+                    out["type"] = (await client.get_node(tdef).read_browse_name()).Name
+            if ncls == ua.NodeClass.Variable:
+                val = await node.read_value()
+                out["value"] = val if isinstance(val, (int, float, str, bool)) or val is None else str(val)
+            for child in await node.get_children():
+                cname = (await child.read_browse_name()).Name
+                if cname in ("GemId", "GemKind", "GemFormat"):
+                    out.setdefault("gem", {})[cname[3:].lower()] = await child.read_value()
+                elif cname == "EngineeringUnits":
+                    eu = await child.read_value()
+                    out["units"] = getattr(getattr(eu, "DisplayName", None), "Text", str(eu))
+                elif cname == "EURange":
+                    rng = await child.read_value()
+                    out["range"] = [rng.Low, rng.High]
+                elif cname == "InputArguments":
+                    out["inputs"] = [a.Name for a in await child.read_value()]
+                else:
+                    out["children"].append(await info(child))
+            return out
+
+        tree = await info(tool)
+        tree["namespace"] = config.OPCUA_NAMESPACE_URI
+        tree["ns_index"] = idx
+    wire(ww, "in", "Browse (recursive) + Read", f"ns={idx};s={config.TOOL_NAME}", "Good", f"{count} nodes")
+    ww.close()
+    return tree
 
 
 async def browse(url: str) -> None:

@@ -27,6 +27,7 @@ import secsgem.hsms
 
 from equipment import config
 from equipment.audit import JsonlWriter, latest_run_id, run_dir_for
+from equipment.wire_log import attach_secs_wire_log
 
 RELAY_HOST = "127.0.0.1"
 RELAY_PORT = 5101  # local relay into the listener's HSMS session (D15)
@@ -152,6 +153,7 @@ class GemHost:
 def listen(run_id: str, duration: Optional[float], echo: bool) -> None:
     """Connect, set up reports, log every S6F11 / S5F1 until duration elapses (or forever)."""
     writer = JsonlWriter(run_dir_for(run_id) / config.GEM_HOST_LOG_FILE)
+    attach_secs_wire_log(run_dir_for(run_id) / config.GEM_HOST_WIRE_LOG_FILE, side="host")
     host = GemHost()
 
     def emit(rec: dict[str, Any]) -> None:

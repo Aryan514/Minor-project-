@@ -23,6 +23,7 @@ from equipment.core import EquipmentCore
 from equipment.dispatcher import Dispatcher
 from equipment.opcua_adapter import OpcUaAdapter
 from equipment.sensors import SamplingThread, SerialESP32, SimulatedChamber
+from equipment.wire_log import attach_secs_wire_log
 
 
 def parse_args(argv: Optional[list[str]] = None) -> argparse.Namespace:
@@ -55,6 +56,8 @@ async def run(args: argparse.Namespace) -> int:
     run_dir = run_dir_for(run_id)
     (run_dir.parent / "LATEST").write_text(run_id, encoding="utf-8")
     setup_logging(run_dir, args.log_level)
+    if not args.no_gem:  # SML wire log from secsgem's own "communication" logger (no adapter change; D30)
+        attach_secs_wire_log(run_dir / config.GEM_WIRE_LOG_FILE, side="equipment")
     log = logging.getLogger("equipment.main")
 
     sensor: Any = SimulatedChamber(seed=args.seed) if args.sensor == "sim" else SerialESP32(args.port)

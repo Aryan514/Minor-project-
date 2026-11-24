@@ -293,6 +293,10 @@ GEM_SEND_LOG_FILE: Final[str] = "gem_adapter_send.jsonl"
 UA_SEND_LOG_FILE: Final[str] = "ua_adapter_send.jsonl"
 GEM_HOST_LOG_FILE: Final[str] = "gem_host.jsonl"
 UA_CLIENT_LOG_FILE: Final[str] = "ua_client.jsonl"
+# Wire logs (SML text of every HSMS message; OPC UA service calls at client API level). One file per process (D11).
+GEM_WIRE_LOG_FILE: Final[str] = "gem_wire.jsonl"  # equipment side, from secsgem's "communication" logger
+GEM_HOST_WIRE_LOG_FILE: Final[str] = "gem_host_wire.jsonl"  # listening GEM host side
+UA_WIRE_LOG_PREFIX: Final[str] = "ua_wire_"  # ua_wire_<role>_<pid>.jsonl written by clients.ua_client
 
 STATE_CONVERGENCE_T_MS: Final[int] = 500  # invariant I4 window
 FLOAT_TOLERANCE: Final[float] = 1e-3  # invariant I3 tolerance
