@@ -362,6 +362,93 @@ class Report:
         self.table("Arbiter decision for every combination of control state, lease, origin and action",
                    ["Control state", "Lease", "Origin", "START", "STOP", "EC_WRITE"], rows, [3.8, 1.4, 2.3, 2.9, 2.9, 2.7], 9)
 
+    # ---- university template pages (title page and declaration)
+    def _line(self, parts, size, bold=False, after=0, align=WD_ALIGN_PARAGRAPH.CENTER, line=1.15):
+        """One single paragraph; parts is a string or a list of (text, superscript) pairs."""
+        para = self.doc.add_paragraph()
+        para.alignment = align
+        pf = para.paragraph_format
+        pf.space_before, pf.space_after = Pt(0), Pt(after)
+        pf.line_spacing = line
+        for text, sup in ([(parts, False)] if isinstance(parts, str) else parts):
+            r = para.add_run(text)
+            set_font(r, size, bold=bold)
+            r.font.superscript = sup or None
+        return para
+
+    def title_page(self, d):
+        """Title page laid out like the university template (logo, school, report, title, students, supervisor)."""
+        logo = ROOT / d["logo"]
+        para = self.doc.add_paragraph()
+        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        spacing(para.paragraph_format, after=30, line=1.0)
+        if logo.exists():
+            para.add_run().add_picture(str(logo), width=Cm(8))
+        else:                                           # visible bordered placeholder box
+            set_font(para.add_run("[University logo]"), 12)
+            pbdr = OxmlElement("w:pBdr")
+            for side in ("top", "left", "bottom", "right"):
+                e = OxmlElement(f"w:{side}"); e.set(qn("w:val"), "single"); e.set(qn("w:sz"), "8"); e.set(qn("w:space"), "8")
+                pbdr.append(e)
+            para._p.get_or_add_pPr().append(pbdr)
+        for t in d["school"]:
+            self._line(t.upper(), 13, bold=True)
+        self._line("", 12, after=40)
+        self._line("Minor Project Report", 24, bold=True, after=4)
+        self._line("on", 14, bold=True, after=26)
+        self._line(d["title"], 16, bold=True, after=42)
+        self._line("Submitted in partial fulfillment of", 12, after=2)
+        self._line([("B.Tech. (7", False), ("th", True), (" Semester)", False)], 12, after=8)
+        self._line("In", 12, after=8)
+        self._line(f"({d['branch']})", 12, after=42)
+        for i, (name, enrol) in enumerate(d["students"]):
+            self._line(f"Name: {name}", 14, bold=True, after=4)
+            self._line(f"Enrollment Number: {enrol}", 14, bold=True, after=14 if i < len(d["students"]) - 1 else 48)
+        self._line("Under the supervision of", 13, bold=True, after=14)
+        self._line(d["supervisor"], 13, bold=True, after=2)
+        self._line(d["designation"], 13, bold=True)
+
+    def _cell(self, cell, label, value="", align=WD_ALIGN_PARAGRAPH.LEFT):
+        para = cell.paragraphs[0]
+        para.alignment = align
+        spacing(para.paragraph_format, after=0)
+        if label:
+            set_font(para.add_run(label), 12, bold=True)
+        if value:
+            set_font(para.add_run(" " + value), 12)
+
+    def declaration(self, d):
+        """Declaration page: heading, statement, borderless signature table (student blocks, then supervisor)."""
+        self.h1("DECLARATION")
+        who = "I" if len(d["students"]) == 1 else "We"
+        para = self.doc.add_paragraph()
+        para.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        spacing(para.paragraph_format, after=48)
+        set_font(para.add_run(f"{who} hereby declare that the Report entitled (“{d['title']}”) is an authentic record "
+                              f"of work completed as requirements of Minor Project (ARP 455) under the supervision of "
+                              f"{d['supervisor']}."), 12)
+        L, R = WD_ALIGN_PARAGRAPH.LEFT, WD_ALIGN_PARAGRAPH.RIGHT
+        rows = []
+        for i, (name, enrol) in enumerate(d["students"]):
+            if i:
+                rows.append(("", "", "", L))
+            rows += [("", "(Signature of student)", "____________________", L),
+                     ("Date: ______________", "(Name of Student)", name, L),
+                     ("", "(Enrollment Number)", enrol, L)]
+        rows += [("", "", "", L), ("", "", "", L), ("", "(Signature of Supervisor)", "", R),
+                 ("", "", "", L), ("Date: ______________", "(Name of Supervisor)", d["supervisor"], R)]
+        widths = [6.5, TEXT_WIDTH_CM - 0.25 - 6.5]
+        t = self.doc.add_table(rows=len(rows), cols=2)          # default "Normal Table": no borders
+        t.autofit = False
+        for ri, (date, label, value, align) in enumerate(rows):
+            self._cell(t.cell(ri, 0), date)
+            self._cell(t.cell(ri, 1), label, value, align)
+            for ci, w in enumerate(widths):
+                t.cell(ri, ci).width = Cm(w)
+        for ci, w in enumerate(widths):
+            t.columns[ci].width = Cm(w)
+        lay = OxmlElement("w:tblLayout"); lay.set(qn("w:type"), "fixed"); t._tbl.tblPr.append(lay)
+
     def save(self):
         self.doc.save(OUT)
 

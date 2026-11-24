@@ -13,59 +13,43 @@ TITLE = ("Simultaneous SECS/GEM and OPC UA Access to Semiconductor Equipment: A 
          "Architecture with Control-Authority Arbitration and Cross-Interface Consistency Verification")
 REPO = "https://github.com/Aryan514/Minor-project-"
 
+# Details printed on the title page, declaration and certificate.
+INFO = {
+    "logo": "report/assets/ggsipu_logo.png",
+    "school": ["University School of Automation and Robotics", "East Delhi Campus, Surajmal Vihar, Delhi- 110032"],
+    "title": TITLE,
+    "branch": "IIOT",
+    "students": [("Aryan Malhotra", "03019051723")],
+    "supervisor": "Dr. Khyati Chopra",
+    "designation": "Assistant Professor",
+}
+
 
 def front_matter():
     """Title page (section 1), then roman-numbered front matter (section 2)."""
-    b = []
-    P = lambda t, **k: b.append(("p", t, k.get("align", "center"), k.get("bold", False), k.get("size"), k.get("after", 6)))
-    P("[UNIVERSITY LOGO]", after=18)
-    P(TITLE, bold=True, size=16, after=24)
-    P("A Minor Project Report", size=13)
-    P("submitted in partial fulfilment of the requirements for the award of the degree of", after=0)
-    P("[DEGREE, e.g. Bachelor of Technology] in [BRANCH]", bold=True, after=24)
-    P("Submitted by", after=0)
-    P("[STUDENT NAME 1] ([ROLL NUMBER 1])", bold=True, after=0)
-    P("[STUDENT NAME 2] ([ROLL NUMBER 2])", bold=True, after=24)
-    P("Under the supervision of", after=0)
-    P("[SUPERVISOR NAME]", bold=True, after=0)
-    P("[SUPERVISOR DESIGNATION]", after=36)
-    P("[DEPARTMENT]", bold=True, after=0)
-    P("[UNIVERSITY NAME, CITY]", bold=True, after=0)
-    P("[MONTH YEAR]", bold=True, after=0)
+    b = [("title_page", INFO), ("new_section", "lowerRoman", 1), ("declaration", INFO)]
 
-    b.append(("new_section", "lowerRoman", 1))
     b.append(("h1", "CERTIFICATE BY SUPERVISOR"))
     b.append(("p", "This is to certify that the minor project report entitled **“" + TITLE + "”**, submitted by "
-              "[STUDENT NAME 1] ([ROLL NUMBER 1]) and [STUDENT NAME 2] ([ROLL NUMBER 2]) in partial fulfilment of the "
-              "requirements for the award of the degree of [DEGREE] in [BRANCH] at [UNIVERSITY NAME], is a record of "
-              "work carried out under my supervision. To the best of my knowledge, the work has not been submitted "
+              "Aryan Malhotra (03019051723) in partial fulfilment of the requirements of B.Tech. (7th Semester) in IIOT "
+              "at the University School of Automation and Robotics, Guru Gobind Singh Indraprastha University, is a record "
+              "of work carried out under my supervision. To the best of my knowledge, the work has not been submitted "
               "elsewhere for the award of any degree or diploma."))
-    for t in ["", "", "Signature: ______________________________", "Name: [SUPERVISOR NAME]",
-              "Designation: [SUPERVISOR DESIGNATION]", "Department: [DEPARTMENT], [UNIVERSITY NAME]",
+    for t in ["", "", "Signature: ______________________________", "Name: " + INFO["supervisor"],
+              "Designation: " + INFO["designation"],
+              "Department: University School of Automation and Robotics, Guru Gobind Singh Indraprastha University",
               "Date: ____________________"]:
         b.append(("p", t, "left", False, None, 0))
 
-    b.append(("h1", "DECLARATION"))
-    b.append(("p", "We hereby declare that the work presented in this report, entitled **“" + TITLE + "”**, is our "
-              "own work carried out at [DEPARTMENT], [UNIVERSITY NAME], under the supervision of [SUPERVISOR NAME]. "
-              "Wherever the work of others has been used, it has been acknowledged and cited. The results reported here "
-              "were produced by the software described in this report, and the measured values are reported as "
-              "obtained. This work has not been submitted elsewhere for the award of any degree or diploma."))
-    for name, roll in (("[STUDENT NAME 1]", "[ROLL NUMBER 1]"), ("[STUDENT NAME 2]", "[ROLL NUMBER 2]")):
-        for t in ["", "Signature: ______________________________", f"Name: {name}", f"Roll number: {roll}",
-                  "Date: ____________________"]:
-            b.append(("p", t, "left", False, None, 0))
-
     b.append(("h1", "ACKNOWLEDGEMENT"))
-    b.append(("p", "We are grateful to our supervisor, [SUPERVISOR NAME], [SUPERVISOR DESIGNATION], for guidance on the "
-              "scope and direction of this project and for constructive feedback throughout. We thank the Head of "
-              "[DEPARTMENT] and the faculty members of the department for the facilities and support provided."))
-    b.append(("p", "The testbed is built on open-source software. We acknowledge the maintainers of the `secsgem` and "
+    b.append(("p", "I am grateful to my supervisor, Dr. Khyati Chopra, Assistant Professor, for guidance on the "
+              "scope and direction of this project and for constructive feedback throughout. I thank the University School of Automation and Robotics and its faculty members for the facilities and support provided."))
+    b.append(("p", "The testbed is built on open-source software. I acknowledge the maintainers of the `secsgem` and "
               "`asyncua` Python libraries, whose source code and documentation made it possible to implement and examine "
-              "both protocol interfaces in detail, and the Wireshark project for its protocol dissectors. We also "
+              "both protocol interfaces in detail, and the Wireshark project for its protocol dissectors. I also "
               "acknowledge the authors of the published work reviewed in Chapter 3, which shaped the questions this "
               "project set out to answer."))
-    b.append(("p", "[STUDENT NAME 1]     [STUDENT NAME 2]", "right"))
+    b.append(("p", "Aryan Malhotra", "right"))
 
     b.append(("h1_plain", "TABLE OF CONTENTS"))
     b.append(("field", 'TOC \\o "1-3" \\h \\z \\u', "Right-click and choose Update Field (or press F9) to build the table of contents."))
